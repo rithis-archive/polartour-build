@@ -1,0 +1,17 @@
+.content
+  .title Вход в панель администрирования
+
+  .login
+    .login-form
+      .login-form-field
+        label.search-label ваш логин
+        input(ng-model="user.username")
+
+      .login-form-field
+        label.search-label пароль
+        input(type="password", ng-model="user.password")
+
+      button.big_button(ng-click="submit()") войти
+
+    .login-message
+      | Пароль можно получить по адресу admin@polartour.ru.

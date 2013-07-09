@@ -1,0 +1,46 @@
+.content
+  .title Редактирование группы
+
+
+  .content-detail.group-detail
+    .content-detail-field
+      label название
+      input(type="text", ng-model="group.name") 
+
+    .content-detail-field
+      label пользователи
+      .group-users
+        .group-users-item(ng-repeat="user in group.users")
+          span {{ user }}
+          button.big_button(ng-click="removeUser(user)") -
+      div(pt-modal, pt-modal-show="showUsers")
+        div
+          .group-users-header Список пользователей
+          .group-users-list
+            .group-users-list-item(ng-repeat="user in users", ng-hide="hasUser(user.username)")
+              span {{ user.username }}
+              button.big_button(ng-click="addUser(user.username)") +    
+      button.big_button.group-users-add(ng-click="showUsers = true") +
+
+    .content-detail-field
+      label разрешения
+      .group-permissions
+        .group-permissions-item(ng-repeat="permission in group.permissions")
+          div(ng-repeat="(name,action) in permission")
+            span {{ name }}
+            span {{ actions[action] }}
+            button.big_button(ng-click="removePermission(name, action)") -
+      div(pt-modal, pt-modal-show="showPermissions")
+        div
+          .group-permissions-header Список разрешений
+          .group-permissions-list
+            div(ng-repeat="permission in permissions")
+              .group-permissions-list-item(ng-repeat="(action,name) in actions", ng-hide="hasPermission(permission.name, action)")
+                span {{ permission.name }}
+                span {{ name }}
+                button.big_button(ng-click="addPermission(permission.name, action)") +    
+      button.big_button.group-users-add(ng-click="showPermissions = true") +
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

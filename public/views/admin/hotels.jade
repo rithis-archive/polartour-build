@@ -1,0 +1,46 @@
+.content(pt-list)
+  .title Список гостиниц
+
+  section.content-block.search.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label название
+        input(ng-model="filters.name", pt-typeahead, typeahead-data="data", typeahead-property="name")
+  
+      .search-item
+        label.search-label категория
+        div.buttons-group(pt-buttons-group, ng-init="categories=['3 и менее', 4, 5, 'HV']", ng-model="filters.category")
+          a.button(href="#", ng-repeat="category in categories") {{ category }}
+      
+      .search-item
+        label.search-label(for="search-town") страна
+        select.search-select#search-town(ui-select2, pt-countries, ng-model="remoteFilters.country")
+          option(ng-repeat="country in countries", value="{{ country.code }}") {{ country.name }}
+  
+      .search-item
+        label.search-label(for="search-town") регион
+        input(ng-model="filters.region")
+  
+    button.big_button(type="submit", ng-click="new()") создать
+
+    a.show-detail-search(ng-click="filters = {}", href="javascript:void(0)") очистить фильтр
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-6x название
+        span.list-cell-width-2x категория
+        span.list-cell-width-4x расположение
+  
+      .list-placeholder
+  
+      .list-item(ng-repeat="hotel in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-6x.list-cell-item(href="#!/hotels/{{ hotel._id }}") {{ hotel.name }}
+        span.list-cell-width-2x.list-cell-item {{ hotel.category }}*
+        span.list-cell-width-4x.list-cell-item {{ hotel.country | countryName }}, {{ hotel.region }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}

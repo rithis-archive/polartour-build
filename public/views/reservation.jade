@@ -1,0 +1,96 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content
+  h2.content-header.reservation-header заявка на бронирование
+
+  .reservation-description(ng-bind-html-unsafe="description.description")
+
+  form.reservation(name="reservationForm")
+    .reservation-field-container
+      h2 информация об агенстве
+      
+      .reservation-field.reservation-field-city
+        label город
+        input(type="text", ng-model="reservation.city", required)
+
+      .reservation-field.reservation-field-agancy
+        label агенство
+        input(type="text", ng-model="reservation.agency", required)
+
+      .reservation-field.reservation-field-phone
+        label телефон
+        input(type="text", ng-model="reservation.phone", required)
+
+      .reservation-field.reservation-field-email
+        label email
+        input(type="text", ng-model="reservation.email", required, type="email")
+
+      .reservation-field.reservation-field-address
+        label адрес
+        input(type="text", ng-model="reservation.address", required)
+
+
+    .reservation-field-container
+      h2 заявка на бронирование тура
+      
+      .reservation-field.reservation-field-departure
+        label город отправления
+        input(type="text", ng-model="reservation.departure", required)
+
+      .reservation-field.reservation-field-country
+        label страна
+        input(type="text", ng-model="reservation.country", required)
+
+      .reservation-field.reservation-field-tour
+        label тур
+        input(type="text", ng-model="reservation.tour", required)
+
+      .reservation-field.reservation-field-hotel
+        label отель
+        input(type="text", ng-model="reservation.hotel", required)
+
+      .reservation-field.reservation-field-placing
+        label размещение
+        input(type="text", ng-model="reservation.placing", required)
+
+      .reservation-field.reservation-field-date
+        label дата (от и до)
+        input(ng-model="reservation.dateFrom", pt-datepicker, pt-datepicker-format="dd.mm.yy", pt-datepicker-trigger, required)
+        span -
+        input(ng-model="reservation.dateTo", pt-datepicker, pt-datepicker-format="dd.mm.yy", pt-datepicker-trigger, required)  
+
+      .reservation-field.reservation-field-nights
+        label ночей
+        select(ng-model="reservation.nights", ui-select2, required)
+          option 3
+          option 4
+          option 5
+          option 6
+          option 7
+
+      .reservation-field.reservation-field-count
+        label кол-во туристов
+        input(type="text", ng-model="reservation.count", required, type="number")
+
+      .reservation-field.reservation-field-price
+        label цена
+        input(type="text", ng-model="reservation.price", required, type="number")
+
+      .reservation-field.reservation-field-number
+        label № СПО
+        input(type="text", ng-model="reservation.number", required)
+
+    .reservation-field-container
+      h2 данные туристов
+
+      .reservation-field.reservation-field-tourists(pt-reservation-tourists, ng-model="reservation.tourists", required)
+
+    .reservation-field-container
+      .reservation-field.reservation-field-comment
+        label ваши комментарии
+        textarea(ng-model="reservation.comment")
+
+      button.big_button.reservation-save(ng-click="save()") отправить заявку
+
+include blocks/payment-services

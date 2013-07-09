@@ -1,0 +1,100 @@
+@import "./../components/semantic-grid/stylesheets/styl/grid"
+
+@total-width = 100%
+@columns = 12
+
+.list
+  width 710px
+
+  &.list-fullwidth
+    width 1110px
+    padding-bottom 30px
+
+    @media all and (max-width: 1110px)
+      width 767px
+
+    @media all and (max-width: 767px)
+      width 100%
+
+    .list-title
+      font-size 14px
+      font-weight 500
+
+    .list-cell-item
+      padding 0
+      font-weight 400
+      font-size 14px
+
+    .list-pagination
+      margin 10px
+
+  .list-title
+    width auto
+    color #1A7CA5
+
+    clearfix()
+
+    @media all and (max-width: 767px)
+      display none
+
+  .list-placeholder
+    padding 0px 9px
+    margin 18px 1%
+    border-bottom 1px dotted #A1D18A
+
+    @media all and (max-width: 767px)
+      display none
+
+  .list-item
+    padding 0px !important
+
+    clearfix()
+
+    &:hover
+      background #FCF7CA
+
+      a.list-cell-item
+        color #F89522
+
+    .list-item-empty-data
+      color #1a7ca5
+      font-size 24px
+      text-align center
+      padding 20px 0px
+
+  .list-cell-item
+    width auto
+    padding 8px 0px 12px 0px
+    line-height 28px
+    font-size 20px
+    font-weight bold
+    cursor pointer
+
+    clearfix()
+
+    &.viewed
+      font-weight normal
+
+  a.list-cell-item
+    color #397C93
+    text-decoration underline
+    
+
+  .list-cell-width-2x
+    column(2)
+
+  .list-cell-width-4x
+    column(4)
+
+  .list-cell-width-6x
+    column(6)
+
+  .list-cell-width-8x
+    column(8)
+
+  .list-cell-width-10x
+    column(10)
+
+  .list-pagination
+    padding 10px 0px 0px 0px
+    margin 0px 0px 35px 0px

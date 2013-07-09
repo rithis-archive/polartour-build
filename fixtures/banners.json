@@ -1,0 +1,113 @@
+[
+  {
+    "size": "3x2",
+    "type": "image",
+    "position": 0,
+    "content": {
+      "image": "/images/banners/sirene.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "3x1",
+    "type": "gallery",
+    "position": 1,
+    "content": [
+      {
+        "image": "/images/banners/starlight.jpg",
+        "href": "#!/"
+      },
+      {
+        "image": "/images/banners/suntopia.jpg",
+        "href": "#!/"
+      }
+    ]
+  },{
+    "size": "2x2",
+    "type": "image",
+    "position": 2,
+    "content": {
+      "image": "/images/banners/titanic.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 3,
+    "content": {
+      "image": "/images/banners/greece.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 4,
+    "content": {
+      "image": "/images/banners/uae.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 5,
+    "content": {
+      "image": "/images/banners/bulgaria.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "2x1",
+    "type": "image",
+    "position": 6,
+    "content": {
+      "image": "/images/banners/cuba.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 7,
+    "content": {
+      "image": "/images/banners/maldives.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 8,
+    "content": {
+      "image": "/images/banners/excursions.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 9,
+    "content": {
+      "image": "/images/banners/combo.jpg",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 10,
+    "content": {
+      "image": "/images/banners/cabinet.png",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 11,
+    "content": {
+      "image": "/images/banners/credit.png",
+      "href": "#!/"
+    }
+  },{
+    "size": "1x1",
+    "type": "image",
+    "position": 12,
+    "content": {
+      "image": "/images/banners/topdialog.png",
+      "href": "#!/"
+    }
+  }
+]

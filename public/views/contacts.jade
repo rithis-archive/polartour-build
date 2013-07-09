@@ -1,0 +1,49 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.contacts
+  section.block__color-white.block__size-container
+    h2.block-header.contacts-header Контакты
+
+  .contacts-address
+    .contacts-address-map
+      div.contacts-address-map-container(data-map, data-lon="37.558957", data-lat="55.742118", data-zoom="16")
+    .contacts-address-info
+      .contacts-address-info-block
+        | Наш адрес: город Москва, улица Киевская, дом 7, подъезд 7, этаж 6.
+  
+      .contacts-address-info-block
+        | Режим работы офиса:
+        br
+        | в будни с 10:00 до 19:00;
+        br
+        | в субботу (дежурный режим) с 11:00 до 16:00;
+        br
+        | воскресенье - выходной.
+  
+      .contacts-address-info-block
+        | Режим работы кассы:
+        br
+        | в будни с 10:00 до 18:45;
+        br
+        | обед с 14:30 до 15:00;
+
+  .contact(ng-repeat="contact in data")
+    .contact-title {{ contact.name }}
+    .contact-info
+      img(ng-src="/images/fixtures/excursions/email.png")
+      a.contact-email(href="mailto:{{ contact.email }}", ng-show="contact.email") {{ contact.email }}
+      .contact-phone(ng-show="contact.phone") {{ contact.phone }}
+      img(ng-src="/images/fixtures/excursions/days.png")
+      .contact-schedule(ng-show="contact.schedule") {{ contact.schedule }}
+
+    .contact-employees
+      .contact-employe(ng-repeat="employe in contact.employees")
+        .contact-employe-name {{ employe.name }} {{ employe.lastname }}
+        .contact-employe-responsibilities(ng-bind-html-unsafe="employe.responsibilities.join(',<br/>')")
+        .contact-employe-phone {{ employe.phone }}
+        .contact-employe-email(ng-repeat="email in employe.emails")
+          a(href="{{ email.email }}") {{ email.email }}
+          |  {{ email.comment }}
+
+include blocks/payment-services

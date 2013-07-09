@@ -1,0 +1,105 @@
+itemWidth = 240px
+itemHeight = 144px
+itemVerticalMargin = 12px
+itemHorisontalMargin = 15px
+
+.banners
+  float right
+  width contentWidth - itemHorisontalMargin * 2
+  padding itemHorisontalMargin
+
+  @media all and (max-width: 1109px)
+    float none
+    display block
+    width auto
+    padding 17px 0px 13px 0px
+
+    background #fff
+
+    clearfix()
+
+  @media all and (max-width: 767px)
+    display none
+  
+  :nth-child(2), :nth-child(3)
+    @media all and (max-width: 1109px)
+      float right
+
+
+.banners-item
+  float left
+  margin itemVerticalMargin itemHorisontalMargin
+  display block
+  cursor pointer
+
+/*
+240 | 510 | 780
+144 | 144 | 144
+----+-----+----
+240 | 510 | 780
+312 | 312 | 312
+----+-----+----
+240 | 510 | 780
+480 | 480 | 480
+*/
+for x in 1 2 3
+  for y in 1 2 3
+    .banners-item__size-{x}x{y}
+      width itemWidth * x + (x - 1) * itemHorisontalMargin * 2
+      height itemHeight * y + (y - 1) * itemVerticalMargin * 2
+
+      .galleria-container
+        width itemWidth * x + (x - 1) * itemHorisontalMargin * 2
+        height itemHeight * y + (y - 1) * itemVerticalMargin * 2
+
+      .galleria-thumbnails
+        margin (itemHeight * y + (y - 1) * itemVerticalMargin * 2 - 30) auto 0px auto
+
+.banners-item__size-3x2, .banners-item__size-3x1
+  @media all and (max-width: 1109px)
+    width 726px
+
+    .galleria-container
+      width 726px
+
+  img
+    @media all and (max-width: 1109px)
+      width 736px
+
+.banners-item__size-2x2, .banners-item__size-2x1
+  @media all and (max-width: 1109px)
+    width 480px
+
+    .galleria-container
+      width 480px
+
+  img
+    @media all and (max-width: 1109px)
+      width 480px
+
+.banners-item__size-2x2
+  @media all and (max-width: 1109px)
+    height 292px
+
+    .galleria-container
+      height 292px
+
+.banners-item__size-2x1
+  @media all and (max-width: 1109px)
+    height 146px
+
+    .galleria-container
+      height 146px
+
+.banners-item__size-1x1
+  @media all and (max-width: 1109px)
+    width 226px
+    height 134px
+
+    .galleria-container
+      width 226px
+      height 134px
+
+  img
+    @media all and (max-width: 1109px)
+      width 224px

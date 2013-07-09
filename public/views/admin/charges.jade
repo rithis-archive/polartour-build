@@ -1,0 +1,39 @@
+.content(pt-list)
+  .title Доплаты
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label(for="search-town") страна
+        select.search-select#search-town(ui-select2, pt-countries, ng-model="filters.country")
+          option(ng-repeat="country in countries", value="{{ country.code }}") {{ country.name }}
+  
+      .search-item
+        label.search-label принимающая сторона
+        input(ng-model="filters.operator")
+
+      .search-item
+        label.search-label описание
+        input(ng-model="filters.description")
+
+    button.big_button(type="submit", ng-click="new()") создать
+
+    a.show-detail-search(ng-click="filters = {}", href="javascript:void(0)") очистить фильтр
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-4x принимающая сторона
+        span.list-cell-width-8x описание
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="charge in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-4x.list-cell-item(href="#!/charges/{{ charge._id }}") {{ charge.operator }}
+        span.list-cell-width-8x.list-cell-item {{ charge.description }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}

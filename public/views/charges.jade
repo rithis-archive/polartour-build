@@ -1,0 +1,49 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content(pt-list, page-size="9999")
+  .content-header.countries-header
+    span.countries-select-title Отели
+    .countries-select(pt-countries-select)
+      .countries-select-current
+        {{ getGenitive(country) }}
+        span.countries-select-current-trigger
+      .countries-select-list
+        a.countries-select-item(href="#!/{{ country.code }}/charges", ng-repeat="country in countries")
+          i.countries-select-item-link-flag(class="flag flag-{{ country.code }}")
+          | {{ getGenitive(country.name) }}
+
+  section.search.search-inline.block.block__color-blue(pt-search, ng-hide="showDetailSearch")
+    form
+      .search-item.search-item-small
+        label.search-label принимающая сторона
+        input(ng-model="filters.operator", pt-typeahead, typeahead-data="data", typeahead-property="country")
+      .search-item.search-item-big
+        label.search-label описание
+        input(ng-model="filters.description")
+
+  section
+    .list.list-fullwidth
+      .list-title
+        span.list-cell-width-2x принимающая сторона
+        span.list-cell-width-8x описание
+        span.list-cell-width-2x стоимость
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="charge in filteredData", ng-show="filteredData")
+        span.list-cell-width-2x.list-cell-item {{ charge.operator }}
+        span.list-cell-width-8x.list-cell-item {{ charge.description }}
+        span.list-cell-width-2x.list-cell-item {{ charge.price }}
+
+      .list-item(ng-hide="filteredData")
+        .list-item-empty-data Нет результатов
+
+      .list-placeholder
+
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+
+include blocks/payment-services

@@ -1,0 +1,156 @@
+doctype 5
+html.page(lang="ru", ng-app="polartourAdmin")
+  head
+    title ПоларТур
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin,cyrillic")
+    link(rel="stylesheet", href="/components/select2/select2.css")
+    link(rel="stylesheet", href="/components/jquery-ui/themes/base/jquery.ui.base.css")
+    link(rel="stylesheet", href="/components/jquery-ui/themes/base/jquery.ui.theme.css")
+    link(rel="stylesheet", href="/flags/flags.css")
+    link(rel="stylesheet", href="/styles/admin/index.css")
+
+    script(src="/components/jquery/jquery.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.widget.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.core.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.mouse.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.datepicker.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.slider.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.sortable.js")
+    script(src="/components/jquery-ui/ui/i18n/jquery.ui.datepicker-ru.js")
+    script(src="/components/jquery-file-upload/js/jquery.iframe-transport.js")
+    script(src="/components/jquery-file-upload/js/jquery.fileupload.js")
+    script(src="/components/select2/select2.js")
+    script(src="/components/modernizr/modernizr.js")
+    script(src="/components/css_browser_selector/css_browser_selector.js")
+    script(src="/components/store/store.js")
+    script(src="/components/angular/angular.js")
+    script(src="/components/angular-resource/angular-resource.min.js")
+    script(src="/components/angular-cookies/angular-cookies.min.js")
+    script(src="/components/angular-ui-select2/src/select2.js")
+    script(src="/components/typeahead.js/dist/typeahead.min.js")
+    script(src="/components/moment/min/moment.min.js")
+    script(src="/components/moment/min/langs.min.js")
+    script(src="/components/iCheck/jquery.icheck.min.js")
+    script(src="/components/jquery-galleria/src/galleria.js")
+    script(src="/components/ckeditor/ckeditor.js")
+    script(src="/components/onchange/plugin.js")
+    script(src="/components/swfobject/swfobject/swfobject.js")
+    script(src="/components/jquery-timepicker-addon/jquery-ui-timepicker-addon.js")
+    script(src="/components/jquery-timepicker-addon/jquery-ui-sliderAccess.js")
+    script(src="//api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU")
+    script(src="/scripts/modules/pt-towns.js")
+    script(src="/scripts/modules/pt-countries.js")
+    script(src="/scripts/modules/pt-tours.js")
+    script(src="/scripts/modules/pt-hotels.js")
+    script(src="/scripts/modules/pt-news.js")
+    script(src="/scripts/modules/pt-contacts.js")
+    script(src="/scripts/modules/pt-reports.js")
+    script(src="/scripts/modules/pt-subscriptions.js")
+    script(src="/scripts/modules/pt-certificates.js")
+    script(src="/scripts/modules/pt-documents.js")
+    script(src="/scripts/modules/pt-phones.js")
+    script(src="/scripts/modules/pt-list.js")
+    script(src="/scripts/modules/pt-travallers.js")
+    script(src="/scripts/modules/pt-flight-dates.js")
+    script(src="/scripts/modules/pt-select-range.js")
+    script(src="/scripts/modules/pt-buttons-group.js")
+    script(src="/scripts/modules/pt-search.js")
+    script(src="/scripts/modules/pt-moment.js")
+    script(src="/scripts/modules/pt-ya-maps.js")
+    script(src="/scripts/modules/pt-typeahead.js")
+    script(src="/scripts/modules/pt-multi-field.js")
+    script(src="/scripts/modules/pt-swfobject.js")
+    script(src="/scripts/modules/pt-datepicker.js")
+    script(src="/scripts/modules/pt-menu.js")
+    script(src="/scripts/modules/pt-banners.js")
+    script(src="/scripts/modules/pt-charges.js")
+    script(src="/scripts/modules/pt-reservations.js")
+    script(src="/scripts/modules/pt-excursions.js")
+    script(src="/scripts/modules/pt-pages.js")
+    script(src="/scripts/modules/pt-form-descriptions.js")
+    script(src="/scripts/modules/pt-gallery.js")
+    script(src="/scripts/admin/modules/pt-permissions.js")
+    script(src="/scripts/admin/modules/pt-users.js")
+    script(src="/scripts/admin/modules/pt-editable-select.js")
+    script(src="/scripts/admin/modules/pt-employees.js")
+    script(src="/scripts/admin/modules/pt-rooms.js")
+    script(src="/scripts/admin/modules/pt-modal.js")
+    script(src="/scripts/admin/modules/pt-edit-menu.js")
+    script(src="/scripts/admin/modules/pt-banners-edit.js")
+    script(src="/scripts/admin/modules/pt-ckeditor.js")
+    script(src="/scripts/admin/modules/pt-upload-image.js")
+    script(src="/scripts/admin/modules/pt-regions.js")
+    script(src="/scripts/admin/modules/pt-menu-edit.js")
+    script(src="/scripts/admin/index.js")
+
+    script(src="/scripts/admin/controllers/menu.js")
+    script(src="/scripts/admin/controllers/hotels.js")
+    script(src="/scripts/admin/controllers/hotels-detail.js")
+    script(src="/scripts/admin/controllers/news.js")
+    script(src="/scripts/admin/controllers/news-detail.js")
+    script(src="/scripts/admin/controllers/contacts.js")
+    script(src="/scripts/admin/controllers/contacts-detail.js")
+    script(src="/scripts/admin/controllers/reports.js")
+    script(src="/scripts/admin/controllers/reports-detail.js")
+    script(src="/scripts/admin/controllers/subscriptions.js")
+    script(src="/scripts/admin/controllers/subscriptions-detail.js")
+    script(src="/scripts/admin/controllers/certificates.js")
+    script(src="/scripts/admin/controllers/certificates-detail.js")
+    script(src="/scripts/admin/controllers/documents.js")
+    script(src="/scripts/admin/controllers/documents-detail.js")
+    script(src="/scripts/admin/controllers/towns.js")
+    script(src="/scripts/admin/controllers/towns-detail.js")
+    script(src="/scripts/admin/controllers/phones.js")
+    script(src="/scripts/admin/controllers/phones-detail.js")
+    script(src="/scripts/admin/controllers/banners.js")
+    script(src="/scripts/admin/controllers/banners-detail.js")
+    script(src="/scripts/admin/controllers/charges.js")
+    script(src="/scripts/admin/controllers/charges-detail.js")
+    script(src="/scripts/admin/controllers/excursions.js")
+    script(src="/scripts/admin/controllers/excursions-detail.js")
+    script(src="/scripts/admin/controllers/reservations.js")
+    script(src="/scripts/admin/controllers/reservations-detail.js")
+    script(src="/scripts/admin/controllers/pages.js")
+    script(src="/scripts/admin/controllers/pages-detail.js")
+    script(src="/scripts/admin/controllers/groups.js")
+    script(src="/scripts/admin/controllers/groups-detail.js")
+    script(src="/scripts/admin/controllers/users.js")
+    script(src="/scripts/admin/controllers/users-detail.js")
+    script(src="/scripts/admin/controllers/login.js")
+    script(src="/scripts/admin/controllers/index.js")
+    script(src="/scripts/admin/controllers/form-descriptions.js")
+    script(src="/scripts/admin/controllers/form-descriptions-detail.js")
+
+  body.container
+    header.header
+      a(href="#!/").logo
+
+      nav.menu(pt-user, ng-show="currentUser.isAuthenticated()")
+        section.menu-main
+          div(ng-show="currentUser.getUsername() == 'admin'")
+            a.menu-item(href="#!/pages") страницы
+            a.menu-item(href="#!/hotels") гостиницы
+            a.menu-item(href="#!/news") новости
+            a.menu-item(href="#!/excursions") экскурсии
+            a.menu-item(href="#!/charges") доплаты
+            a.menu-item(href="#!/contacts") контакты
+            a.menu-item(href="#!/banners") баннеры
+            a.menu-item(href="#!/phones") телефоны
+            a.menu-item(href="#!/towns") регионы
+            a.menu-item(href="#!/menu") меню
+            br
+
+          a.menu-item(href="#!/feedbacks") отзывы
+          a.menu-item(href="#!/subscriptions") подписки
+          a.menu-item(href="#!/ticket-price-requests") справки а/б
+          a.menu-item(href="#!/documents-requests") бух. документы
+          a.menu-item(href="#!/reservations") заявки на бронь
+          a.menu-item(href="#!/login", ng-click="currentUser.logout()") выход
+
+    section.content
+      div(ng-view)
+        
+
+      section.copyright(style="position:inherit") © 2013 Полар Тур
+

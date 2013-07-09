@@ -1,0 +1,14 @@
+.content
+  .title Телефоны
+
+  form.phones-detail.content-detail(name="phoneForm")
+    .content-detail-field
+      label тип
+      input(type="text", ng-model="phone.name", required) 
+
+    .content-detail-field
+      label номера
+      pt-multi-field(ng-model="phone.phones", required)
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить

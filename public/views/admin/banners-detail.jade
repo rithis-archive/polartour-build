@@ -1,0 +1,27 @@
+.content(pt-list)
+  .title Управление баннером {{ banner.size }}
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    h2.block-header.search-header тип баннера
+
+    .banners-detail-type
+      input(type="radio", name="type", ng-checked="banner.type == 'image'", ng-click="changeType('image')")
+      label(ng-click="changeType('image')") изображение
+    
+    .banners-detail-type
+      input(type="radio", name="type", ng-checked="banner.type == 'gallery'", ng-click="changeType('gallery')")
+      label(ng-click="changeType('gallery')") галерея
+
+    .banners-detail-type
+      input(type="radio", name="type", ng-checked="banner.type == 'html'", ng-click="changeType('html')")
+      label(ng-click="changeType('html')") html
+
+    .banners-detail-type
+      input(type="radio", name="type", ng-checked="banner.type == 'flash'", ng-click="changeType('flash')")
+      label(ng-click="changeType('flash')") флеш
+
+    .big_button(ng-click="save()", style="text-align:center") Сохранить
+    a.content-detail-delete(ng-click="remove()") Удалить
+
+  section.banners-detail.banners-container
+    .banners(pt-banner-edit)

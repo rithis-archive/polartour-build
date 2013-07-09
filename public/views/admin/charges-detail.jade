@@ -1,0 +1,24 @@
+.content
+  .title Редактирование доплаты
+
+
+  form.content-detail(name="chargeForm")
+    .content-detail-field
+      label страна
+      select(ui-select2, pt-countries, ng-model="charge.country", required)
+        option(ng-repeat="country in countries", value="{{ country.code }}") {{ country.name }}
+
+      label принимающая сторона
+      input(type="text", ng-model="charge.operator", required) 
+
+    .content-detail-field
+      label описание
+      textarea(ng-model="charge.description", required)
+
+    .content-detail-field
+      label стоимость
+      input(ng-model="charge.price", required)
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

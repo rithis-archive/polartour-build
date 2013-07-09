@@ -1,0 +1,29 @@
+.content(pt-list)
+  .title Группы пользователей
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label название
+        input(ng-model="filters.title")
+
+    button.big_button(type="submit", ng-click="new()") создать
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-8x название
+        span.list-cell-width-4x  
+
+      .list-placeholder
+
+      .list-item(ng-repeat="group in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-8x.list-cell-item(href="#!/groups/{{ group._id }}") {{ group.name }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+      

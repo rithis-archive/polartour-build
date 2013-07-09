@@ -1,0 +1,36 @@
+.content(pt-list)
+  .title Список новостей
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label название
+        input(ng-model="filters.title")
+
+      .search-item
+        label.search-label дата создания
+        input(pt-datepicker, pt-datepicker-trigger, ng-model="filters.createdAt", pt-datepicker-format="dd.mm.yy")
+
+    button.big_button(type="submit", ng-click="new()") создать
+
+    a.show-detail-search(ng-click="filters = {}", href="javascript:void(0)") очистить фильтр
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-8x название
+        span.list-cell-width-4x дата
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="news in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-8x.list-cell-item(href="#!/news/{{ news._id }}") {{ news.title }}
+        span.list-cell-width-4x.list-cell-item {{ news.createdAt | momentFromNow }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+      

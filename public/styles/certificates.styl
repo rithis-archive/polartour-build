@@ -1,0 +1,79 @@
+.certificate
+  margin-bottom 30px
+
+  clearfix()
+
+  .certificate-form
+    float left
+    width 510px
+    padding 0px 20px
+
+    clearfix()
+
+    .certificate-form-field
+      float left
+
+      input
+        width 210px
+
+    .certificate-form-field:nth-child(2n)
+      float right
+
+    .certificate-form-clear
+      clearfix()
+
+    .certificate-form-field-tourists
+      float none
+      margin-top 15px
+
+      input
+        width 100%
+
+    .big_button
+      float right
+      width 220px
+
+  .certificate-description
+    float right
+    width 510px
+    padding 0px 20px
+    line-height 20px
+
+  @media all and (max-width: 1109px)
+    .certificate-form
+      width 275px
+      padding-left 10px
+      text-align center
+
+      label
+        text-align left
+
+      .certificate-form-field
+        float none
+
+        input
+          width 100%
+
+      .certificate-form-field:nth-child(2n)
+        float none
+
+      .certificate-form-field-tourists
+        text-align right
+
+      .big_button
+        float none
+
+    .certificate-description
+      width 410px
+
+  @media all and (max-width: 767px)
+    .certificate-form
+      float none
+      width auto
+      padding-right 25px
+
+    .certificate-description
+      float none
+      width auto
+      margin-bottom 20px
+      padding-left 10px

@@ -1,0 +1,98 @@
+.reports
+  margin-bottom 30px
+
+  clearfix()
+
+  .reports-form
+    float left
+    width 510px
+    padding 0px 20px
+
+    clearfix()
+
+    label
+      margin-bottom 3px
+
+    .reports-form-name
+      float left
+      
+      input
+        width 210px
+
+    .reports-form-email
+      float right
+
+      input
+        width 210px
+
+    .reports-form-clear
+      clearfix()
+
+    .reports-form-message
+      textarea
+        width 505px
+        height 160px
+        font-size 16px
+        font-style Roboto
+
+    .big_button
+      float right
+      width 220px
+
+  .reports-description
+    float right
+    width 510px
+    padding 0px 20px
+    line-height 20px
+
+  @media all and (max-width: 1109px)
+    .reports-form
+      width 295px
+      text-align center
+
+      label
+        text-align left
+
+      .reports-form-name
+        input
+          width 280px
+  
+      .reports-form-email
+        input
+          width 280px
+  
+      .reports-form-message
+        textarea
+          width 280px
+
+      .big_button
+        float none
+
+    .reports-description
+      width 390px
+
+  @media all and (max-width: 767px)
+    .reports-form
+      float none
+      width auto
+      padding-left 10px
+
+      .reports-form-name
+        float none
+        input
+          width 100%
+  
+      .reports-form-email
+        float none
+        input
+          width 100%
+  
+      .reports-form-message
+        textarea
+          width 100%
+
+    .reports-description
+      float none
+      width auto
+      margin-bottom 20px
+      padding-left 10px

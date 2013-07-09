@@ -1,0 +1,356 @@
+.search-label
+  display block
+  margin-top 20px
+  color white
+
+  .search-label-text
+    display block
+    color white
+
+.search.search-inline
+  width containerWidth - 30px * 2
+  clearfix()
+
+  @media all and (max-width: 1110px)
+    width 767px - 30px
+
+    input
+      width 767px - 42px !important
+
+  @media all and (max-width: 767px)
+    display none
+
+  .search-item
+    float left
+    margin-right 30px
+
+    &:last-child
+      margin-right 0
+
+  .search-item-small input
+    width 300px
+
+  .search-item-big input
+    width 680px
+
+.search-select
+  display block
+
+.search-checkbox
+  margin 20px 0px 0px 0px
+
+  clearfix()
+
+  :first-child, :last-child
+    float left
+
+  label
+    padding 3px 0px 0px 5px
+    color white
+    cursor pointer
+
+.search-date
+  display block
+  margin 5px 0px
+  height 28px
+  padding 0px 0px 0px 10px
+  border none
+  border-radius 0
+  background white
+  box-shadow inset 0 2px 3px 0 rgba(0, 0, 0, .2)
+  font-size 16px
+
+.search-date-trigger
+  float left
+  margin 5px 0px 0px -27px
+  border 1px solid white
+
+.show-detail-search
+  display inline-block
+  margin-bottom 15px
+  border-bottom 1px dashed white
+  text-decoration none
+  font-size 21px
+  font-weight 700
+  color white
+
+  @media all and (max-width: 767px)
+    display none
+
+.search-item-flight-date
+  margin-right 0px !important
+
+.search
+  input
+    width 200px
+
+  .buttons-group
+    .button
+      padding 5px 13px
+
+  .search-item-date
+    float left
+    position relative
+    width 130px
+    margin-right 20px
+
+    input
+      width 90px
+      padding-right 25px
+      margin 5px 0px
+
+    img
+      position absolute
+      top 43px
+      right 3px
+      float none
+      cursor pointer
+
+    .ui-datepicker-trigger
+      top -34px
+      float right
+      position relative
+
+  .search-item-nights
+    width 60px
+    float left
+
+    input
+      float left
+      width 14px
+      margin 5px 0px
+
+    a
+      display block
+      float left
+      width 15px
+      height 27px
+      background #F48526
+      margin 6px 0px
+      border-top 1px solid white
+      border-bottom 1px solid white
+  
+      &:after
+        content ""
+        image "/images/select2.png"
+        width 15px
+        height 15px
+        position absolute
+  
+      &.less-button:after
+        transform rotate(90deg)
+        background-position 3px -5px
+
+  
+      &.more-button:after
+        transform rotate(-90deg)
+        background-position -5px -3px
+
+      &.less-button
+        border-left 1px solid white
+
+      &.more-button
+        border-right 1px solid white
+
+.search-detail
+  width 100%
+  padding 0px
+  position relative
+
+  clearfix()
+
+  .search-header
+    padding 30px 30px 0px 30px
+    margin-bottom 10px
+
+  .search-toggle
+    float right
+    position absolute
+    top 25px
+    right 30px
+    display: inline-block;
+    margin-bottom 15px
+    text-decoration none
+    font-size 21px
+    font-weight 700
+    color #fff
+    width 24px
+    height 24px
+    image "/images/close-search.png"
+
+  input
+    width 200px
+
+  .search-row
+    padding 0px 29px 30px 30px
+    border-bottom 1px dotted #A1D18A
+
+    clearfix()
+
+    &:last-child
+      border-bottom none
+      padding-bottom 10px
+
+    .search-item
+      float left
+      margin-right 29px
+
+      &:last-child
+        margin-right 0px
+
+      .search-select-size-big
+        width 330px
+
+      .search-select-size-middle
+        width 181px
+        float left
+
+      .search-select-size-half
+        width 144px
+        float left
+
+      .search-select-size-small
+        width 122px
+        float left
+
+      .search-select-separator
+        width 18px
+        float left
+        text-align center
+        line-height 38px
+
+      .search-hotel
+        width 330px
+        position relative
+
+        .search-hotel-trigger, .search-operator-trigger
+          display block
+          position absolute
+          right 0px
+          top 1px
+          z-index 2
+
+          .search-hotel-trigger-mask, .search-operator-trigger-mask
+            float left
+            display block
+            width 20px
+            height 30px
+            background-image linear-gradient(left, rgba(255, 255, 255, .0), #FFF 90%)
+
+          div
+            float left
+            width 26px
+            height 26px
+            border 1px solid white
+            border-radius 0
+            background orange
+            box-shadow inset 0 2px 0px 0 rgba(252, 250, 250, .5)
+        
+            b
+              background url('select2.png') no-repeat 0 1px
+              image "/images/select2.png"
+              background-position 4px 2px
+              display block
+              width 100%
+              height 100%
+            
+
+        .search-hotel-wrapper
+          position absolute
+
+        .select2-container
+          overflow hidden
+
+        .select2-choices
+          height 30px !important
+
+          .select2-search-choice
+            float left
+            cursor pointer
+
+          .select2-search-field
+            display none
+
+        .select2-dropdown-open
+          .select2-choices
+            width 330px !important
+            height auto !important
+
+            background #e7e7e7
+            box-shadow inset 0 2px 3px 0 rgba(0,0,0,0.2)
+
+            .select2-search-field
+              display block
+              float left
+              width 330px
+
+              background white
+
+              .select2-input
+                width 305px !important
+                margin 5px
+                padding-top 4px
+                border 1px solid #aaa
+                background url('/images/select2.png') no-repeat 100% -22px !important
+
+          .search-hotel-trigger
+            div
+              background #fff
+              border-color #9B9B9B
+              right 2px
+          
+              b
+                background-position -14px 2px
+
+            .search-hotel-trigger-mask
+              visibility hidden
+
+  .big_button
+    float right
+    width 210px
+
+    @media all and (max-width: 1109px)
+      width auto
+      padding-left 15px
+      padding-right 15px
+      display block
+
+    @media all and (max-width: 767px)
+      margin-left auto
+      margin-right auto
+
+  @media all and (max-width: 1109px)
+    .search-item
+      float left
+      margin-left 63px
+
+    & .search-item:first-child
+        margin-left 0px
+
+    .show-detail-search
+      float left
+      margin-top 40px
+
+    .big_button
+      float right
+      margin-top 24px
+      margin-bottom 0px
+
+  @media all and (max-width: 767px)
+    .search-header
+      display none
+
+    .search-item
+      float none
+      width 210px
+      margin 0px auto
+
+    & .search-item:first-child
+        margin-left auto
+
+    .big_button
+      float none
+
+.search-detail-computer
+  @media all and (max-width: 1109px)
+    display none

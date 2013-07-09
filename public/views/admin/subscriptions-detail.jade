@@ -1,0 +1,13 @@
+.content
+  .title Подписка на рассылку
+
+
+  .content-detail
+    .content-detail-field
+      label email
+      input(type="text", ng-model="subscription.email", disabled="disabled") 
+
+  .content-detail
+    .content-detail-field
+      label дата
+      input(type="text", value="{{ subscription.createdAt | date:'dd.MM.yyyy HH:mm' }}", disabled="disabled") 

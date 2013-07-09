@@ -1,0 +1,28 @@
+.content
+  .title Справка стоимости А/Б
+
+
+  .content-detail
+    .content-detail-field
+      label агенство
+      input(type="text", ng-model="certification.agency", disabled="disabled") 
+
+    .content-detail-field
+      label телефон
+      input(type="text", ng-model="certification.phone", disabled="disabled") 
+
+    .content-detail-field
+      label e-mail
+      input(type="text", ng-model="certification.email", disabled="disabled") 
+
+    .content-detail-field
+      label номер заявки
+      input(type="text", ng-model="certification.number", disabled="disabled") 
+
+    .content-detail-field
+      label туристы
+      input(type="text", ng-model="t", disabled="disabled", ng-repeat="t in certification.tourists") 
+
+    .content-detail-field
+      label дата
+      input(type="text", value="{{ certification.createdAt | date:'dd.MM.yyyy HH:mm' }}", disabled="disabled") 

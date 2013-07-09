@@ -1,0 +1,11 @@
+.content
+  .title Редактирование описания {{ description.name }}
+
+
+  .content-detail
+    .content-detail-field
+      label описание
+      textarea(ng-model="description.description", pt-ckeditor)
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить

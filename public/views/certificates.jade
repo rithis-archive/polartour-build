@@ -1,0 +1,38 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content
+  h2.content-header Справка стоимости А/Б
+
+  .certificate
+    .certificate-description(ng-bind-html-unsafe="description.description")
+
+    form(name="certificateForm").certificate-form.block__color-blue
+      .certificate-form-field
+        label.search-label агенство
+        input(ng-model="certificate.agency", required, name="agency")
+
+      .certificate-form-field
+        label.search-label телефон агенства
+        input(ng-model="certificate.phone", required)
+
+      .certificate-form-field
+        label.search-label e-mail агенства
+        input(ng-model="certificate.email", required, type="email")
+
+      .certificate-form-field
+        label.search-label номер заявки
+        input(ng-model="certificate.number", required)
+
+      .certificate-form-clear
+
+      .certificate-form-field-tourists
+        label.search-label ФИО туристов для которых нужна справка о стоимости А/Б
+        pt-multi-field(ng-model="certificate.tourists", pt-multi-field-min="1", pt-multi-field-limit="9")
+
+      .certificate-form-clear
+
+      button.big_button(ng-click="send()") отправить
+
+
+include blocks/payment-services

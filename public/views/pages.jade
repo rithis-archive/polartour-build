@@ -1,0 +1,18 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content
+  .content-header.countries-header
+    span.countries-select-title(ng-show="page.name") {{ page.name }}
+    .countries-select(pt-countries-select, ng-show="country && page && links.length > 0")
+      .countries-select-current
+        {{ getGenitive(country) }}
+        span.countries-select-current-trigger
+      .countries-select-list
+        a.countries-select-item(href="#!{{ link.href }}", ng-repeat="link in links")
+          i.countries-select-item-link-flag(class="flag flag-{{ link.code }}")
+          | {{ getGenitiveByCode(link.code) }}
+
+  .content-body.wysiwyg(ng-bind-html-unsafe="page.description")
+
+include blocks/payment-services

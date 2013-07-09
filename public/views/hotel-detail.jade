@@ -1,0 +1,83 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+a.back-button(pt-back) &larr; назад
+
+section.block__color-white.block__size-container
+  .block-header.hotel-description-header
+    h2.hotel-description-header-name {{ hotel.name }} {{ hotel.category }}*
+    span.hotel-description-header-region Султанахмет
+
+section.block.block__color-white.hotel-description-block
+  //- button.big_button(type="submit") 45 184 р.
+  //- p.hotel-description-price-desc 7 ночей, 2 взрослых
+
+  .hotel-description-banners(pt-hotels-images)
+    .hotel-description-banners-main
+      ul(ng-style="listposition")
+        li(ng-repeat="banner in hotel.images")
+          img(ng-src="{{ banner }}", ng-click="showGallery($index)")
+
+    
+    .hotel-description-banners-thumbs
+      img.hotel-description-banners-thumb(ng-repeat="banner in hotel.images", ng-src="{{ banner }}", ng-click="scrollTo($index)", class="{{$index == 0 && 'active'}}")
+
+section.hotel-description
+  .hotel-description-content
+    {{ hotel.description }}
+
+
+  .hotel-description-title
+    услуги
+
+  .hotel-description-content
+    ul
+      li(ng-repeat="service in hotel.services") {{ service }}
+
+  
+  .hotel-description-title
+    на территории отеля
+
+  .hotel-description-content
+    ul
+      li(ng-repeat="onTerritory in hotel.infrastructure") {{ onTerritory }}
+
+
+  div(ng-repeat="room in hotel.rooms")
+    .hotel-description-title
+      {{ room.name }}
+
+    .hotel-description-content
+      {{ room.description }}
+
+  .hotel-description-title
+    расположение
+
+  .hotel-description-content
+    {{ hotel.locationDescription }}
+
+  .hotel-description-content
+    div(data-map, data-type="yandex#hybrid", data-lat="{{ hotel.location[0] }}", data-lon="{{ hotel.location[1] }}", data-zoom="8", style="height:355px;", ng-model="hotel.location")
+
+
+  .hotel-description-content
+    p
+      b Адрес: 
+      span {{ hotel.adress }}
+    p
+      b Телефон: 
+      span {{ hotel.phone }}
+    p
+      b Факс: 
+      span {{ hotel.fax }}
+
+    br
+    br
+
+    p
+      a(href="{{ hotel.email }}") {{ hotel.email }}
+    p
+      a(href="{{ hotel.site }}") {{ hotel.site }}
+
+
+include blocks/payment-services

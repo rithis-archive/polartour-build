@@ -1,0 +1,27 @@
+.content
+  .title Документы
+
+  .content-detail
+    .content-detail-field
+      label e-mail
+      input(type="text", ng-model="doc.email", disabled="disabled") 
+
+    .content-detail-field
+      label официальное наименование организации
+      input(type="text", ng-model="doc.organization", disabled="disabled") 
+
+    .content-detail-field
+      label ИНН
+      input(type="text", ng-model="doc.inn", disabled="disabled") 
+
+    .content-detail-field
+      label номер заявки
+      input(type="text", ng-model="doc.numbers", disabled="disabled") 
+
+    .content-detail-field
+      label почтовый адрес с индексом
+      input(type="text", ng-model="doc.address", disabled="disabled") 
+
+    .content-detail-field
+      label дата
+      input(type="text", value="{{ doc.createdAt | date:'dd.MM.yyyy HH:mm' }}", disabled="disabled") 

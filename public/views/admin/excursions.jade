@@ -1,0 +1,36 @@
+.content(pt-list)
+  .title Экскурсии
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label название
+        input(ng-model="filters.name")
+
+      .search-item
+        label.search-label страна
+        select.search-select.search-select-size-big(ui-select2, pt-countries, ng-model="filters.country")
+          option
+          option(ng-repeat="country in countries", value="{{ getCode(country.name) }}") {{ country.name }}
+
+    button.big_button(type="submit", ng-click="new()") создать
+
+    a.show-detail-search(ng-click="filters = {}", href="javascript:void(0)") очистить фильтр
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-6x название
+        span.list-cell-width-4x страна
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="excursion in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-6x.list-cell-item(href="#!/excursions/{{ excursion._id }}") {{ excursion.name }}
+        span.list-cell-width-4x.list-cell-item {{ getCountryName(excursion.country) }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}

@@ -1,0 +1,28 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content
+  h2.content-header Отзывы и предложения
+
+  .reports
+    .reports-description(ng-bind-html-unsafe="description.description")
+
+    form(name="reportForm").reports-form.block__color-blue
+      .reports-form-name
+        label.search-label ваше имя
+        input(ng-model="report.name", required, name="name")
+
+      .reports-form-email
+        label.search-label ваш e-mail
+        input(ng-model="report.email", type="email", required, name="email")
+
+      .reports-form-clear
+
+      .reports-form-message
+        label.search-label сообщение
+        textarea(ng-model="report.message", required, name="message")
+
+      button.big_button(ng-click="send()") отправить
+
+
+include blocks/payment-services

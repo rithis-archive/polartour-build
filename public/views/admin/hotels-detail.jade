@@ -1,0 +1,106 @@
+.content
+  .title Редактирование гостиницы
+
+
+  form.content-detail(name="hotelForm")
+    .content-detail-field
+      label страна
+      select(ui-select2, pt-countries, ng-model="hotel.country", required)
+        option(ng-repeat="country in countries", value="{{ country.code }}") {{ country.name }}
+
+    .content-detail-field
+      label регион
+      input(type="text", ng-model="hotel.region", pt-regions, pt-regions-data="regions", required) 
+
+    .content-detail-field
+      label название
+      input(type="text", ng-model="hotel.name", required) 
+
+    .content-detail-field
+      label категория
+      div.buttons-group(pt-buttons-group, ng-init="categories=['2', '3', 4, 5, 'HV']; hotel.category = categories[0]", ng-model="hotel.category")
+        a.button(href="#", ng-repeat="category in categories", class="{{ $first && 'active'}}") {{ category }}
+
+    .content-detail-field
+      label описание
+      textarea(ng-model="hotel.description", required)
+
+    .content-detail-separator
+
+    .content-detail-container
+      label описание номеров
+      .content-detail-container-body(pt-rooms, ng-model="hotel.rooms", required)
+
+    .content-detail-separator
+
+    .content-detail-field.content-detail-editable-select
+      label услуги
+      select(ng-model="hotel.services", ng-multiple="true", required)
+        option(ng-repeat="service in services", ng-selected="serviceSelected(service)") {{ service }}
+      button.big_button(ng-click="showServices = true") +
+      div(pt-modal, pt-modal-show="showServices")
+        div
+          div Добавление нового сервиса
+          input(type="text", ng-model="newService")
+          button.big_button(ng-click="services.push(newService); newService = ''") Добавить
+      div(style="margin-top:20px;")
+        a.big_button(ng-click="hotel.services=[]", style="position:static;") Очистить
+
+    .content-detail-field.content-detail-editable-select
+      label инфраструктура
+      select(ng-model="hotel.infrastructure", ng-multiple="true")
+        option(ng-repeat="infrastructure in infrastructures",  ng-selected="infrastructureSelected(infrastructure)") {{ infrastructure }}
+      button.big_button(ng-click="showInfrastructures = true") +
+      div(pt-modal, pt-modal-show="showInfrastructures")
+        div
+          div Добавление новой инфраструктуры
+          input(type="text", ng-model="newInfrastructure")
+          button.big_button(ng-click="infrastructures.push(newInfrastructure); newInfrastructure = ''") Добавить
+      div(style="margin-top:20px;")
+        a.big_button(ng-click="hotel.infrastructure=[]", style="position:static;") Очистить
+
+    .content-detail-separator
+
+    .content-detail-field
+      label расположение
+      textarea(ng-model="hotel.locationDescription", required)
+
+    .content-detail-field
+      div(data-map, data-lat="{{ hotel.location[0] }}", data-lon="{{ hotel.location[1] }}", data-zoom="6", style="height:355px;", data-search, ng-model="hotel.location")
+
+    .content-detail-field
+      label адрес
+      input(type="text", ng-model="hotel.adress", required) 
+
+    .content-detail-field
+      label телефон
+      input(type="text", ng-model="hotel.phone", required) 
+
+    .content-detail-field
+      label факс
+      input(type="text", ng-model="hotel.fax", required) 
+
+    .content-detail-field
+      label email
+      input(type="text", ng-model="hotel.email", required) 
+
+    .content-detail-field
+      label веб-сайт
+      input(type="text", ng-model="hotel.site", required)
+
+    .content-detail-field
+      label ID в базе данных САМО
+      input(type="text", ng-model="hotel.samo")
+
+    .content-detail-field
+      label Изображения
+      div
+        .image-item(ng-repeat="image in hotel.images", pt-upload-image, ng-click="upload()", ng-model="hotel.images[$index]")
+          span(ng-hide="image") Загрузить изображение
+          img(ng-show="image", ng-src="{{ image }}")
+        .image-item(ng-click="addImage()")
+          span Добавить изображение
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

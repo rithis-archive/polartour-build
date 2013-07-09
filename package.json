@@ -1,0 +1,45 @@
+{
+  "name": "polartour"
+, "version": "0.0.0"
+, "description": "Polar Tour Website"
+, "homepage": "https://github.com/rithis/polartour"
+, "bugs": {
+    "url": "https://github.com/rithis/polartour/issues"
+  }
+, "author": {
+    "name": "Vyacheslav Slinko"
+  , "email": "vyacheslav.slinko@gmail.com"
+  }
+, "main": "index"
+, "repository": {
+    "type": "git"
+  , "url": "git@github.com:rithis/polartour.git"
+  }
+, "scripts": {
+    "start": "coffee index.coffee"
+  , "test": "grunt"
+  }
+, "dependencies": {
+    "symfio": "~1.0"
+  , "symfio-contrib-express": "~0.1"
+  , "symfio-contrib-express-logger": "~0.1"
+  , "symfio-contrib-assets": "~0.2"
+  , "symfio-contrib-bower": "~0.1"
+  , "symfio-contrib-mongoose": "~0.1"
+  , "symfio-contrib-fixtures": "~0.1"
+  , "symfio-contrib-uploads": "~0.1"
+  , "symfio-contrib-auth": "~0.1"
+  , "symfio-contrib-nodemailer": "~0.2"
+  , "symfio-contrib-nconf": "~0.1"
+  , "cruder": "https://github.com/rithis/cruder/tarball/callback"
+  , "superagent": "~0.15"
+  , "async": "~0.2"
+  , "jade": "~0.32"
+  , "coffee-script": "~1.6"
+  }
+, "engines": {
+    "node": "~0.8"
+  , "npm": "~1.2"
+  , "coffee-script": "~1.6"
+  }
+}

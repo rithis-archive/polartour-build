@@ -1,0 +1,16 @@
+.content
+  .title Редактирование пользователя
+
+
+  .content-detail
+    .content-detail-field
+      label логин
+      input(type="text", ng-model="user.username") 
+
+    .content-detail-field
+      label пароль
+      input(type="password", ng-model="user.password") 
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

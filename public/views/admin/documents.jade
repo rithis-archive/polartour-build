@@ -1,0 +1,35 @@
+.content(pt-list)
+  .title Запросы на получение бух. документов
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label e-mail
+        input(ng-model="filters.email")
+
+      .search-item
+        label.search-label организация
+        input(ng-model="filters.organization")
+
+      a.show-detail-search(href="#!/form-descriptions/documents-request") редактировать описание
+      a.show-detail-search(ng-click="filters = {}", href="javascript:void(0)") очистить фильтр
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-6x e-mail
+        span.list-cell-width-4x организация
+        span.list-cell-width-2x дата
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="document in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-6x.list-cell-item(href="#!/documents-requests/{{ document._id }}", class="{{ document.viewed && 'viewed' }}") {{ document.email }}
+        span.list-cell-width-4x.list-cell-item {{ document.organization }}
+        span.list-cell-width-2x.list-cell-item {{ document.createdAt | date:"dd.MM.yyyy HH:mm" }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}

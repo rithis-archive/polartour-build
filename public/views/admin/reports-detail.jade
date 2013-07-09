@@ -1,0 +1,20 @@
+.content
+  .title Отзыв
+
+
+  .content-detail
+    .content-detail-field
+      label имя
+      input(type="text", ng-model="report.name", disabled="disabled") 
+
+    .content-detail-field
+      label фамилия
+      input(type="text", ng-model="report.email", disabled="disabled") 
+
+    .content-detail-field
+      label сообщение
+      textarea(ng-model="report.message", disabled="disabled")
+
+    .content-detail-field
+      label дата
+      input(type="text", value="{{ report.createdAt | date:'dd.MM.yyyy HH:mm' }}", disabled="disabled") 

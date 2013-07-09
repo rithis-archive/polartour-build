@@ -1,0 +1,29 @@
+.content(pt-list)
+  .title Список пользователей
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label логин
+        input(ng-model="filters.username")
+
+    button.big_button(type="submit", ng-click="new()") создать
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-8x логин
+        span.list-cell-width-4x
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="user in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-8x.list-cell-item(href="#!/users/{{ user._id }}") {{ user.username }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+      

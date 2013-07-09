@@ -1,0 +1,34 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content
+  h2.content-header Запрос на получение бухгалтерских документов
+
+  .documents
+    .documents-description(ng-bind-html-unsafe="description.description")
+
+    form(name="documentsForm").documents-form.block__color-blue
+      .documents-form-field
+        label.search-label ваш e-mail
+        input(ng-model="doc.email", required, type="email")
+
+      .documents-form-field
+        label.search-label официальное наименование организации
+        input(ng-model="doc.organization", required)
+
+      .documents-form-field
+        label.search-label ИНН
+        input(ng-model="doc.inn", required)
+
+      .documents-form-field
+        label.search-label номера заявок
+        input(ng-model="doc.numbers", required)
+
+      .documents-form-field
+        label.search-label почтовый адрес с индексом
+        input(ng-model="doc.address", required)
+
+      button.big_button(ng-click="send()") отправить
+
+
+include blocks/payment-services

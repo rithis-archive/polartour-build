@@ -1,0 +1,28 @@
+.content
+  .title Редактирование контакта
+
+
+  form.content-detail(name="contactForm")
+    .content-detail-field
+      label название
+      input(type="text", ng-model="contact.name", required) 
+
+    .content-detail-field
+      label email
+      input(type="text", ng-model="contact.email", required)
+
+    .content-detail-field
+      label телефон
+      input(type="text", ng-model="contact.phone", required) 
+
+    .content-detail-field
+      label расписание
+      input(type="text", ng-model="contact.schedule", required)
+
+    .content-detail-container
+      label сотрудники
+      .content-detail-container-body(pt-employees, ng-model="contact.employees")
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

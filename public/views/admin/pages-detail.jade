@@ -1,0 +1,19 @@
+.content
+  .title Страницы
+
+  form.content-detail(name="pageForm")
+    .content-detail-field
+      label название
+      input(type="text", ng-model="page.name", required) 
+
+    .content-detail-field
+      label ссылка
+      input(type="text", ng-model="page.href", required) 
+
+    .content-detail-field
+      label описание
+      textarea(ng-model="page.description", pt-ckeditor, required) 
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

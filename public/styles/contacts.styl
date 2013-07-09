@@ -1,0 +1,99 @@
+.contacts
+  padding 0px 30px
+
+  a
+    color #1b8fb5
+
+    &:hover
+      color orange
+
+  .contacts-header
+    padding 30px 0px 20px 0px
+    margin 0px
+    font-size 28px
+    font-weight bold
+
+    @media all and (max-width: 767px)
+      padding-bottom 15px
+      text-align left
+
+  .contacts-address
+    margin-bottom 30px
+
+    clearfix()
+  
+    .contacts-address-map
+      float left
+      width 670px
+      margin-right 20px
+
+      @media all and (max-width: 1109px)
+        width 340px
+
+      .contacts-address-map-container
+        height 355px
+
+        @media all and (max-width: 1109px)
+          height 180px
+
+    .contacts-address-info
+      float right
+      width 340px
+
+      .contacts-address-info-block
+        margin-bottom 20px
+        font-size 16px
+        line-height 20px
+
+     @media all and (max-width: 767px)
+      .contacts-address-map
+        float none
+        width auto
+
+        .contacts-address-map-container
+          width auto
+
+      .contacts-address-info
+        float none
+        width auto
+        margin-top 10px
+
+  .contact
+    margin-bottom 40px
+
+    .contact-title
+      margin-bottom 5px
+      font-size 21px
+      font-weight bold
+
+    .contact-info
+      margin 15px 0px
+      clearfix()
+
+      img
+        float left
+        position relative
+        top -2px
+        margin-right 2px
+  
+      .contact-email, .contact-phone, .contact-schedule
+        float left
+        margin-right 25px
+
+    .contact-employees
+      clearfix()
+
+      .contact-employe
+        float left
+        width 350px
+
+        .contact-employe-name
+          margin-bottom 3px
+          font-size 16px
+          font-weight bold
+    
+        .contact-employe-phone
+          margin-top 10px
+
+        .contact-employe-email
+          margin-top 10px

@@ -1,0 +1,37 @@
+.count-field-input
+  float left
+  width 14px
+  margin 5px 0px
+
+.count-field-less-button, .count-field-more-button
+  display block
+  float left
+  width 15px
+  height 27px
+  background #F48526
+  margin 6px 0px
+  border-top 1px solid white
+  border-bottom 1px solid white
+  cursor pointer
+  
+  &:after
+    content ""
+    image "/images/select2.png"
+    width 15px
+    height 15px
+    position absolute
+  
+.count-field-less-button:after
+  transform rotate(90deg)
+  background-position 3px -5px
+
+  
+.count-field-more-button:after
+  transform rotate(-90deg)
+  background-position -5px -3px
+
+.count-field-less-button
+  border-left 1px solid white
+
+.count-field-more-button
+  border-right 1px solid white

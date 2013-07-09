@@ -1,0 +1,157 @@
+width = contentWidth - padding * 2 - 178
+
+.hotel-description
+  width width
+  float right
+  padding-right 178px
+  padding-bottom 67px
+  line-height 24px
+  font-size 16px
+  color #333333
+
+  @media all and (max-width: 1109px)
+    width 476px
+    padding-right 12px
+
+  @media all and (max-width: 767px)
+    float none
+    padding-left 31px
+    padding-right 5px
+    width auto
+
+  strong
+    display block
+    font-size 20px
+    font-weight bold
+
+  a
+    color #F89522
+
+  .hotel-description-title
+    margin 35px 0px 17px 0px
+    font-weight bold
+    font-size 20px
+    color #333
+
+  .hotel-description-content
+    margin-bottom 10px
+    font-weight normal
+    font-size 16px
+    color #333
+
+    ul
+      list-style none inside
+      margin-left 1ex
+
+  	li:before
+		  content "\2015"
+		  margin-left -1ex
+		  margin-right 1ex
+
+.hotel-description-header
+  padding 20px 30px 15px 30px
+  margin 0px
+  font-weight bold
+  color #333333
+
+  @media all and (max-width: 1109px)
+    padding 22px 10px
+
+  @media all and (max-width: 767px)
+    padding 38px 25px 14px 29px
+    text-align left
+
+  .hotel-description-header-name
+    font-size 48px
+
+    @media all and (max-width: 767px)
+      font-size 30px
+
+  .hotel-description-header-region
+    padding 0px 0px 8px 0px
+    font-size 20px
+    display block
+
+.hotel-description-block
+  float left
+  padding-top 0px
+  font-size 20px
+  font-weight bold
+  line-height 24px
+  color #333333
+
+  @media all and (max-width: 1109px)
+    padding-left 10px
+
+  @media all and (max-width: 767px)
+    float none
+    width auto
+    text-align center
+
+  .big_button
+    margin-top 0px
+    margin-bottom 9px
+
+  .hotel-description-price-desc
+    margin-bottom 30px
+
+  .hotel-description-banners
+    position relative
+    .hotel-description-banners-main
+      margin-top 5px
+      margin-bottom 5px
+
+      width 210px
+      height 210px
+      overflow-x hidden
+      overflow-y hidden
+      position relative
+
+      ul
+        padding 0
+        margin 0
+        white-space nowrap
+        overflow hidden
+
+        position absolute
+        top 0
+        left 0
+        transition  left .8s ease
+        -ms-transition left .8s ease
+        -o-transition  left .8s ease
+        -webkit-transition  left .8s ease
+        -moz-transition  left .8s ease
+
+        li
+          width 210px
+          height 210px
+          list-style none
+          display inline-block
+          overflow hidden
+
+          img
+            width 210px
+            height 210px
+
+    .hotel-description-banners-thumbs
+
+      clearfix()
+
+      .hotel-description-banners-thumb
+        float left
+        width 64px
+        height 41px
+        margin-bottom 10px
+        cursor pointer
+
+        &:nth-child(3n+1)
+          padding-right 9px
+
+        &:nth-child(3n+3)
+          padding-left 9px
+
+        &:hover
+          opacity 0.7
+
+        &.active
+          opacity 0.7

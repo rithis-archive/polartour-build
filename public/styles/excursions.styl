@@ -1,0 +1,147 @@
+.excursions
+  margin-bottom 30px
+
+  clearfix()
+
+  .excursions-list
+    float left
+    width 220px
+    padding 30px
+
+    clearfix()
+
+    @media all and (max-width: 767px)
+      float none
+      width auto
+
+    a
+      display block
+      color white
+      line-height 24px
+      text-decoration underline
+
+  .excursions-description
+    float right
+    width 780px
+    padding 0px 20px
+
+    @media all and (max-width: 1109px)
+      width 460px
+      padding 0px 10px
+
+    @media all and (max-width: 767px)
+      float none
+      width auto
+      padding-top 20px
+    
+    .excursions-description-item
+      margin-bottom 50px
+
+      clearfix()
+
+      .excursion-description-item-title
+        margin-bottom 10px
+        font-size 24px
+        font-weight bold
+        color #333
+
+      .excursion-description-item-tags
+        float left
+        width 510px
+        margin-bottom 15px
+
+        clearfix()
+
+        @media all and (max-width: 1109px)
+          width 500px
+
+          .excursion-description-item-tag
+            margin-right 10px
+
+        .excursion-description-item-tag
+          float left
+          margin-right 15px
+
+          @media all and (max-width: 767px)
+            float none
+
+          img
+            position relative
+            top 4px
+            margin-right 4px
+
+      .excursion-description-item-description
+        float left
+        width 510px
+        line-height 24px
+        color #333
+
+        @media all and (max-width: 1109px)
+          width 440px
+
+        @media all and (max-width: 767px)
+          width auto
+
+      .excursion-description-item-images
+        float right
+        width 240px
+
+        @media all and (max-width: 1109px)
+          float left
+
+        @media all and (max-width: 767px)
+          float none
+          width 210px
+          margin 0px auto
+
+        .excursion-description-item-preview
+          position relative
+          overflow hidden
+          width 210px
+          height 210px
+          margin-bottom 20px
+
+          ul
+            padding 0
+            margin 0
+            white-space nowrap
+            overflow hidden
+    
+            position absolute
+            top 0
+            left 0
+            transition  left .8s ease
+            -ms-transition left .8s ease
+            -o-transition  left .8s ease
+            -webkit-transition  left .8s ease
+            -moz-transition  left .8s ease
+    
+            li
+              width 210px
+              height 210px
+              list-style none
+              display inline-block
+              overflow hidden
+    
+              img
+                width 210px
+                height 210px
+
+        .excursion-description-item-image
+          float left
+          width 60px
+          height 60px
+          margin-bottom 10px
+
+          &:nth-child(3n+1)
+            padding-right 15px
+  
+          &:nth-child(3n+3)
+            padding-left 15px
+  
+          &:hover
+            opacity 0.7
+  
+          &.active
+            opacity 0.7
+

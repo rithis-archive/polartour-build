@@ -1,0 +1,115 @@
+.menu
+  clear right
+  padding-top 10px
+
+  @media all and (max-width: 1109px)
+    clear both
+
+.menu-main
+  position relative
+  display inline-block
+  padding-left 4px
+  background-color blue
+
+  @media all and (max-width: 767px)
+    width 100%
+    padding 0px
+
+  @media all and (max-width: 1109px)
+    width 100%
+    padding 0px
+
+.menu-submenu
+  position absolute
+  display none
+  margin 16px 0 0 -30px
+  background-color white
+  box-shadow 0 5px 10px 0 rgba(0, 0, 0, .5)
+  z-index 99
+
+  .menu-item
+    display block
+    color blue
+
+  @media all and (max-width: 767px)
+    display none
+    visibility hidden
+
+.menu-item
+  display inline-block
+  padding 15px 5px 17px 6px
+  color white
+
+  .menu-item-link
+    color white
+
+  @media all and (max-width: 767px)
+    width auto
+    display block
+    padding-left 0px
+    text-align center
+
+  @media all and (max-width: 1109px)
+    padding-left 7px
+    padding-right 8px
+
+  &:hover
+    background-color white
+    color orange
+
+    .menu-item-link
+      color orange
+
+    .menu-submenu
+      display block
+
+.menu-item__type-profile
+  margin-left 7px
+  padding-top 12px
+  background-color white
+  background-repeat no-repeat
+  background-size 
+  color blue
+
+  @media all and (max-width: 767px)
+    width auto
+    padding 15px 0px
+    margin-left 0px
+    text-align center
+    background-position 25% 50%
+
+  @media all and (max-width: 1109px)
+    position absolute
+    top 0px
+    right 0px
+    height 20px
+    padding-left 20px
+    padding-right 19px
+
+  @media all and (max-width: 767px)
+    position static
+
+  .menu-item__type-profile-icon
+    width 16px
+    height 17px
+    display inline-block
+    position relative
+    top 3px
+    margin-right 4px
+    image "/images/profile.png"
+
+    .svg &
+      background-image url("/images/profile.svg") !important
+      background-size 16px 17px
+
+  .menu-item__type-profile-text
+    text-decoration underline
+
+    @media all and (max-width: 1109px)
+      display none
+
+    @media all and (max-width: 767px)
+      display inline-block
+
+.safari .menu-item__type-profile
+  padding-top 13px

@@ -1,0 +1,33 @@
+.content(ng-repeat="(type, item) in data")
+  .title {{ item.title }}
+
+  ul(pt-menu-edit)
+    li.menu-edit(ng-repeat="menuItem in item.menu | orderBy:'+position'", pt-menu-id="{{ menuItem._id }}")
+      .menu-edit-item
+        .menu-edit-item-wrap
+          .menu-edit-item-toggle.big_button(ng-click="hidden[menuItem.name] = !hidden[menuItem.name]", ng-show="!hidden[menuItem.name]") +
+          .menu-edit-item-toggle.big_button(ng-click="hidden[menuItem.name] = !hidden[menuItem.name]", ng-show="hidden[menuItem.name]") -
+          input.menu-edit-item-name(ng-model="menuItem.name")
+          label.menu-edit-item-new
+            input(type="checkbox", ng-model="menuItem.newWindow")
+            | в новом окне
+          input.menu-edit-item-href(ng-model="menuItem.href")
+          .menu-edit-item-remove
+            .big_button(ng-click="remove(type, menuItem)") -
+        .menu-edit-submenu(ng-show="hidden[menuItem.name]")
+          ul(pt-submenu-edit)
+            li.menu-edit-submenu-item(ng-repeat="submenuItem in menuItem.submenu | orderBy:'+position'", pt-submenu-id="{{ submenuItem._id }}")
+              input.menu-edit-submenu-item-name(ng-model="submenuItem.name")
+              label.menu-edit-submenu-item-new
+                input(type="checkbox", ng-model="submenuItem.newWindow")
+                | в новом окне
+              input.menu-edit-submenu-item-href(ng-model="submenuItem.href")
+              .menu-edit-submenu-item-remove
+                .big_button(ng-click="removeSubmenu(menuItem, submenuItem)") -
+          .menu-edit-submenu-add
+            .big_button(ng-click="addSubmenu(menuItem)") +
+  .menu-edit-add
+    .big_button(ng-click="add(type)") +
+
+.menu-edit-save
+  button.big_button(type="submit", ng-click="save()") Сохранить

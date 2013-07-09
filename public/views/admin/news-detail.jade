@@ -1,0 +1,30 @@
+.content
+  .title Редактирование новости
+
+
+  form.content-detail(name="newsForm")
+    .content-detail-field
+      label название
+      input(type="text", ng-model="news.title", required) 
+
+    .content-detail-field
+      label анонс
+      textarea(ng-model="news.description", required)
+
+    .content-detail-field
+      label описание
+      textarea(ng-model="news.body", pt-ckeditor, required)
+
+    .content-detail-field.content-detail-datepicker-field
+      label показывать с
+      input(ng-model="news.startAt", pt-datetimepicker, pt-datetimepicker-trigger, pt-datetimepicker-format="dd.mm.yy", required)
+
+    .content-detail-field.content-detail-checkbox-field
+      input#news-important(type="checkbox", ng-model="news.important", required)
+      label(for="news-important") Добавить в важные
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="cloneNews()", style="float: left") Копировать
+
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

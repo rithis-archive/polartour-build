@@ -1,0 +1,11 @@
+.content
+  .title Регионы
+
+  .content-detail
+    .content-detail-field
+      label регион
+      input(type="text", ng-model="town.name") 
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

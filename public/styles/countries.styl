@@ -1,0 +1,142 @@
+itemMargin = 12px
+itemVerticalPadding = 10px
+itemHorisontalPadding = 15px
+padding = 30px - itemHorisontalPadding
+width = contentWidth - padding * 2
+itemWidth = width / 5 - itemHorisontalPadding * 2
+
+.countries
+  float right
+  width width
+  padding padding
+  background-color wheat
+
+  @media all and (max-width: 767px)
+    display none
+
+  @media all and (max-width: 1109px)
+    float none
+    width auto
+
+  &.block__color-white
+    background-color white
+
+  &.block__size-container
+    width 1080px !important
+
+    @media all and (max-width: 1109px)
+      width 738px !important
+
+.countries-item
+  display inline-block
+  width itemWidth
+  padding itemVerticalPadding itemHorisontalPadding
+
+  &:hover
+    background-color white
+    box-shadow 0 5px 10px -2px rgba(0, 0, 0, .5)
+
+    .safari &
+      box-shadow 0 5px 10px -5px rgba(0, 0, 0, .5)
+
+  &.active
+    background-color white
+
+    .countries-item-menu
+      display block
+
+.countries-item-link
+  color #393939
+
+.countries-item-link-flag
+  display inline-block
+  margin-right 3px
+
+.countries-item-menu
+  itemRightPadding = 5px
+
+  position absolute
+  display none
+  width itemWidth + itemHorisontalPadding - itemRightPadding
+  margin-top itemVerticalPadding
+  margin-left - itemHorisontalPadding
+  padding 0 itemRightPadding 0 itemHorisontalPadding
+  background-color white
+  box-shadow 0 5px 10px -2px rgba(0, 0, 0, .5)
+  z-index 10
+
+  .safari &
+    box-shadow 0 5px 10px -5px rgba(0, 0, 0, .5)
+
+.countries-item-menu-link
+  display block
+  margin 5px 0 15px
+  color blue
+
+.countries-select
+  display inline-block
+  position absolute
+  margin-top -8px
+  margin-left 4px
+  padding 8px 6px 6px 6px
+  font-size 28px
+  background white
+  z-index 9
+
+  .countries-select-current
+    display block
+    padding-bottom 2px
+    color orange
+    cursor pointer
+    border-bottom 2px solid white
+
+    .countries-select-current-trigger
+      float right
+      margin 12px 0px 0px 6px
+      width: 0px
+      height: 0px
+      border-style solid
+      border-width 8px 8px 0px 8px
+      border-color orange transparent transparent transparent
+
+  .countries-select-list
+    display none
+    margin-top 20px
+
+    .countries-select-item
+      display block
+      margin-bottom 15px
+      font-size 16px
+      font-weight 300
+      text-decoration underline
+      color #333
+      cursor pointer
+
+      .countries-select-item-link-flag
+        margin-right 10px
+        display inline-block
+
+  &:hover
+    box-shadow 0 5px 10px 0 rgba(0, 0, 0, .5)
+
+    .countries-select-current
+      z-index 100
+      border-bottom 2px dashed orange
+      font-weight bold
+
+      .countries-select-current-trigger
+        border-width 0px 8px 8px 8px
+        border-color transparent transparent orange transparent
+
+    .countries-select-list
+      display block
+
+.countries-header
+  position relative
+
+  clearfix()  
+
+.countries-select-title
+  font-size 28px
+  display inline-block
+  color #333

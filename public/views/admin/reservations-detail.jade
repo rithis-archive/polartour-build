@@ -1,0 +1,114 @@
+.content
+  .title Заявка на бронирование
+
+  .content-detail
+    .content-detail-field
+      label город
+      input(type="text", ng-model="reservation.city", disabled="disabled") 
+
+    .content-detail-field
+      label агенство
+      input(type="text", ng-model="reservation.agency", disabled="disabled") 
+
+    .content-detail-field
+      label телефон
+      input(type="text", ng-model="reservation.phone", disabled="disabled") 
+
+    .content-detail-field
+      label email
+      input(type="text", ng-model="reservation.email", disabled="disabled") 
+
+    .content-detail-field
+      label адрес
+      input(type="text", ng-model="reservation.address", disabled="disabled") 
+
+    .content-detail-separator
+
+    .content-detail-field
+      label город отправления
+      input(type="text", ng-model="reservation.departure", disabled="disabled") 
+
+    .content-detail-field
+      label страна
+      input(type="text", ng-model="reservation.country", disabled="disabled") 
+
+    .content-detail-field
+      label тур
+      input(type="text", ng-model="reservation.tour", disabled="disabled") 
+
+    .content-detail-field
+      label отель
+      input(type="text", ng-model="reservation.hotel", disabled="disabled") 
+
+    .content-detail-field
+      label размещение
+      input(type="text", ng-model="reservation.placing", disabled="disabled") 
+
+    .content-detail-field
+      label дата от
+      input(type="text", value="{{ reservation.dateFrom | momentFormat:'LL' }}", disabled="disabled") 
+
+    .content-detail-field
+      label дата да
+      input(type="text", value="{{ reservation.dateTo | momentFormat:'LL'}}", disabled="disabled") 
+
+    .content-detail-field
+      label ночей
+      input(type="text", ng-model="reservation.nights", disabled="disabled") 
+
+    .content-detail-field
+      label кол-во туристов
+      input(type="text", ng-model="reservation.count", disabled="disabled") 
+
+    .content-detail-field
+      label цена
+      input(type="text", ng-model="reservation.price", disabled="disabled") 
+
+    .content-detail-field
+      label № СПО
+      input(type="text", ng-model="reservation.number", disabled="disabled") 
+
+    .content-detail-container
+      label туристы
+      .content-detail-container-body
+        .multiple-field(ng-repeat="tourist in reservation.tourists")
+          .multiple-field-wrapper
+            .content-detail-field(ng-init="genders={male:'муж.',female:'жен.'}")
+              label Пол
+              input(type="text", value="{{ genders[tourist.gender] }}", disabled="disabled")
+
+            .content-detail-field
+              label ФИО
+              input(type="text", ng-model="tourist.fio", disabled="disabled") 
+  
+            .content-detail-field
+              label дата рождения
+              input(type="text", value="{{ tourist.birthday | momentFormat:'LL' }}", disabled="disabled") 
+  
+            .content-detail-field
+              label серия
+              input(type="text", ng-model="tourist.series", disabled="disabled") 
+  
+            .content-detail-field
+              label номер
+              input(type="text", ng-model="tourist.number", disabled="disabled") 
+  
+            .content-detail-field
+              label срок действия
+              input(type="text", value="{{ tourist.validity | momentFormat:'LL'}}", disabled="disabled") 
+  
+            .content-detail-field
+              label когда выдан
+              input(type="text", value="{{ tourist.date | momentFormat:'LL' }}", disabled="disabled") 
+  
+            .content-detail-field
+              label кем выдан
+              input(type="text", ng-model="tourist.who", disabled="disabled") 
+  
+            .content-detail-field
+              label гражданство
+              input(type="text", ng-model="tourist.citizenship", disabled="disabled") 
+
+    .content-detail-field
+      label комментарий
+      textarea(ng-model="reservation.comment", disabled="disabled") 

@@ -1,0 +1,18 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content
+  h2.content-header Подписка на рассылку
+
+  .subscribe
+    .subscribe-description(ng-bind-html-unsafe="description.description")
+
+    form(name="subscribeForm").subscribe-form.block__color-blue
+      .subscribe-form-field
+        label.search-label ваш e-mail
+        input(ng-model="subscription.email", type="email", required)
+
+      button.big_button(ng-click="send()") подписаться
+
+
+include blocks/payment-services

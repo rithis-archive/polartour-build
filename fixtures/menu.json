@@ -1,0 +1,602 @@
+[
+  {
+    "name": "о компании",
+    "href": "#!/",
+    "type": "menu",
+    "position": 0,
+    "submenu": [
+      {
+        "name": "новости",
+        "href": "#!/news"
+      },{
+        "name": "вакансии",
+        "href": "#!/"
+      },{
+        "name": "контакты",
+        "href": "#!/contacts"
+      },{
+        "name": "финансовое обеспечение",
+        "href": "#!/"
+      },{
+        "name": "отзывы и предложения",
+        "href": "#!/feedback"
+      },{
+        "name": "комиссии",
+        "href": "#!/"
+      },{
+        "name": "корпоративный отдел",
+        "href": "#!/"
+      },{
+        "name": "подписка на рассылку",
+        "href": "#!/subscribtions"
+      }
+    ]
+  },{
+    "name": "онлайн",
+    "href": "#!/",
+    "type": "menu",
+    "position": 1,
+    "newWindow": true,
+    "submenu": [
+      {
+        "name": "поиск тура",
+        "href": "#!/",
+        "newWindow": true
+      },{
+        "name": "спецпредложения",
+        "href": "#!/",
+        "newWindow": true
+      },{
+        "name": "наличие мест в отелях",
+        "href": "#!/",
+        "newWindow": true
+      },{
+        "name": "наличие мест на рейсах",
+        "href": "#!/",
+        "newWindow": true
+      },{
+        "name": "проверка статуса заявки",
+        "href": "#!/",
+        "newWindow": true
+      },{
+        "name": "просмотр заявок",
+        "href": "#!/",
+        "newWindow": true
+      },{
+        "name": "расчет тура",
+        "href": "#!/",
+        "newWindow": true
+      }
+    ]
+  },{
+    "name": "доплаты",
+    "href": "#!/",
+    "type": "menu",
+    "position": 2,
+    "submenu": []
+  },{
+    "name": "документы",
+    "href": "#!/",
+    "type": "menu",
+    "position": 3,
+    "submenu": [
+      {
+        "name": "график выдачи",
+        "href": "#!/"
+      },{
+        "name": "справка стоимости А/Б",
+        "href": "#!/ticket-price-request"
+      },{
+        "name": "договор",
+        "href": "#!/"
+      }
+    ]
+  },{
+    "name": "бронирование",
+    "href": "#!/",
+    "type": "menu",
+    "position": 4,
+    "submenu": [
+      {
+        "name": "правила бронирования",
+        "href": "#!/"
+      },{
+        "name": "правила перебронирования",
+        "href": "#!/"
+      },{
+        "name": "правила аннуляции",
+        "href": "#!/"
+      },{
+        "name": "заявка на бронирование",
+        "href": "#!/reservation"
+      },{
+        "name": "заявка на перебронирование",
+        "href": "#!/"
+      },{
+        "name": "раннее бронирование",
+        "href": "#!/"
+      },{
+        "name": "правила пересчета",
+        "href": "#!/"
+      }
+    ]
+  },{
+    "name": "визы",
+    "href": "#!/",
+    "type": "menu",
+    "position": 5,
+    "submenu": []
+  },{
+    "name": "оплата",
+    "href": "#!/",
+    "type": "menu",
+    "position": 6,
+    "submenu": [
+      {
+        "name": "запрос на получение бух. документов",
+        "href": "#!/documents-request"
+      },{
+        "name": "оплата туров",
+        "href": "#!/"
+      },{
+        "name": "гарантийное письмо по оплате",
+        "href": "#!/"
+      },{
+        "name": "доверенность",
+        "href": "#!/"
+      },{
+        "name": "заявление на возврат суммы",
+        "href": "#!/"
+      },{
+        "name": "перенос денежных средств",
+        "href": "#!/"
+      },{
+        "name": "заявление CONTACT",
+        "href": "#!/"
+      }
+    ]
+  },{
+    "name": "авиабилеты",
+    "href": "#!/",
+    "type": "menu",
+    "position": 7,
+    "submenu": []
+  },{
+    "name": "Турция",
+    "href": "#!/",
+    "type": "countries",
+    "position": 0,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/tr/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/tr/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/tr/charges"
+      }
+    ]
+  },{
+    "name": "Франция",
+    "href": "#!/",
+    "type": "countries",
+    "position": 1,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/fr/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/fr/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/fr/charges"
+      }
+    ]
+  },{
+    "name": "Индия",
+    "href": "#!/",
+    "type": "countries",
+    "position": 2,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/in/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/in/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/in/charges"
+      }
+    ]
+  },{
+    "name": "Вьетнам",
+    "href": "#!/",
+    "type": "countries",
+    "position": 3,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/vn/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/vn/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/vn/charges"
+      }
+    ]
+  },{
+    "name": "Австрия",
+    "href": "#!/",
+    "type": "countries",
+    "position": 4,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/at/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/at/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/at/charges"
+      }
+    ]
+  },{
+    "name": "Египет",
+    "href": "#!/",
+    "type": "countries",
+    "position": 5,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/eg/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/eg/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/eg/charges"
+      }
+    ]
+  },{
+    "name": "Испания",
+    "href": "#!/",
+    "type": "countries",
+    "position": 6,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/es/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/es/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/es/charges"
+      }
+    ]
+  },{
+    "name": "Индонезия",
+    "href": "#!/",
+    "type": "countries",
+    "position": 7,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/id/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/id/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/id/charges"
+      }
+    ]
+  },{
+    "name": "Куба",
+    "href": "#!/",
+    "type": "countries",
+    "position": 8,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/cu/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/cu/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/cu/charges"
+      }
+    ]
+  },{
+    "name": "ОАЭ",
+    "href": "#!/",
+    "type": "countries",
+    "position": 9,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/ae/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/ae/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/ae/charges"
+      }
+    ]
+  },{
+    "name": "Таиланд",
+    "href": "#!/",
+    "type": "countries",
+    "position": 10,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/th/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/th/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/th/charges"
+      }
+    ]
+  },{
+    "name": "Кипр",
+    "href": "#!/",
+    "type": "countries",
+    "position": 11,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/cy/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/cy/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/cy/charges"
+      }
+    ]
+  },{
+    "name": "Мальдивы",
+    "href": "#!/",
+    "type": "countries",
+    "position": 12,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/mv/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/mv/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/mv/charges"
+      }
+    ]
+  },{
+    "name": "Шри-Ланка",
+    "href": "#!/",
+    "type": "countries",
+    "position": 13,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/lk/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/lk/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/lk/charges"
+      }
+    ]
+  },{
+    "name": "Андорра",
+    "href": "#!/",
+    "type": "countries",
+    "position": 14,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/ad/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/ad/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/ad/charges"
+      }
+    ]
+  },{
+    "name": "Болгария",
+    "href": "#!/",
+    "type": "countries",
+    "position": 15,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/bg/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/bg/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/bg/charges"
+      }
+    ]
+  },{
+    "name": "Чехия",
+    "href": "#!/",
+    "type": "countries",
+    "position": 16,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/cz/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/cz/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/cz/charges"
+      }
+    ]
+  },{
+    "name": "Доминикана",
+    "href": "#!/",
+    "type": "countries",
+    "position": 17,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/do/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/do/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/do/charges"
+      }
+    ]
+  },{
+    "name": "Мексика",
+    "href": "#!/",
+    "type": "countries",
+    "position": 18,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/mx/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/mx/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/mx/charges"
+      }
+    ]
+  },{
+    "name": "Италия",
+    "href": "#!/",
+    "type": "countries",
+    "position": 19,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/it/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/it/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/it/charges"
+      }
+    ]
+  },{
+    "name": "Хорватия",
+    "href": "#!/",
+    "type": "countries",
+    "position": 20,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/hr/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/hr/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/hr/charges"
+      }
+    ]
+  },{
+    "name": "Черногория",
+    "href": "#!/",
+    "type": "countries",
+    "position": 21,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/me/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/me/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/me/charges"
+      }
+    ]
+  },{
+    "name": "Греция",
+    "href": "#!/",
+    "type": "countries",
+    "position": 22,
+    "submenu": [
+      {
+        "name": "каталог гостиниц",
+        "href": "#!/gr/hotels"
+      },
+      {
+        "name": "экскурсии",
+        "href": "#!/gr/excursions"
+      },
+      {
+        "name": "трансферы",
+        "href": "#!/gr/charges"
+      }
+    ]
+  }
+]

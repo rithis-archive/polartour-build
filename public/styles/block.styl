@@ -1,0 +1,58 @@
+padding = 30px
+
+.block
+  width asideWidth - padding * 2
+  padding padding
+
+  @media all and (max-width: 767px)
+    float none
+    width auto
+
+  @media all and (max-width: 1109px)
+    float none
+    width auto
+    padding padding 16px
+
+.block-wrapper
+  float left
+
+  @media all and (max-width: 1109px)
+    float none
+
+.block-header
+  margin-bottom 25px
+  font-size 28px
+  font-weight 300
+
+  @media all and (max-width: 767px)
+    text-align center
+
+.block__color-blue
+  background-color blue
+
+  .block-header
+    color white
+
+.block__color-wheat
+  background-color wheat
+
+  .block-header
+    color blue
+
+.block__color-brown
+  background-color brown
+
+  .block-header
+    color white
+
+.block__size-container
+  float none
+  clear both
+  width auto !important
+
+.block__display-inline
+  clearfix()
+
+  .block-header
+    float left
+    margin 0

@@ -1,0 +1,47 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content
+  .content-header.countries-header
+    span.countries-select-title Экскурсии
+    .countries-select(pt-countries-select)
+      .countries-select-current
+        по {{ getGenitive(country) }}
+        span.countries-select-current-trigger
+      .countries-select-list
+        a.countries-select-item(href="#!/{{ country }}/excursions", ng-repeat="country in countries")
+          i.countries-select-item-link-flag(class="flag flag-{{ country }}")
+          | {{ getGenitive(getCountryName(country)) }}
+      
+
+  .excursions
+    .excursions-list.block__color-blue
+      a(ng-click="scrollTo(excursion.name)", ng-repeat="excursion in excursions") {{ excursion.name }}
+
+    .excursions-description
+      .excursions-description-item(ng-repeat="excursion in excursions", id="{{ excursion.name }}")
+        .excursion-description-item-title {{ excursion.name }}
+        .excursion-description-item-tags
+          .excursion-description-item-tag(ng-show="excursion.duration")
+            img(src="/images/fixtures/excursions/days.png")
+            span {{ excursion.duration }}
+          .excursion-description-item-tag(ng-show="excursion.transport")
+            img(src="/images/fixtures/excursions/air.png")
+            span {{ excursion.transport }}
+          .excursion-description-item-tag(ng-show="excursion.place")
+            img(src="/images/fixtures/excursions/point.png")
+            span {{ excursion.place }}
+          .excursion-description-item-tag(ng-show="excursion.price")
+            img(src="/images/fixtures/excursions/price.png")
+            span {{ excursion.price }}
+        .excursion-description-item-images(pt-excursions-images)
+          .excursion-description-item-preview
+            ul(ng-style="listposition")
+              li(ng-repeat="preview in excursion.images")
+                img(ng-src="{{ preview }}")
+          div
+            img.excursion-description-item-image(ng-repeat="image in excursion.images", ng-src="{{ image }}", ng-click="scrollTo($index)")
+        .excursion-description-item-description.wysiwyg(ng-bind-html-unsafe="excursion.description")
+
+
+include blocks/payment-services

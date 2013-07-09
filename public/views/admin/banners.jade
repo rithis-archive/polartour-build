@@ -1,0 +1,19 @@
+.content(pt-list)
+  .title Управление баннерами
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    h2.block-header.search-header добавить баннер
+
+    .banners-add
+      a.banners-add-item.banners-add-item-1x1(ng-click="add('1x1')") 1x1
+      a.banners-add-item.banners-add-item-2x1(ng-click="add('2x1')") 2x1
+      a.banners-add-item.banners-add-item-1x2(ng-click="add('1x2')") 1x2
+      a.banners-add-item.banners-add-item-2x2(ng-click="add('2x2')") 2x2
+      a.banners-add-item.banners-add-item-3x1(ng-click="add('3x1')") 3x1
+      a.banners-add-item.banners-add-item-3x2(ng-click="add('3x2')") 3x2
+
+    .big_button(ng-click="save()", style="text-align:center") Сохранить
+
+  section.banners-container
+    ul.banners(pt-banners-edit, ng-model="banners")
+      li.banners-item(ng-repeat="banner in banners | orderBy:'+position'", pt-banner-id="{{ banner._id }}", class="banners-item__size-{{ banner.size }}", ng-dblclick="edit(banner._id)", pt-banner)

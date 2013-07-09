@@ -1,0 +1,18 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+section.block__color-white.block__size-container
+  .block-header.news-list-header
+    h2 Новости
+
+section.block__color-white.block__size-container.news-list(pt-list="news")
+  .news-list-item(ng-repeat="news in filteredData")
+    a(href="#!/news/{{ news._id }}") {{ news.title }}
+    span {{ news.createdAt | momentFromNow }}
+    .news-list-item-body(ng-bind-html-unsafe="news.description")
+
+  .list-pagination
+    div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+      a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+include blocks/payment-services

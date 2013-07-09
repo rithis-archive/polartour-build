@@ -1,0 +1,225 @@
+[
+  {
+    "name": "Отдел продаж",
+    "email": "info@polartour.ru",
+    "phone": "599-673-118",
+    "schedule": "кроме воскресенья и праздников",
+    "employees": [
+      {
+        "name": "Сергей",
+        "lastname": "Бетяев",
+        "responsibilities": [
+          "консультация агентства"
+        ],
+        "phone": "788-98-88, доб. 134",
+        "emails": [
+          {
+            "email": "sergey@polartour.ru"
+          }
+        ]
+      },{
+        "name": "Андрей",
+        "lastname": "Мирзаев",
+        "responsibilities": [
+          "консультация агентства",
+          "расчёт групповых туров"
+        ],
+        "phone": "788-98-88, доб. 146",
+        "emails": [
+          {
+            "email": "anar@polartour.ru"
+          }
+        ]
+      },{
+        "name": "Елена",
+        "lastname": "Несмеянова",
+        "responsibilities": [
+          "консультация агентства",
+          "расчет нестандартных туров",
+          "расчет наземного обслуживания"
+        ],
+        "phone": "788-98-88, доб. 146",
+        "emails": [
+          {
+            "email": "elena_n@polartour.ru"
+          },
+          {
+            "email": "raschet@polartour.ru",
+            "comment": "(для расчета туров)"
+          }
+        ]
+      }
+    ]
+  },{
+    "name": "Отдел бронирования",
+    "email": "bron@polartour.ru",
+    "schedule": "кроме воскресенья и праздников"
+  },{
+    "name": "Чартерный отдел",
+    "email": "avia@polartour.ru",
+    "schedule": "кроме воскресенья и праздников",
+    "employees": [
+      {
+        "name": "Полина",
+        "lastname": "Рыбакова",
+        "responsibilities": [
+          "консультация агентства"
+        ],
+        "phone": "788-98-88, доб. 107",
+        "emails": [
+          {
+            "email": "polina_r@polartour.ru"
+          }
+        ]
+      }
+    ]
+  },{
+    "name": "Визовый отдел",
+    "email": "visa@polartour.ru",
+    "schedule": "кроме воскресенья и праздников",
+    "employees": [
+      {
+        "name": "Александр",
+        "lastname": "Кондратьев",
+        "responsibilities": [
+          "визовые вопросы"
+        ],
+        "phone": "788-98-88, доб. 128",
+        "emails": [
+          {
+            "email": "visa@polartour.ru"
+          }
+        ]
+      }
+    ]
+  },{
+    "name": "Отдел выписки/выдачи документов",
+    "email": "doc@polartour.ru",
+    "schedule": "кроме воскресенья и праздников",
+    "employees": [
+      {
+        "name": "Анастасия",
+        "lastname": "Гончарова",
+        "responsibilities": [
+          "выписка/выдача документов"
+        ],
+        "phone": "788-98-88, доб. 102",
+        "emails": [
+          {
+            "email": "doc@polartour.ru"
+          }
+        ]
+      }
+    ]
+  },{
+    "name": "Отдел договоров",
+    "email": "dogovor@polartour.ru",
+    "schedule": "будни",
+    "employees": [
+      {
+        "name": "Наталья",
+        "lastname": "Жукова",
+        "responsibilities": [
+          "консультация по заключению и перезаключению договоров",
+          "регистрация новый агенств",
+          "выдача логинов и паролей"
+        ],
+        "phone": "788-98-88, доб. 121",
+        "emails": [
+          {
+            "email": "dogovor@polartour.ru"
+          }
+        ]
+      }
+    ]
+  },{
+    "name": "Отдел маркетинга и СПО",
+    "email": "spo@polartour.ru",
+    "schedule": "кроме воскресенья и праздников",
+    "employees": [
+      {
+        "name": "Алксандр",
+        "lastname": "Чернов",
+        "responsibilities": [
+          "по подбору тура в он-лайн"
+        ],
+        "phone": "767-26-34",
+        "emails": [
+          {
+            "email": "spo@polartour.ru"
+          }
+        ]
+      }
+    ]
+  },{
+    "name": "Финансовый отдел",
+    "email": "fin@polartour.ru",
+    "schedule": "будни",
+    "employees": [
+      {
+        "name": "Наталья",
+        "lastname": "Качесова",
+        "responsibilities": [
+          "консультация по оплате"
+        ],
+        "phone": "788-98-88, доб. 104",
+        "emails": [
+          {
+            "email": "oplata@polartour.ru"
+          }
+        ]
+      },{
+        "name": "Евгения",
+        "lastname": "Журя",
+        "responsibilities": [
+          "консультация по оплате"
+        ],
+        "phone": "788-98-88, доб. 105",
+        "emails": [
+          {
+            "email": "oplata@polartour.ru"
+          }
+        ]
+      }
+      
+    ]
+  },{
+    "name": "Бухгалтерия",
+    "email": "fin@polartour.ru",
+    "schedule": "будни",
+    "employees": [
+      {
+        "name": "Юлия",
+        "lastname": "Степина",
+        "responsibilities": [
+          "счета на безналичную оплату"
+        ],
+        "phone": "797-26-34, доб. 140",
+        "emails": [
+          {
+            "email": "julia@polartour.ru"
+          }
+        ]
+      }
+    ]
+  },{
+    "name": "IT отдел",
+    "email": "admin@polartour.ru",
+    "schedule": "будни",
+    "employees": [
+      {
+        "name": "Виктор",
+        "lastname": "Черверноженко",
+        "responsibilities": [
+          "счета на безналичную оплату"
+        ],
+        "phone": "788-98-88",
+        "emails": [
+          {
+            "email": "admin@polartour.ru"
+          }
+        ]
+      }
+    ]
+  }
+]

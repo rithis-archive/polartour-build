@@ -1,0 +1,15 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+a.back-button(pt-back) &larr; назад
+
+section.block__color-white.block__size-container
+  .block-header.news-list-header
+    h2 {{ news.title }}
+
+section.block__color-white.block__size-container.news-list(pt-list)
+  .news-list-item
+    .news-list-item-body.wysiwyg(ng-bind-html-unsafe="news.body")
+
+
+include blocks/payment-services

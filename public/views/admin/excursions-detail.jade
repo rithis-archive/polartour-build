@@ -1,0 +1,45 @@
+.content
+  .title Экскурсии
+
+  form.content-detail(name="excursionForm")
+    .content-detail-field
+      label страна
+      select.search-select.search-select-size-big(ui-select2, pt-countries, ng-model="excursion.country", required)
+        option(ng-repeat="country in countries", value="{{ country.code }}") {{ country.name }} 
+
+    .content-detail-field
+      label название
+      input(type="text", ng-model="excursion.name", required) 
+
+    .content-detail-field
+      label описание
+      textarea(ng-model="excursion.description", pt-ckeditor, required) 
+
+    .content-detail-field
+      label продолжительность
+      input(type="text", ng-model="excursion.duration", required) 
+
+    .content-detail-field
+      label транспорт
+      input(type="text", ng-model="excursion.transport", required) 
+
+    .content-detail-field
+      label место
+      input(type="text", ng-model="excursion.place", required) 
+
+    .content-detail-field
+      label стоимость
+      input(type="text", ng-model="excursion.price", required) 
+
+    .content-detail-field
+      label Изображения
+      div
+        .image-item(ng-repeat="image in excursion.images", pt-upload-image, ng-click="upload()", ng-model="excursion.images[$index]")
+          span(ng-hide="image") Загрузить изображение
+          img(ng-show="image", ng-src="{{ image }}")
+        .image-item(ng-click="addImage()")
+          span Добавить изображение
+
+    .content-detail-field
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

@@ -1,0 +1,150 @@
+doctype 5
+html.page(lang="ru", ng-app="polartour")
+  head
+    title ПоларТур
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin,cyrillic")
+    link(rel="stylesheet", href="/components/select2/select2.css")
+    link(rel="stylesheet", href="/components/jquery-ui/themes/base/jquery.ui.base.css")
+    link(rel="stylesheet", href="/components/jquery-ui/themes/base/jquery.ui.theme.css")
+    link(rel="stylesheet", href="/flags/flags.css")
+    link(rel="stylesheet", href="/styles/index.css")
+    link(rel="stylesheet", href="/components/iCheck/skins/minimal/grey.css")
+
+    script(src="/components/jquery/jquery.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.widget.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.core.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.mouse.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.datepicker.js")
+    script(src="/components/jquery-ui/ui/jquery.ui.slider.js")
+    script(src="/components/jquery-ui/ui/i18n/jquery.ui.datepicker-ru.js")
+    script(src="/components/select2/select2.js")
+    script(src="/components/modernizr/modernizr.js")
+    script(src="/components/css_browser_selector/css_browser_selector.js")
+    script(src="/components/store/store.js")
+    script(src="/components/angular/angular.js")
+    script(src="/components/angular-resource/angular-resource.min.js")
+    script(src="/components/angular-ui-select2/src/select2.js")
+    script(src="/components/moment/min/moment.min.js")
+    script(src="/components/moment/min/langs.min.js")
+    script(src="/components/iCheck/jquery.icheck.min.js")
+    script(src="/components/jquery-galleria/src/galleria.js")
+    script(src="/components/typeahead.js/dist/typeahead.min.js")
+    script(src="/components/jquery.scrollTo/jquery.scrollTo.min.js")
+    script(src="/components/swfobject/swfobject/swfobject.js")
+    script(src="//api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU")
+    script(src="/scripts/index.js")
+    script(src="/scripts/modules/pt-towns.js")
+    script(src="/scripts/modules/pt-countries.js")
+    script(src="/scripts/modules/pt-tours.js")
+    script(src="/scripts/modules/pt-hotels.js")
+    script(src="/scripts/modules/pt-operators.js")
+    script(src="/scripts/modules/pt-contacts.js")
+    script(src="/scripts/modules/pt-reports.js")
+    script(src="/scripts/modules/pt-subscriptions.js")
+    script(src="/scripts/modules/pt-certificates.js")
+    script(src="/scripts/modules/pt-documents.js")
+    script(src="/scripts/modules/pt-phones.js")
+    script(src="/scripts/modules/pt-list.js")
+    script(src="/scripts/modules/pt-travallers.js")
+    script(src="/scripts/modules/pt-flight-dates.js")
+    script(src="/scripts/modules/pt-select-range.js")
+    script(src="/scripts/modules/pt-buttons-group.js")
+    script(src="/scripts/modules/pt-swfobject.js")
+    script(src="/scripts/modules/pt-datepicker.js")
+    script(src="/scripts/modules/pt-search.js")
+    script(src="/scripts/modules/pt-moment.js")
+    script(src="/scripts/modules/pt-typeahead.js")
+    script(src="/scripts/modules/pt-ya-maps.js")
+    script(src="/scripts/modules/pt-multi-field.js")
+    script(src="/scripts/modules/pt-radio.js")
+    script(src="/scripts/modules/pt-news.js")
+    script(src="/scripts/modules/pt-gallery.js")
+    script(src="/scripts/modules/pt-menu.js")
+    script(src="/scripts/modules/pt-banners.js")
+    script(src="/scripts/modules/pt-reservations.js")
+    script(src="/scripts/modules/pt-excursions.js")
+    script(src="/scripts/modules/pt-charges.js")
+    script(src="/scripts/modules/pt-pages.js")
+    script(src="/scripts/modules/pt-back.js")
+    script(src="/scripts/modules/pt-target.js")
+    script(src="/scripts/modules/pt-form-descriptions.js")
+    script(src="/scripts/modules/pt-count-field.js")
+
+    script(src="/scripts/controllers/index.js")
+    script(src="/scripts/controllers/hotels.js")
+    script(src="/scripts/controllers/hotel.js")
+    script(src="/scripts/controllers/news.js")
+    script(src="/scripts/controllers/news-detail.js")
+    script(src="/scripts/controllers/contacts.js")
+    script(src="/scripts/controllers/reports.js")
+    script(src="/scripts/controllers/subscribe.js")
+    script(src="/scripts/controllers/certificates.js")
+    script(src="/scripts/controllers/documents.js")
+    script(src="/scripts/controllers/reservation.js")
+    script(src="/scripts/controllers/excursions.js")
+    script(src="/scripts/controllers/charges.js")
+    script(src="/scripts/controllers/pages.js")
+
+  body.container
+    header
+      a(href="#!/").logo
+
+      div.previous-website-date-wrapper        
+        p.previous_website
+          a.previous_website-link(href="http://polartour.ru") старая версия
+
+        p.region ваш регион
+          select.region-select(ui-select2, pt-towns, ng-model="userTown")
+            option(ng-repeat="town in towns") {{ town }}
+
+      .phones(pt-phones)
+        .phones-type(ng-repeat="phone in phones", class="$index == 0 && 'phones-type__position-first'")
+          p.phones-type-description {{ phone.name }}
+          ul
+            li.phones-type-number(ng-repeat="number in phone.phones") {{ number }}
+
+      nav.menu(pt-menu)
+        section.menu-main
+          section.menu-item(ng-repeat="item in menu | orderBy:'+position'")
+            a.menu-item-link(ng-href="{{ item.href }}", pt-target="item.newWindow") {{ item.name }}
+            nav.menu-submenu
+              a.menu-item(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in item.submenu | orderBy:'+position'") {{ submenu.name }}
+          a.menu-item.menu-item__type-profile(href="#!/")
+            span.menu-item__type-profile-icon
+            span.menu-item__type-profile-text личный кабинет
+
+    section.content(ng-view)
+
+    footer
+      section.sitemap(pt-menu, pt-countries-menu)
+        nav.sitemap-block(ng-repeat="item in menu")
+          p.sitemap-block-header {{ item.name }}
+          a.sitemap-block-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in item.submenu") {{ submenu.name }}
+        hr.sitemap-divider
+        nav.sitemap-block(ng-repeat="country in countriesMenu")
+          a.sitemap-block-header(ng-href="{{ country.href }}") {{ country.name }}
+          a.sitemap-block-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in country.submenu") {{ submenu.name }}
+
+      section.partners
+        .partners-title все наши предложения вы можете найти в системах
+
+        .partners-list
+          a.partners-link.partners-link-allspo(href="#!/")
+            img(src="/images/partners/allspo.png")
+          a.partners-link.partners-link-tourindex(href="#!/")
+            img(src="/images/partners/tourindex.png")
+          a.partners-link.partners-link-ruspo(href="#!/")
+            img(src="/images/partners/ruspo.png")
+          a.partners-link.partners-link-exat(href="#!/")
+            img(src="/images/partners/exat.png")
+          a.partners-link.partners-link-bronni(href="#!/")
+            img(src="/images/partners/bronni.png")
+
+    section.copyright
+      span © 2013 Полар Тур
+      span
+        | Совместно со студией 
+        a(href="http://rithis.com") "Ритхис"
+
+

@@ -1,0 +1,182 @@
+section.search-detail.search-detail-computer.block__color-blue(pt-search, ng-show="showDetailSearch")
+  a.search-toggle(href="#", ng-click="showDetailSearch=false")
+  h2.block-header.search-header поиск тура
+
+  form
+    .search-row
+      .search-item
+        label.search-label(for="search-town")
+          span.search-label-text город вылета
+          select.search-select.search-select-size-big#search-town(ui-select2, pt-towns)
+            option(ng-repeat="town in towns", ng-selected="town == userTown") {{ town }}
+
+      .search-item
+        label.search-label(for="search-country")
+          span.search-label-text страна
+          select.search-select.search-select-size-big#search-country(ui-select2, pt-countries)
+            option(ng-repeat="country in countries") {{ country.name }}
+    
+      .search-item
+        label.search-label(for="search-tour")
+          span.search-label-text тур
+          select.search-select.search-select-size-big#search-tour(ui-select2, pt-tours)
+            option(ng-repeat="tour in tours") {{ tour }}
+
+    .search-row
+      .search-item.search-item-flight-date
+        label.search-label
+          span.search-label-text дата вылета
+          input.search-date.search-select-size-half(ng-model="flightFromDate", pt-datepicker, pt-datepicker-format="dd.mm.yy")
+          img.search-date-trigger(src="/images/datepicker-trigger.png")
+          span.search-select-separator —
+      .search-item
+        label.search-label
+          span.search-label-text &nbsp; 
+          input.search-date.search-select-size-half(ng-model="flightToDate", pt-datepicker, pt-datepicker-format="dd.mm.yy")
+          img.search-date-trigger(src="/images/datepicker-trigger.png")
+
+      .search-item
+        label.search-label
+          span.search-label-text ночей
+          pt-select-range.select-range.search-select.search-select-size-small(name="tour-nights", from-separator="от", to-separator="до", min-range="0", max-range="14", from-range="2", to-range="9")
+    
+      .search-item
+        label.search-label
+          span.search-label-text стоимость
+          pt-select-range.select-range.search-select.search-select-size-middle(name="tour-price", min-range="5000", max-range="100000", from-range="5000", to-range="80000")
+
+      .search-item
+        label.search-label(for="search-travallers")
+          span.search-label-text туристы
+          pt-travallers.search-select.select-travallers.search-select-size-big#search-travallers
+
+    .search-row
+      .search-item
+        label.search-label(for="search-town")
+          span.search-label-text город
+          select.search-select.search-select-size-big#search-town(ui-select2, pt-towns)
+            option(ng-repeat="town in towns", ng-selected="town == userTown") {{ town }}
+
+      .search-item
+        label.search-label
+          span.search-label-text категория
+          div.search-select-size-big.buttons-group(pt-buttons-group, ng-init="categories=['3 и менее', 4, 5, 'HV']")
+            a.button(href="#", ng-repeat="category in categories", class="{{ $first && 'active'}}") {{ category }}
+
+      .search-item
+        label.search-label(for="search-hotel")
+          span.search-label-text гостиницы
+          .search-hotel
+            .search-hotel-wrapper
+              select.search-select.search-select-size-big#search-hotel(ui-select2="{closeOnSelect:false}", multiple, pt-hotels)
+                option(ng-repeat="hotel in hotels", ng-selected="$first") {{ hotel }}
+
+    .search-row
+      .search-item
+        label.search-label
+          span.search-label-text питание
+          div.buttons-group(pt-buttons-group, ng-init="nutrition=['AI', 'BB', 'HB', 'RO']")
+            a.button(href="#", ng-repeat="type in nutrition", class="{{ $first && 'active'}}") {{ type }}
+
+      .search-item
+        label.search-label
+          span.search-label-text принимающая сторона
+          .search-hotel
+            .search-hotel-wrapper
+              select.search-select.search-select-size-big(ui-select2="{closeOnSelect:false}", multiple, pt-operators)
+                option(ng-repeat="operator in operators", ng-selected="$first") {{ operator }}
+
+
+      .search-item
+        div.search-checkbox
+          input#seats(type="checkbox", checked)
+          label(for="seats") есть места на рейсах
+
+        div.search-checkbox
+          input#buyers(type="checkbox")
+          label(for="buyers") нет остановки продаж
+          
+
+      button.big_button(type="submit") искать
+
+nav.countries(pt-countries, class="{{ showDetailSearch && 'block__color-white'}}")
+  include blocks/countries
+
+.block-wrapper
+  section.search.search-main.block.block__color-blue(pt-search, ng-hide="showDetailSearch")
+    h2.block-header.search-header поиск тура
+    
+    form
+      .search-item
+        label.search-label(for="search-town") город отправления
+        select.search-select#search-town(ui-select2, pt-towns)
+          option(ng-repeat="town in towns", ng-selected="town == userTown") {{ town }}
+
+      .search-item
+        label.search-label(for="search-country") страна
+        select.search-select#search-country(ui-select2, pt-countries)
+          option(ng-repeat="country in countries") {{ country.name }}
+
+      .search-item.search-item-date
+        label.search-label дата вылета
+        input(pt-datepicker, pt-datepicker-format="dd.mm.yy", pt-datepicker-trigger, ng-model="flightFromDate")
+
+      .search-item.search-item-nights(ng-init="nights = 7")
+        label.search-label(for="search-country") ночей
+        pt-count-field(ng-model="nights")
+    
+      button.big_button(type="submit") искать
+    
+      a.show-detail-search(href="#!/", ng-click="showDetailSearch=true") расширенный поиск
+
+  section.block.block__color-wheat(data-ng-controller="NewsCtrl", ng-show="important")
+    h2.block-header важные события
+
+    .news
+      article.news-article(data-ng-repeat="newsItem in data | newsLength")
+        a.news-article-link(ng-href="#!/news/{{newsItem._id}}") {{ newsItem.title }}
+        em.news-article-time {{ newsItem.createdAt | momentFromNow }}
+  
+      a(href="#!/news").news-more_link все новости
+  
+  .block.block__color-brown.block__booking
+    h2.block-header проверка заявки
+  
+    form.booking_info
+      .booking_info-fields
+        .booking_info-field
+          label.booking_info-label(for="booking_info-number") номер заявки
+          input.booking_info-input#booking_info-number(type="text")
+    
+        .booking_info-field
+          label.booking_info-label(for="booking_info-passport") номер паспорта
+          input.booking_info-input#booking_info-passport(type="text")
+  
+      button.big_button(type="submit") проверить
+
+  section.block.block__color-wheat.currency_rates_block
+    h2.block-header курс валют
+  
+    table.currency_rates
+      col(span="2")
+      col.currency_rates-last_column
+      thead
+        tr
+          th
+          th.currency_rates-title USD
+          th.currency_rates-title EUR
+      tbody
+        tr
+          th.currency_rates-title сегодня
+          td.currency_rates-rate 32.5693
+          td.currency_rates-rate 42.0665
+        tr
+          th.currency_rates-title завтра
+          td.currency_rates-rate 32.5693
+          td.currency_rates-rate 42.0665
+
+
+section.banners(pt-banners)
+  article.banners-item(ng-repeat="banner in banners | orderBy:'+position'", class="banners-item__size-{{ banner.size }}", pt-banner)
+
+include blocks/payment-services

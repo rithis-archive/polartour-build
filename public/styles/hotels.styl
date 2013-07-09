@@ -1,0 +1,41 @@
+@import "./../components/semantic-grid/stylesheets/styl/grid"
+
+.hotels
+  float right
+  width width
+
+  @media all and (max-width: 1109px)
+    float none
+    width 768px
+    padding-top 35px
+    padding-right 3px
+    padding-left 12px
+
+  @media all and (max-width: 767px)
+    width auto
+    padding-left 13px
+    padding-right 21px
+
+    .list
+      width auto
+
+      .list-item :last-child
+        display none
+
+      .list-cell-width-6x
+        column(7)
+
+      .list-cell-width-2x
+        column(1)
+
+.hotels-header
+  padding 27px 28px
+  margin 0px
+  font-size 28px
+  color #397C93
+
+  @media all and (max-width: 1109px)
+    padding 40px 0px 30px 10px
+
+  @media all and (max-width: 767px)
+    text-align left

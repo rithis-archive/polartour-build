@@ -1,0 +1,56 @@
+nav.countries.block__size-container(pt-countries)
+  include blocks/countries
+
+.content(pt-list)
+  .content-header.countries-header
+    span.countries-select-title Отели
+    .countries-select(pt-countries-select)
+      .countries-select-current
+        {{ getGenitive(country) }}
+        span.countries-select-current-trigger
+      .countries-select-list
+        a.countries-select-item(href="#!/{{ country.code }}/hotels", ng-repeat="country in countries")
+          i.countries-select-item-link-flag(class="flag flag-{{ country.code }}")
+          | {{ getGenitive(country.name) }}
+  
+  section.search.block.block-wrapper.block__color-blue(pt-search, ng-hide="showDetailSearch")
+    form
+      .search-item
+        label.search-label название
+          input(ng-model="filters.name", pt-typeahead, typeahead-data="data", typeahead-property="name")
+
+      .search-item
+        label.search-label категория
+        div.buttons-group(pt-buttons-group, ng-init="categories=['3 и менее', 4, 5, 'HV']", ng-model="filters.category")
+          a.button(href="#", ng-repeat="category in categories", class="{{ $first && 'active'}}") {{ category }}
+    
+      .search-item
+        label.search-label(for="search-country") регион
+        select.search-select#search-country(ui-select2, ng-model="filters.region")
+          option(ng-repeat="region in regions") {{ region }}
+  
+  section.hotels
+    .list
+      .list-title
+        span.list-cell-width-6x название
+        span.list-cell-width-2x категория
+        span.list-cell-width-4x регион
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="hotel in filteredData", ng-show="filteredData")
+        a.list-cell-width-6x.list-cell-item(href="#!/{{ hotel.country }}/hotels/{{ hotel._id }}") {{ hotel.name }}
+        span.list-cell-width-2x.list-cell-item {{ hotel.category }}*
+        span.list-cell-width-4x.list-cell-item {{ hotel.region }}
+
+      .list-item(ng-hide="filteredData")
+        .list-item-empty-data Нет результатов
+
+      .list-placeholder
+        
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+
+include blocks/payment-services
