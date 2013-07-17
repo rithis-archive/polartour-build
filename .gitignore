@@ -10,6 +10,7 @@ public/components
 public/uploads
 
 # ignore generated files
+build
 public/component.json
 npm-debug.log
 

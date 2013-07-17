@@ -1,0 +1,24 @@
+div
+  h1 Заявки на бронь
+  p Город: #{ city }
+  p Агенство: #{ agency }
+  p Телефон: #{ phone }
+  p Email: #{ email }
+  p Адрес: #{ address }
+  p Город отправление: #{ departure }
+  p Страна: #{ country }
+  p Тур: #{ tour }
+  p Отель: #{ hotel }
+  p Размещение: #{ placing }
+  p Ночей: #{ nights }
+  p Количество туристов: #{ count }
+  p Цена: #{ price }
+  h1 Туристы
+    each tourist in tourists
+      p ФИО: #{ tourist.fio }
+      h2 Паспортный данные
+      p Серия: #{ tourist.series }
+      p Номер: #{ tourist.number }
+      p Кем выдан: #{ tourist.who }
+      p Гражданство: #{ tourist.citizenship }
+      br

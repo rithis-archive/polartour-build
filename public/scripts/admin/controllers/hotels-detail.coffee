@@ -22,6 +22,12 @@ polartourAdmin.controller "HotelsDetailCtrl", ($scope, $location, $routeParams, 
     $scope.services = services
     $scope.infrastructures = infrastructures
 
+  $scope.deleteImage = (index) ->
+    images = []
+    $scope.hotel.images.forEach (image, pos) ->
+      images.push image unless pos == index
+    $scope.hotel.images = images
+
   $scope.serviceSelected = (service) ->
     $scope.hotel.services \
       and $scope.hotel.services.indexOf(service) != -1

@@ -106,10 +106,10 @@ html.page(lang="ru", ng-app="polartour")
 
       nav.menu(pt-menu)
         section.menu-main
-          section.menu-item(ng-repeat="item in menu | orderBy:'+position'")
+          section.menu-item(ng-repeat="item in menu | orderBy:'+position'", ng-show="item.active")
             a.menu-item-link(ng-href="{{ item.href }}", pt-target="item.newWindow") {{ item.name }}
             nav.menu-submenu
-              a.menu-item(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in item.submenu | orderBy:'+position'") {{ submenu.name }}
+              a.menu-item(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in item.submenu | orderBy:'+position'", ng-show="submenu.active") {{ submenu.name }}
           a.menu-item.menu-item__type-profile(href="#!/")
             span.menu-item__type-profile-icon
             span.menu-item__type-profile-text личный кабинет
@@ -118,13 +118,13 @@ html.page(lang="ru", ng-app="polartour")
 
     footer
       section.sitemap(pt-menu, pt-countries-menu)
-        nav.sitemap-block(ng-repeat="item in menu")
+        nav.sitemap-block(ng-repeat="item in menu", ng-show="item.active")
           p.sitemap-block-header {{ item.name }}
-          a.sitemap-block-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in item.submenu") {{ submenu.name }}
+          a.sitemap-block-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in item.submenu", ng-show="submenu.active") {{ submenu.name }}
         hr.sitemap-divider
-        nav.sitemap-block(ng-repeat="country in countriesMenu")
+        nav.sitemap-block(ng-repeat="country in countriesMenu", ng-show="country.active")
           a.sitemap-block-header(ng-href="{{ country.href }}") {{ country.name }}
-          a.sitemap-block-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in country.submenu") {{ submenu.name }}
+          a.sitemap-block-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in country.submenu", ng-show="submenu.active") {{ submenu.name }}
 
       section.partners
         .partners-title все наши предложения вы можете найти в системах

@@ -1,7 +1,7 @@
 div(pt-countries-menu)
-  .countries-item(ng-repeat="country in countriesMenu | orderBy:'+position'", pt-countries-menu-item)
+  .countries-item(ng-repeat="country in countriesMenu | orderBy:'+position'", pt-countries-menu-item, ng-show="country.active")
     a.countries-item-link(ng-href="{{ country.href }}")
       i.countries-item-link-flag(class="flag flag-{{ getCode(country.name) }}")
       | {{ country.name }}
     nav.countries-item-menu
-      a.countries-item-menu-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in country.submenu | orderBy:'+position'") {{ submenu.name }}
+      a.countries-item-menu-link(ng-href="{{ submenu.href }}", pt-target="submenu.newWindow", ng-repeat="submenu in country.submenu | orderBy:'+position'", ng-show="submenu.active") {{ submenu.name }}

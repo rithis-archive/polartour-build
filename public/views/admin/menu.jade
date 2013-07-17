@@ -8,9 +8,13 @@
           .menu-edit-item-toggle.big_button(ng-click="hidden[menuItem.name] = !hidden[menuItem.name]", ng-show="!hidden[menuItem.name]") +
           .menu-edit-item-toggle.big_button(ng-click="hidden[menuItem.name] = !hidden[menuItem.name]", ng-show="hidden[menuItem.name]") -
           input.menu-edit-item-name(ng-model="menuItem.name")
-          label.menu-edit-item-new
-            input(type="checkbox", ng-model="menuItem.newWindow")
-            | в новом окне
+          span.menu-edit-item-new
+            label
+              input(type="checkbox", ng-model="menuItem.newWindow")
+              | в новом окне
+            label
+              input.menu-edit-item-active(type="checkbox", ng-model="menuItem.active")
+              | активно
           input.menu-edit-item-href(ng-model="menuItem.href")
           .menu-edit-item-remove
             .big_button(ng-click="remove(type, menuItem)") -
@@ -21,6 +25,8 @@
               label.menu-edit-submenu-item-new
                 input(type="checkbox", ng-model="submenuItem.newWindow")
                 | в новом окне
+                input.menu-edit-item-active(type="checkbox", ng-model="submenuItem.active")
+                | активно
               input.menu-edit-submenu-item-href(ng-model="submenuItem.href")
               .menu-edit-submenu-item-remove
                 .big_button(ng-click="removeSubmenu(menuItem, submenuItem)") -

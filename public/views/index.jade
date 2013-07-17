@@ -154,7 +154,7 @@ nav.countries(pt-countries, class="{{ showDetailSearch && 'block__color-white'}}
   
       button.big_button(type="submit") проверить
 
-  section.block.block__color-wheat.currency_rates_block
+  section.block.block__color-wheat.currency_rates_block(ng-show="rates")
     h2.block-header курс валют
   
     table.currency_rates
@@ -163,17 +163,11 @@ nav.countries(pt-countries, class="{{ showDetailSearch && 'block__color-white'}}
       thead
         tr
           th
-          th.currency_rates-title USD
-          th.currency_rates-title EUR
+          th.currency_rates-title(ng-repeat="currency in rates.currencies") {{ currency }}
       tbody
-        tr
-          th.currency_rates-title сегодня
-          td.currency_rates-rate 32.5693
-          td.currency_rates-rate 42.0665
-        tr
-          th.currency_rates-title завтра
-          td.currency_rates-rate 32.5693
-          td.currency_rates-rate 42.0665
+        tr(ng-repeat="row in rates.rows")
+          th.currency_rates-title {{ row.date }}
+          td.currency_rates-rate(ng-repeat="rate in row.rates") {{ rate }}
 
 
 section.banners(pt-banners)

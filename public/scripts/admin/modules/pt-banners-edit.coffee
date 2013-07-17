@@ -106,10 +106,10 @@ ptBannersEdit.directive "ptBannerEdit", (CKEditor, $timeout) ->
             <button class="big_button" style="float:left">Удалить</button>
           """
 
-          remove.on "click", ->
+          remove.on "click", (e) ->
             scope.banner.content.splice index, 1
             scope.$apply()
-            banners.children().get(index).remove()
+            $(e.target).parent().remove()
 
           href.append input
           input.on "blur", (e) ->

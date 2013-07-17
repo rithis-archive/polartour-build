@@ -33,6 +33,9 @@ ptButtonsGroup.directive "ptButtonsGroup", ->
             setActive button
 
       scope.$watch attrs.ngModel, (newVal, oldVal, scope) ->
-        active = element.find ":contains(#{newVal})"
-        setActive active if newVal and active
+        if newVal
+          active = element.find ":contains(#{newVal})"
+          setActive active if newVal and active
+        else
+          element.find(".active").toggleClass "active"
       , true

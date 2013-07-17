@@ -35,7 +35,7 @@
 
     .content-detail-field.content-detail-editable-select
       label услуги
-      select(ng-model="hotel.services", ng-multiple="true", required)
+      select(ng-model="hotel.services", multiple)
         option(ng-repeat="service in services", ng-selected="serviceSelected(service)") {{ service }}
       button.big_button(ng-click="showServices = true") +
       div(pt-modal, pt-modal-show="showServices")
@@ -48,7 +48,7 @@
 
     .content-detail-field.content-detail-editable-select
       label инфраструктура
-      select(ng-model="hotel.infrastructure", ng-multiple="true")
+      select(ng-model="hotel.infrastructure", multiple)
         option(ng-repeat="infrastructure in infrastructures",  ng-selected="infrastructureSelected(infrastructure)") {{ infrastructure }}
       button.big_button(ng-click="showInfrastructures = true") +
       div(pt-modal, pt-modal-show="showInfrastructures")
@@ -70,23 +70,23 @@
 
     .content-detail-field
       label адрес
-      input(type="text", ng-model="hotel.adress", required) 
+      input(type="text", ng-model="hotel.adress") 
 
     .content-detail-field
       label телефон
-      input(type="text", ng-model="hotel.phone", required) 
+      input(type="text", ng-model="hotel.phone") 
 
     .content-detail-field
       label факс
-      input(type="text", ng-model="hotel.fax", required) 
+      input(type="text", ng-model="hotel.fax") 
 
     .content-detail-field
       label email
-      input(type="text", ng-model="hotel.email", required) 
+      input(type="text", ng-model="hotel.email") 
 
     .content-detail-field
       label веб-сайт
-      input(type="text", ng-model="hotel.site", required)
+      input(type="text", ng-model="hotel.site")
 
     .content-detail-field
       label ID в базе данных САМО
@@ -95,9 +95,11 @@
     .content-detail-field
       label Изображения
       div
-        .image-item(ng-repeat="image in hotel.images", pt-upload-image, ng-click="upload()", ng-model="hotel.images[$index]")
+        .image-item(ng-repeat="image in hotel.images", pt-upload-image, ng-model="hotel.images[$index]")
           span(ng-hide="image") Загрузить изображение
-          img(ng-show="image", ng-src="{{ image }}")
+          img(ng-show="image", ng-src="{{ image }}", ng-click="upload()")
+          a.image-item-delete(ng-click="deleteImage($index)")
+            img(ng-src="/images/close-search.png")
         .image-item(ng-click="addImage()")
           span Добавить изображение
 

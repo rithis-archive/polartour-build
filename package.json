@@ -35,7 +35,14 @@
   , "superagent": "~0.15"
   , "async": "~0.2"
   , "jade": "~0.32"
-  , "coffee-script": "~1.6"
+  , "jsdom": "~0.7"
+  }
+, "devDependencies": {
+    "coffee-script": "~1.6"
+  , "symfio-suite": "~1.0"
+  , "grunt": "~0.4"
+  , "grunt-simple-mocha": "~0.3"
+  , "grunt-coffeelint": "~0.0"
   }
 , "engines": {
     "node": "~0.8"

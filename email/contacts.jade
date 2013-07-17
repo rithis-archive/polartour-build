@@ -1,0 +1,13 @@
+div
+  h1 Контакты
+  p Название: #{ name }
+  p Email: #{ email }
+  p Телефон: #{ phone }
+  p Расписание: #{ schedule }
+  h1 Сотрудники
+  each employe in employees
+    p Имя: #{ employe.name }
+    p Фамилия: #{ employe.lastname }
+    p Обязанности: #{ employe.responsibilities }
+    p Телефон: #{ employe.phone }
+    br

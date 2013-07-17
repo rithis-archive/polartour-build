@@ -1,0 +1,9 @@
+div
+  h1 Меню
+  p Название: #{ name }
+  p Ссылка: #{ href }
+  h1 Подменю
+    each submenuItem in submenu
+      p Название: #{ submenuItem.name }
+      p Ссылка: #{ submenuItem.href }
+      br
