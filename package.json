@@ -20,7 +20,8 @@
   , "test": "grunt"
   }
 , "dependencies": {
-    "symfio": "~1.0"
+    "coffee-script": "~1.6"
+  , "symfio": "~1.0"
   , "symfio-contrib-express": "~0.1"
   , "symfio-contrib-express-logger": "~0.1"
   , "symfio-contrib-assets": "~0.2"
@@ -38,8 +39,7 @@
   , "jsdom": "~0.7"
   }
 , "devDependencies": {
-    "coffee-script": "~1.6"
-  , "symfio-suite": "~1.0"
+    "symfio-suite": "~1.0"
   , "grunt": "~0.4"
   , "grunt-simple-mocha": "~0.3"
   , "grunt-coffeelint": "~0.0"
