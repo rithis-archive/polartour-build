@@ -1,5 +1,6 @@
 window.polartourAdmin = angular.module "polartourAdmin", [
   "ui.select2"
+  "blueimp.fileupload"
   "ptTowns"
   "ptCountries"
   "ptTours"
@@ -39,6 +40,7 @@ window.polartourAdmin = angular.module "polartourAdmin", [
   "ptRegions"
   "ptMenuEdit"
   "ptGallery"
+  "ptFiles"
 ]
 
 
@@ -212,3 +214,7 @@ polartourAdmin.config ($routeProvider) ->
   $routeProvider.when "/form-descriptions/:code",
     templateUrl: "/views/admin/form-descriptions-detail.html"
     controller: "FormDescriptionsDetailCtrl"
+
+  $routeProvider.when "/files",
+    templateUrl: "/views/admin/files.html"
+    controller: "FilesCtrl"

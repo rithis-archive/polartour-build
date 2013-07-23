@@ -39,6 +39,9 @@
   , "jsdom": "~0.7"
   , "tds": "https://github.com/cretz/node-tds/tarball/master"
   , "dateformat": "~1.0"
+  , "jquery-file-upload-middleware": "~0"
+  , "fileupload": "~0.2"
+  , "forever": "~0.10"
   }
 , "devDependencies": {
     "symfio-suite": "~1.0"

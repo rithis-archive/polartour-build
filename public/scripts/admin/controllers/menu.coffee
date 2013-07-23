@@ -14,7 +14,12 @@ polartourAdmin.controller "MenuCtrl", ($scope, Menu) ->
       countries: title: "меню стран", menu: countriesMenu
 
   $scope.add = (type) ->
-    $scope.data[type].menu.push submenu: [{}], type: type, active: true
+    $scope.data[type].menu.push
+      submenu: [{}],
+      type: type,
+      active: true
+      isNew: true
+      _id: (new Date()).getTime().toString()
 
   $scope.addSubmenu = (menu) ->
     menu.submenu.push
@@ -31,9 +36,10 @@ polartourAdmin.controller "MenuCtrl", ($scope, Menu) ->
       $scope.data[type].menu = updated
 
     return callback() unless item._id
-    
-    menu = new Menu item
-    menu.$remove id: item._id, callback
+
+    if confirm("""Вы точно хотите удалить это меню?""")
+      menu = new Menu item
+      menu.$remove id: item._id, callback
       
 
   $scope.removeSubmenu = (menu, item) ->
@@ -62,13 +68,14 @@ polartourAdmin.controller "MenuCtrl", ($scope, Menu) ->
                     data._id = submenuId unless submenuItem.isNew
                     submenu.push data
               menus.push
-                _id: id,
+                _id: id unless item.isNew,
                 position: menu.position
                 submenu: submenu
                 href: item.href
                 name: item.name
                 newWindow: item.newWindow
                 active: item.active
+                type: type
 
     $.ajax
       type: "PATCH"

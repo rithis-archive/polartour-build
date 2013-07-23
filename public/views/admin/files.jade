@@ -1,0 +1,22 @@
+div(id="clipWrapper", data-clipboard-text="{{ clipboardText }}")
+
+.content(pt-list, data-file-upload="options")
+  .title Загрузки
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    div.big_button.fileinput-button(style="text-align:center;")
+      загрузить
+      input(type="file", name="files[]", multiple, ng-disabled="disabled")
+
+  section.content-body
+    .list
+      .files-item(ng-repeat="file in filteredData | orderBy:'+createdAt'")
+        a.file-cell-width-8x.list-cell-item(href="javascript:void(0)") {{ file.basename }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+      
