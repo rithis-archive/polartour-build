@@ -41,6 +41,7 @@ window.polartourAdmin = angular.module "polartourAdmin", [
   "ptMenuEdit"
   "ptGallery"
   "ptFiles"
+  "ptConfigs"
 ]
 
 
@@ -218,3 +219,11 @@ polartourAdmin.config ($routeProvider) ->
   $routeProvider.when "/files",
     templateUrl: "/views/admin/files.html"
     controller: "FilesCtrl"
+
+  $routeProvider.when "/configs",
+    templateUrl: "/views/admin/configs.html"
+    controller: "ConfigsCtrl"
+
+  $routeProvider.when "/configs/:id",
+    templateUrl: "/views/admin/configs-detail.html"
+    controller: "ConfigsDetailCtrl"

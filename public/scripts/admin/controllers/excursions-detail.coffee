@@ -8,6 +8,12 @@ polartourAdmin.controller "ExcursionsDetailCtrl", ($scope, $location, $routePara
     $scope.excursion.images ?= []
     $scope.excursion.images.push ""
 
+  $scope.deleteImage = (index) ->
+    images = []
+    $scope.excursion.images.forEach (image, pos) ->
+      images.push image unless pos == index
+    $scope.excursion.images = images
+
   $scope.isSelectedTag = (name) ->
     $scope.selectedTags and $scope.selectedTags.indexOf(name) != -1
 
@@ -28,5 +34,5 @@ polartourAdmin.controller "ExcursionsDetailCtrl", ($scope, $location, $routePara
     if $routeParams.id == "new"
       $location.url "/excursions"
     else if confirm("""Вы точно хотите удалить "#{$scope.excursion.name}"?""")
-      $scope.excursions.$remove id: $routeParams.id, ->
+      $scope.excursion.$remove id: $routeParams.id, ->
         $location.url "/excursions"

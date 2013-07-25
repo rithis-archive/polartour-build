@@ -1,0 +1,30 @@
+.content(pt-list)
+  .title Список свойств
+
+  section.content-block.block.block__color-blue(pt-search, class="block__search-collapsed")
+    form.search
+      .search-item
+        label.search-label название
+        input(ng-model="filters.property")
+
+    button.big_button(type="submit", ng-click="new()") создать
+
+    a.show-detail-search(ng-click="filters = {}", href="javascript:void(0)") очистить фильтр
+
+  section.content-body
+    .list
+      .list-title
+        span.list-cell-width-8x название
+  
+      .list-placeholder
+
+      .list-item(ng-repeat="config in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-8x.list-cell-item(href="#!/configs/{{ config._id }}") {{ config.property }}
+  
+      .list-placeholder
+  
+      .list-pagination
+        div.buttons-group(pt-buttons-group, ng-model="currentPage", ng-show="pagination.length > 1")
+          a.button(href="#", ng-repeat="page in pagination", class="{{ currentPage == page && 'active' }}") {{ page }}
+
+      

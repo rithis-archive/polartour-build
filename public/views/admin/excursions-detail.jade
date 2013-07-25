@@ -37,6 +37,8 @@
         .image-item(ng-repeat="image in excursion.images", pt-upload-image, ng-click="upload()", ng-model="excursion.images[$index]")
           span(ng-hide="image") Загрузить изображение
           img(ng-show="image", ng-src="{{ image }}")
+          a.image-item-delete(ng-click="deleteImage($index)")
+            img(ng-src="/images/close-search.png")
         .image-item(ng-click="addImage()")
           span Добавить изображение
 

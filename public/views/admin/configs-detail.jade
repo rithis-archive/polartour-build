@@ -1,0 +1,15 @@
+.content
+  .title Редактирование свойства
+
+
+  form.content-detail(name="configForm")
+    .content-detail-field
+      label название
+      input(type="text", ng-model="config.property", required) 
+
+    .content-detail-field
+      label анонс
+      input(type="text", ng-model="config.value", required)
+
+      button.big_button(type="submit", ng-click="save()") Сохранить
+      a.content-detail-delete(ng-click="remove()") Удалить

@@ -20,4 +20,6 @@ config.json
 # ignore compiled assets
 *.html
 *.js
-*.css
+
+public/styles/*.css
+public/styles/admin/*.css

@@ -22,11 +22,13 @@
           ul(pt-submenu-edit)
             li.menu-edit-submenu-item(ng-repeat="submenuItem in menuItem.submenu | orderBy:'+position'", pt-submenu-id="{{ submenuItem._id }}")
               input.menu-edit-submenu-item-name(ng-model="submenuItem.name")
-              label.menu-edit-submenu-item-new
-                input(type="checkbox", ng-model="submenuItem.newWindow")
-                | в новом окне
-                input.menu-edit-item-active(type="checkbox", ng-model="submenuItem.active")
-                | активно
+              span.menu-edit-submenu-item-new
+                label
+                  input(type="checkbox", ng-model="submenuItem.newWindow")
+                  | в новом окне
+                label
+                  input.menu-edit-item-active(type="checkbox", ng-model="submenuItem.active")
+                  | активно
               input.menu-edit-submenu-item-href(ng-model="submenuItem.href")
               .menu-edit-submenu-item-remove
                 .big_button(ng-click="removeSubmenu(menuItem, submenuItem)") -

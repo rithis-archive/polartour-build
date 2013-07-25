@@ -96,7 +96,7 @@
       label Изображения
       div
         .image-item(ng-repeat="image in hotel.images", pt-upload-image, ng-model="hotel.images[$index]")
-          span(ng-hide="image") Загрузить изображение
+          span(ng-hide="image", ng-click="upload()") Загрузить изображение
           img(ng-show="image", ng-src="{{ image }}", ng-click="upload()")
           a.image-item-delete(ng-click="deleteImage($index)")
             img(ng-src="/images/close-search.png")

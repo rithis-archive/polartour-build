@@ -14,20 +14,10 @@ ptBannersEdit.directive "ptBannersEdit", ->
 ptBannersEdit.directive "ptBannerEdit", (CKEditor, $timeout) ->
   link: (scope, element, attrs) ->
     lastValue =
-      image: " "
+      image: {}
       gallery: []
       html: " "
       flash: " "
-
-    scope.uploadImage = ->
-      upload (image) ->
-        scope.banner.content = image
-        scope.$apply()
-
-    scope.uploadGalleryImage = (index) ->
-      upload (image) ->
-        scope.banner.content[index] = image
-        scope.$apply()
 
     upload = (width, height, callback) ->
       fileupload = $("<input type=\"file\">").fileupload
@@ -55,7 +45,7 @@ ptBannersEdit.directive "ptBannerEdit", (CKEditor, $timeout) ->
         """
         
         input = $ """
-          <input type="text" value="#{ scope.banner.content.href }" />
+          <input type="text" value="#{ scope.banner.content.href || '' }" />
         """
         
         href = $ """

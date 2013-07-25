@@ -25,3 +25,6 @@ ptCKEditor.directive "ptCkeditor", (CKEditor, $timeout) ->
       setTimeout ->
         editor.setData controller.$viewValue
       , 300
+      
+    scope.$watch attrs.ngModel, (newVal) ->
+      editor.setData newVal
