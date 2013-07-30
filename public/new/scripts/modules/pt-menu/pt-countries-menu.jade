@@ -1,0 +1,8 @@
+.country(class="country__{{ type }}")
+  .country__item(ng-repeat="menuItem in countriesMenu")
+    .country__item-in
+      a.country__name(href="{{ menuItem.href }}")
+        | {{ menuItem.name }}
+        i.flag(class="flag-{{ menuItem.code }}")
+      .country__nav
+        a.country__link(ng-repeat="submenuItem in menuItem.submenu", href='{{ submenuItem.href }}') {{ submenuItem.name }}

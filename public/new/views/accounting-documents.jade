@@ -1,0 +1,96 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .country
+    pt-countries-menu(pt-countries-menu-type="yellow")
+    // END .countries
+    // BEGIN .container
+    .container
+      h1.container__title Запрос на получение бухгалтерских документов
+      // BEGIN .request
+      .request
+        .request__desc
+          .text
+            p.text__p
+              | В случае, если Вы забираете бухгалтерские документы в офисе ООО «Полар тур», при себе иметь Доверенность (Типовая межотраслевая форма №М-2) «на получение бухгалтерских документов» (которую Вы сдаете в бухгалтерию ООО «Полар тур»), или печать.
+            p.text__p
+              | Информация о готовности бухгалтерских документов поступит на электронный адрес Вашей организации, который вы указали в форме.
+        .request__form
+          label.label
+            .label__title ваше имя
+            input.label__text(type='text')
+          label.label
+            .label__title официальное наименование организации
+            input.label__text(type='text')
+          label.label
+            .label__title ИНН
+            input.label__text(type='text')
+          label.label
+            .label__title номера заявок
+            input.label__text(type='text')
+          label.label
+            .label__title почтовый адрес с индексом
+            input.label__text(type='text')
+          .btn
+            button.btn__item отправить
+      // END .request
+    // END .container
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')
+      li.systems__item
+        a.systems__link-3(href='#')
+      li.systems__item
+        a.systems__link-4(href='#')
+      li.systems__item
+        a.systems__link-5(href='#')
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+// END .footer

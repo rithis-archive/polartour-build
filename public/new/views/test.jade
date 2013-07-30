@@ -1,0 +1,35 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .container
+    .container
+      h1.container__title Тестовая страница
+      // BEGIN .search
+      form.search(name="form")
+        .search__form
+          .search__fields(ng-init="select1.value = 2; select1.values = [1, 2, 3, 4]")
+            .label(style="color: white") value: {{ select1.value }} valid: {{ form.select1.$valid }}
+            .label(ng-class="{label_error: form.select1.$invalid}")
+              .label__title select1
+              pt-select(ng-model="$parent.select1.value", name="select1", pt-select-values="select1.values")
+
+          .search__fields(ng-init="select2.value = 'mow'; select2.values = {mow: 'Moscow', nyc: 'New-York'}")
+            .label(style="color: white") value: {{ select2.value }} valid: {{ form.select2.$valid }}
+            .label(ng-class="{label_error: form.select2.$invalid}")
+              .label__title select2
+              pt-select(ng-model="$parent.select2.value", name="select2", pt-select-values="select2.values")
+
+          .search__fields(ng-init="select3.values = ['a', 'b', 'c']")
+            .label
+              .label__title select3
+              pt-select(pt-select-values="select3.values")
+      // END .search
+    // END .container
+  // END .layout
+// END .wrap

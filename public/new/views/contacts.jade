@@ -1,0 +1,119 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .country
+    pt-countries-menu(pt-countries-menu-type="yellow")
+    // END .countries
+    // BEGIN .container
+    .container
+      h1.container__title Контакты
+      // BEGIN .contacts
+      .contacts
+        .map
+          .map__wrap
+            img(src='img/pic8.jpg', alt='')
+          .map__info
+            .text
+              p.text__p
+                | Наш адрес: город Москва, улица Киевская,
+                br
+                | дом 7, подъезд 7, этаж 6.
+              p.text__p
+                | Адрес для почтовой корреспонденции:
+                br
+                | 121059, г. Москва, ул. Киевская, д. 7.
+              p.text__p
+                | Режим работы офиса:
+                br
+                | в будни с 10:00 до 19:00;
+                br
+                | в субботу (дежурный режим) с 11:00 до 16:00;
+                br
+                | воскресенье — выходной.
+              p.text__p
+                | Режим работы кассы:
+                br
+                | в будни с 10:00 до 18:45;
+                br
+                | обед с 14:30 до 15:00.
+        .departments(ng-repeat="department in departments")
+          .departments__title {{ department.name }}
+          .departments__detail
+            .departments__mail
+              a.departments__link(href='mailto:{{ department.email }}')
+                | {{ department.email }}
+                i.ico-mail
+            .departments__phone(ng-show="department.phone")
+              | {{ department.phone }}
+              i.ico-phone
+            .departments__time
+              | {{ department.schedule }}
+              i.ico-time
+          .departments__list
+            .departments__info(ng-repeat="employee in department.employees")
+              .departments__name {{ employee.name }} {{ employee.lastname }}
+              .departments__txt(ng-bind-html-unsafe="employee.responsibilities.join(',<br/>')")
+              .departments__txt {{ employee.phone }}
+              .departments__mail
+                a.departments__link(href='mailto:{{ employee.email }}') {{ employee.email }}
+      // END .contacts
+    // END .container
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')
+      li.systems__item
+        a.systems__link-3(href='#')
+      li.systems__item
+        a.systems__link-4(href='#')
+      li.systems__item
+        a.systems__link-5(href='#')
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+// END .footer

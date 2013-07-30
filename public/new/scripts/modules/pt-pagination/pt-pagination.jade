@@ -1,0 +1,2 @@
+.pagination(ng-show="pagination.pages.length > 1")
+  a.pagination__link(ng-repeat="page in pagination.pages", ng-click="pagination.setPage(page)", ng-class="{pagination__link_active: pagination.isActive(page)}") {{ page }}

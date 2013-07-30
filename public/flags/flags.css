@@ -1,4 +1,7 @@
 .flag {
+  position: absolute;
+  top: 12px;
+  left: 20px;
   width: 25px;
 	height: 18px;
 	background:url(flags.png) no-repeat

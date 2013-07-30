@@ -1,0 +1,5 @@
+span.hot__gallery(class="hot__{{ getSize(banner.size) }}", pt-banner)
+  ul(ng-style="listposition")
+    li(ng-repeat="image in banner.content")
+      a(href="{{ image.href }}")
+        img(ng-src="{{ image.image }}", alt='')

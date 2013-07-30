@@ -1,0 +1,120 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .country
+    pt-countries-menu(pt-countries-menu-type="yellow")
+    // END .countries
+    // BEGIN .container
+    .container
+      // BEGIN .link-back
+      .link-back
+        a.link-back__item(ng-href='#!/{{ hotel.country }}/hotels')
+          i.ico-back
+          | гостиницы
+      // END .link-back
+      // BEGIN .hotel
+      .hotel
+        .hotel__title {{ hotel.name }} {{ hotel.category }}*
+        .hotel__title-desc {{ hotel.region }}
+        .layout.layout_hotel
+          .aside
+            //
+              .btn.hotel__price
+                button.btn__item 45 184 p.
+              .hotel__detail 7 ночей, 2 взрослых
+            pt-gallery(pt-gallery-images="hotel.images")
+          .right
+            // BEGIN .content
+            .hotel__text
+              p.hotel__text-p {{ hotel.description }}
+              div(ng-show="hotel.services.length > 0")
+                .hotel__text-title услуги
+                ul.hotel__text-list
+                  li.hotel__text-list-item(ng-repeat="service in hotel.services") {{ service }}
+              div(ng-show="hotel.infrastructure.length > 0")
+                .hotel__text-title на территории отеля
+                ul.hotel__text-list
+                 li.hotel__text-list-item(ng-repeat="infrastructure in hotel.infrastructure") {{ infrastructure }}
+              div(ng-repeat="room in hotel.rooms")
+                .hotel__text-title {{ room.name }}
+                p.hotel__text-p {{ room.description }}
+              .hotel__text-title расположение
+              p.hotel__text-p {{ hotel.locationDescription }}
+              pt-map(pt-map-lat="{{ hotel.location[0] }}", pt-map-lon="{{ hotel.location[1] }}", pt-map-zoom="8")
+              ul.hotel__text-contacts
+                li.hotel__text-contacts-item(ng-show="hotel.adress")
+                  strong.hotel__text-contacts-bold адрес:
+                  |  {{ hotel.adress }}
+                li.hotel__text-contacts-item(ng-show="hotel.phone")
+                  strong.hotel__text-contacts-bold телефон:
+                  |  {{ hotel.phone }}
+                li.hotel__text-contacts-item(ng-show="hotel.fax")
+                  strong.hotel__text-contacts-bold факс:
+                  |  {{ hotel.fax }}
+              p.hotel__text-p-link(ng-show="hotel.email")
+                a.hotel__text-link(ng-href='mailto:{{ hotel.email }}') {{ hotel.email }}
+              p.hotel__text-p-link(ng-show="hotel.site")
+                a.hotel__text-link(ng-href='{{ hotel.site }}') {{ hotel.site }}
+            // END .content
+      // END .hotel
+    // END .container
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')
+      li.systems__item
+        a.systems__link-3(href='#')
+      li.systems__item
+        a.systems__link-4(href='#')
+      li.systems__item
+        a.systems__link-5(href='#')
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+// END .footer
+pt-gallery-popup

@@ -1,0 +1,13 @@
+.links
+  .links__nav
+    ul.links__list(ng-repeat="menuItem in menu")
+      li.links__item-first
+        a.links__link(href='{{ menuItem.href }}') {{ menuItem.name }}
+      li.links__item(ng-repeat="submenuItem in menuItem.submenu")
+        a.links__link(href='{{ submenuItem.href }}') {{ submenuItem.name }}
+  .links__countries
+    ul.links__list(ng-repeat="menuItem in countriesMenu")
+      li.links__item-first
+        a.links__link(href='{{ menuItem.href }}') {{ menuItem.name }}
+      li.links__item(ng-repeat="submenuItem in menuItem.submenu")
+        a.links__link(href='{{ submenuItem.href }}') {{ submenuItem.name }}

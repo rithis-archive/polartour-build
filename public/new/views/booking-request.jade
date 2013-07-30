@@ -1,0 +1,231 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .country
+    pt-countries-menu(pt-countries-menu-type="yellow")
+    // END .countries
+    // BEGIN .container
+    .container
+      h1.container__title Заявка на бронирование
+      // BEGIN .reserve
+      .reserve
+        .reserve__txt
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, sit, pariatur soluta tempore aspernatur alias officiis magnam vel perspiciatis ad fuga consequatur reprehenderit dolorum itaque quaerat labore dolores ducimus nisi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, excepturi non dicta libero at accusamus corrupti veniam minus perspiciatis porro dolorum molestias qui explicabo consectetur eum rerum voluptatibus! Nemo, amet.
+      .reserve__form
+        .title информация об агенстве
+        .reserve__fields.reserve__fields_border
+          .reserve__column
+            label.label
+              .label__title город
+              input.label__text(type='text')
+            label.label.reserve__agency
+              .label__title название агенства
+              input.label__text(type='text')
+            label.label.reserve__phone
+              .label__title телефон
+              input.label__text(type='text')
+            label.label.reserve__mail
+              .label__title email
+              input.label__text(type='text')
+            label.label.reserve__address
+              .label__title адрес
+              input.label__text(type='text')
+        .title заявка на бронирование тура
+        .reserve__fields
+          .reserve__column.reserve__column_small
+            label.label
+              .label__title город отправления
+              input.label__text(type='text')
+          .reserve__column.reserve__column_small
+            label.label
+              .label__title страна
+              input.label__text(type='text')
+          .reserve__column.reserve__column_small
+            label.label
+              .label__title тур
+              input.label__text(type='text')
+        .reserve__fields
+          .reserve__column.reserve__column_small
+            label.label
+              .label__title отель
+              input.label__text(type='text')
+          .reserve__column.reserve__column_small
+            label.label
+              .label__title размещение
+              input.label__text(type='text')
+          .reserve__column.reserve__column_small
+            .label.reserve__date
+              .label__title дата (от и до)
+              .label__in
+                .label__select.label__select_date
+                  input.label__text(type='text', value='')
+                  button.label__btn
+              .label__dash —
+              .label__in
+                .label__select.label__select_date
+                  input.label__text(type='text', value='')
+                  button.label__btn
+        .reserve__fields.reserve__fields_border
+          .reserve__column.reserve__column_small
+            .fieldset.reserve__detail
+              .label
+                .label__title ночей
+                .label__in
+                  .label__select
+                    input.label__text(type='text', value='')
+                    button.label__btn
+              label.label
+                .label__title ко-ство туристов
+                input.label__text(type='text')
+          .reserve__column.reserve__column_small
+            label.label
+              .label__title цена
+              input.label__text(type='text')
+          .reserve__column.reserve__column_small
+            label.label
+              .label__title № СПО
+              input.label__text(type='text')
+        .title данные туристов
+        .reserve__fields.reserve__fields_border
+          .data
+            button.btn-field.btn-field-add
+              i.btn-field-ico
+            .data__item
+              button.btn-field.btn-field-open
+                i.btn-field-ico
+              .data__fields
+                .data__sex
+                  label.label.label_radio
+                    .input-radio.input-radio_checked
+                    .label__title муж.
+                  label.label.label_radio
+                    .input-radio
+                    .label__title жен.
+                label.label.data__fio
+                  .label__title ФИО
+                  input.label__text(type='text')
+                .label
+                  .label__title дата рождения
+                  .label__in
+                    .label__select.label__select_date
+                      input.label__text(type='text', value='')
+                      button.label__btn
+              .data__fields.data__fields_down
+                .label
+                  .label__title паспортные данные
+                  .data__group
+                    input.label__text.data__series(type='text', placeholder='серия')
+                    input.label__text.data__number(type='text', placeholder='номер')
+                    .label__in.data__validity
+                      .label__select.label__select_date
+                        input.label__text(type='text', placeholder='срок действия')
+                        button.label__btn
+                    .label__in.data__when
+                      .label__select.label__select_date
+                        input.label__text(type='text', placeholder='когда выдан')
+                        button.label__btn
+                    input.label__text.data__who(type='text', placeholder='кем выдан')
+                    input.label__text.data__nationality(type='text', placeholder='гражданство')
+            .data__item
+              button.btn-field.btn-field-open
+                i.btn-field-ico
+              .data__fields
+                .data__sex
+                  label.label.label_radio
+                    .input-radio.input-radio_checked
+                    .label__title муж.
+                  label.label.label_radio
+                    .input-radio
+                    .label__title жен.
+                label.label.data__fio
+                  .label__title ФИО
+                  input.label__text(type='text')
+                .label
+                  .label__title дата рождения
+                  .label__in
+                    .label__select.label__select_date
+                      input.label__text(type='text', value='')
+                      button.label__btn
+              .data__fields.data__fields_down
+                .label
+                  .label__title паспортные данные
+                  .data__group
+                    input.label__text.data__series(type='text', placeholder='серия')
+                    input.label__text.data__number(type='text', placeholder='номер')
+                    .label__in.data__validity
+                      .label__select.label__select_date
+                        input.label__text(type='text', placeholder='срок действия')
+                        button.label__btn
+                    .label__in.data__when
+                      .label__select.label__select_date
+                        input.label__text(type='text', placeholder='когда выдан')
+                        button.label__btn
+                    input.label__text.data__who(type='text', placeholder='кем выдан')
+                    input.label__text.data__nationality(type='text', placeholder='гражданство')
+        .reserve__fields.reserve__fields_comm
+          label.label
+            .label__title ваши комментарии
+            textarea.label__textarea
+          .btn
+            button.btn__item отправить заявку
+      // END .reserve
+    // END .container
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')
+      li.systems__item
+        a.systems__link-3(href='#')
+      li.systems__item
+        a.systems__link-4(href='#')
+      li.systems__item
+        a.systems__link-5(href='#')
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+// END .footer

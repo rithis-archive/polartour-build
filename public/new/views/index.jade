@@ -1,0 +1,285 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .search
+    form.search(name="searchForm")
+      .title поиск тура
+      button.search__close
+      .search__form
+        .search__fields
+          .search__column(ng-init="search.from = 2; values.from = [1, 2, 3, 4]")
+            .label(ng-class="{label_error: searchForm.from.$invalid}")
+              .label__title откуда летим?
+              pt-select(ng-model="$parent.search.from", name="from", pt-select-values="values.from")
+          .search__column
+            .label.label_error
+              .label__title куда направляемся?
+              .label__in
+                input.label__text(type='text', value='Африка')
+                button.label__btn
+          .search__column
+            .label
+              .label__title тур
+              .label__in
+                input.label__text(type='text', value='Любой')
+                button.label__btn
+        .search__fields
+          .search__column.search__column_date
+            .label
+              .label__title дата вылета
+              .label__in
+                .label__select.label__select_date
+                  input.label__text(type='text', value='Африка')
+                  button.label__btn
+              .label__dash —
+              .label__in
+                .label__select.label__select_date
+                  input.label__text(type='text', value='Африка')
+                  button.label__btn
+          .search__column.search__column_time
+            .label.label_active
+              .label__title ночей
+              .label__in
+                input.label__text(type='text', value='от 7 до 9')
+                button.label__btn
+                .label__drop
+                  .toddler
+                    .toddler__line
+                      .toddler__drag(style='width: 70px')
+                        .toddler__btn-left
+                        .toddler__btn-right
+                    .toddler__values
+                      .toddler__min 2
+                      .toddler__max 14
+            .label.label_active
+              .label__title стоимость
+              .label__in
+                input.label__text(type='text', value='100 000 - 500 000')
+                button.label__btn
+                .label__drop
+                  .currency
+                    .currency__item.currency__item_active RUB
+                    .currency__item USD
+                    .currency__item EUR
+                  .toddler
+                    .toddler__line
+                      .toddler__drag(style='width: 120px')
+                        .toddler__btn-left
+                        .toddler__btn-right
+                    .toddler__values
+                      .toddler__min 100 000
+                      .toddler__max 1000 000
+          .search__column.search__column_tourists
+            .label.label_active
+              .label__title путешественники
+              .label__in
+                input.label__text(type='text', value='2 взрослых, 2 ребенка, 1 младенец')
+                button.label__btn
+                .label__drop.label__drop_numbers
+                  .label
+                    .label__title взрослых
+                    .label__number
+                      button.label__number-minus
+                      input.label__number-value(type='text', value='7')
+                      button.label__number-plus
+                  .label
+                    .label__title взрослых
+                    .label__number
+                      button.label__number-minus
+                      input.label__number-value(type='text', value='7')
+                      button.label__number-plus
+                  .label
+                    .label__title взрослых
+                    .label__number
+                      button.label__number-minus
+                      input.label__number-value(type='text', value='7')
+                      button.label__number-plus
+        .search__fields.search__fields_detail
+          .search__column
+            .label
+              .label__title город
+              .label__in
+                .label__select
+                  input.label__text(type='text', value='Вена')
+                  button.label__btn
+          .search__column
+            .label
+              .label__title категория
+              .label__radio
+                .label__radio-item.label__radio-item_active 3 и менее
+                .label__radio-item 4
+                .label__radio-item 5
+                .label__radio-item HV
+          .search__column
+            .label
+              .label__title гостинницы
+              .label__in
+                .label__chosen
+                  .label__chosen-item TezTour
+                  .label__chosen-item Pegastouristic
+                  .label__chosen-item TezTour
+                button.label__btn
+        .search__fields.search__fields_down
+          .search__column
+            .label
+              .label__title питание
+              .label__radio
+                .label__radio-item.label__radio-item_active AI
+                .label__radio-item BB
+                .label__radio-item HB
+                .label__radio-item RO
+          .search__column.search__column_side
+            .label.label_active
+              .label__title Принимающая сторона
+              .label__in
+                input.label__text(type='text', value='Tadam')
+                button.label__btn
+                .label__drop
+                  .label__chosen
+                    .label__chosen-item TezTour
+                    .label__chosen-item Pegastouristic
+                    .label__chosen-item TezTour
+                  .label__list
+                    .label__list-item Турция
+                    .label__list-item Турция
+                    .label__list-item Тунис
+                    .label__list-item Тунис
+                    .label__list-item Тунис
+                    .label__list-item Тунис
+                    .label__list-item Тунис
+                    .label__list-item Тунис
+          .search__column.search__column_param
+            label.label.label_checkbox
+              .input-checkbox
+              .label__title есть места на рейсах
+            label.label.label_checkbox
+              .input-checkbox.input-checkbox_checked
+              .label__title нет остановки продаж
+          .btn
+            button.btn__item искать
+  // END .search
+  // BEGIN .layout
+  .layout
+    .right
+      // BEGIN .country
+      pt-countries-menu(pt-countries-menu-type="yellow")
+      // END .countries
+    aside.aside
+      // BEGIN .search-tour
+      form.search-tour(ng-controller="PtFastSearchCtrl", name="searchForm")
+        .title поиск тура
+        .search-tour__form
+          .fieldset
+            .label
+              .label__title город отправления
+              pt-select(ng-model="$parent.search.from", name="from", pt-select-values="values.from")
+            .label
+              .label__title страна
+              pt-select(ng-model="$parent.search.to", name="to", pt-select-values="values.to")
+          .fieldset
+            .label(ng-class="{label_error: searchForm.from.$invalid}")
+              .label__title дата вылета
+              pt-calendar(ng-model="$parent.search.date", name="date", pt-calendar-year-stop="2013", pt-calendar-year-reverse)
+            .label.label_mod(ng-class="{label_error: searchForm.nights.$invalid}")
+              .label__title ночей
+              pt-number(ng-model="$parent.search.nights", name="nights", pt-number-min="1", pt-number-max="29")
+        .btn
+          button.btn__item искать
+        a.link-search-extended(href='#') расширенный поиск
+      // END .search-tour
+      // BEGIN .s-events
+      .s-events(ng-controller="PtImportantNewsCtrl")
+        .title важные события
+        ul.s-events__list
+          li.s-events__item(ng-repeat="news in importantNews")
+            a.s-events__link(ng-href='#!/news/{{ news._id }}') {{ news.title }}
+            .s-events__time {{ news.createdAt | date:"dd.MM.yyyy HH:mm" }}
+        .s-events__all
+          a.s-events__all-link(href='#!/news') все новости
+      // END .s-events
+      // BEGIN .s-statement
+      .s-statement
+        .title проверка заявки
+        .s-statement__form
+          .fieldset
+            label.label
+              .label__title номер заявки
+              input.label__text(type='text', placeholder='1234567')
+            label.label
+              .label__title номер паспорта
+              input.label__text(type='text', placeholder='1234567')
+          .btn
+            button.btn__item проверить
+      // END .s-statement
+      // BEGIN .s-exchange
+      .s-exchange(ng-controller="PtExchangeRatesCtrl", ng-show="rates")
+        .title курс валют
+        table.s-exchange__table
+          tr
+            th
+            th(ng-repeat="currency in rates.currencies") {{ currency }}
+          tr(ng-repeat="row in rates.rows")
+            td {{ row.date }}
+            td(ng-repeat="rate in row.rates") {{ rate }}
+      // END .s-exchange
+    .right
+      // BEGIN .hot
+      .hot(pt-banners)
+      // END .hot
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')  
+      li.systems__item
+        a.systems__link-3(href='#')  
+      li.systems__item
+        a.systems__link-4(href='#')  
+      li.systems__item
+        a.systems__link-5(href='#')  
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+// END .footer

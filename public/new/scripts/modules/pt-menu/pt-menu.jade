@@ -1,0 +1,11 @@
+nav.nav
+  ul.nav__list
+    li.nav__item.nav__item_sub(ng-repeat="menuItem in menu", class="nav__item-{{ $index + 1 }}")
+      a.nav__link(href="{{ menuItem.href }}") {{ menuItem.name }}
+      nav.nav__sub
+        li.nav__sub-item(ng-repeat="submenuItem in menuItem.submenu")
+          a.nav__sub-link(href="{{ submenuItem.href }}") {{ submenuItem.name }}
+    li.nav__cab
+      a.nav__link(href="#")
+        i.ico-cab
+        span.nav__txt личный кабинет

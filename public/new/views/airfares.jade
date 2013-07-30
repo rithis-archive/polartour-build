@@ -1,0 +1,115 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .country
+    pt-countries-menu(pt-countries-menu-type="yellow")
+    // END .countries
+    // BEGIN .container
+    .container
+      h1.container__title Справка стоимости А/Б
+      // BEGIN .reference
+      .reference
+        .reference__desc
+          .text
+            p.text__p
+              | Для получения справки по стоимости авиабилета, необходимо заполнить следующую форму (поля "Агентство", "Телефон агентства", "E-mail агентства", "Номер заявки" и первое поле "ФИО туристов" обязательны для заполнения).
+            p.text__p
+              | После нажатия кнопки "отправить" запрос уйдёт на обработку. Ответ будет получен на электронную почту указанную в форме. Если ответ не придёт в течении 24 часов необходимо выслать повторный запрос на doc@polartour.ru (с пометкой о дублировании письма).
+        .reference__form
+          .fieldset
+            label.label
+              .label__title агентство
+              input.label__text(type='text')
+            label.label
+              .label__title телефон агентства
+              input.label__text(type='text')
+          .fieldset
+            label.label
+              .label__title e-mail агентства
+              input.label__text(type='text')
+            label.label
+              .label__title номер заявки
+              input.label__text(type='text')
+          .label
+            .label__title ФИО туристов для которых нужна справка о стоимости А/Б
+            .add-field
+              button.btn-field.btn-field-open
+                i.btn-field-ico
+              .add-field__input
+                input.label__text(type='text')
+            .add-field
+              button.btn-field.btn-field-open
+                i.btn-field-ico
+              .add-field__input
+                input.label__text(type='text')
+            .add-field
+              button.btn-field.btn-field-open
+                i.btn-field-ico
+              .add-field__input
+                input.label__text(type='text')
+            .add-field
+              button.btn-field.btn-field-add
+                i.btn-field-ico
+          .btn
+            button.btn__item отправить
+      // END .reference
+    // END .container
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')
+      li.systems__item
+        a.systems__link-3(href='#')
+      li.systems__item
+        a.systems__link-4(href='#')
+      li.systems__item
+        a.systems__link-5(href='#')
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+// END .footer

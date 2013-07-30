@@ -1,0 +1,111 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .country
+    pt-countries-menu(pt-countries-menu-type="yellow")
+    // END .countries
+    // BEGIN .container
+    .container
+      h1.container__title Гостиницы
+      // BEGIN .search-hotel
+      .search-hotel
+        .search-hotel__form
+          .fieldset
+            .label
+              //.label_active
+              .label__title название
+              .label__in
+                input.label__text(type='text', ng-model="hotelsFilter.name")
+                //
+                  .label__drop
+                    .label__list
+                      .label__list-item Турция
+                      .label__list-item Тунис
+                      .label__list-item Туркменистан
+            //
+              .label
+                .label__title категория
+                .label__in
+                  .label__radio
+                    .label__radio-item.label__radio-item_active 3 и менее
+                    .label__radio-item 4
+                    .label__radio-item 5
+                    .label__radio-item HV
+            .label
+              .label__title регион
+              pt-select(ng-model="$parent.hotelsFilter.region", pt-select-values="hotelRegions")
+        .search-hotel__list(pt-pagination="hotels | filter:hotelsFilter", pt-pagination-id="hotels")
+          table.table
+            thead.table__head
+              tr.table__row
+                th.table__head-title Название
+                th.table__head-title Категория
+                th.table__head-title Регион
+            tbody.table__body
+              tr.table__row(ng-repeat="hotel in pagination.values")
+                td.table__cell
+                  a.table__link(ng-href='#!/{{ hotel.country }}/hotels/{{ hotel._id }}') {{ hotel.name }}
+                td.table__cell {{ hotel.category }}
+                td.table__cell {{ hotel.region }}
+          pt-pagination-controls
+      // END .search-hotel
+    // END .container
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')
+      li.systems__item
+        a.systems__link-3(href='#')
+      li.systems__item
+        a.systems__link-4(href='#')
+      li.systems__item
+        a.systems__link-5(href='#')
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+// END .footer

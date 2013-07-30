@@ -1,0 +1,8 @@
+div
+  .phone.phone_mod
+    .phone__title туристам
+    .phone__number(ng-repeat="phone in phones[0].phones") {{ phone }}
+  .phone
+    .phone__title агентствам
+    .phone__number(ng-repeat="phone in phones[1].phones") {{ phone }}
+

@@ -177,7 +177,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/tr/charges"
+        "href": "#!/tr/supplements"
       }
     ]
   },{
@@ -196,7 +196,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/fr/charges"
+        "href": "#!/fr/supplements"
       }
     ]
   },{
@@ -215,7 +215,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/in/charges"
+        "href": "#!/in/supplements"
       }
     ]
   },{
@@ -234,7 +234,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/vn/charges"
+        "href": "#!/vn/supplements"
       }
     ]
   },{
@@ -253,7 +253,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/at/charges"
+        "href": "#!/at/supplements"
       }
     ]
   },{
@@ -272,7 +272,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/eg/charges"
+        "href": "#!/eg/supplements"
       }
     ]
   },{
@@ -291,7 +291,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/es/charges"
+        "href": "#!/es/supplements"
       }
     ]
   },{
@@ -310,7 +310,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/id/charges"
+        "href": "#!/id/supplements"
       }
     ]
   },{
@@ -329,7 +329,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/cu/charges"
+        "href": "#!/cu/supplements"
       }
     ]
   },{
@@ -348,7 +348,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/ae/charges"
+        "href": "#!/ae/supplements"
       }
     ]
   },{
@@ -367,7 +367,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/th/charges"
+        "href": "#!/th/supplements"
       }
     ]
   },{
@@ -386,7 +386,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/cy/charges"
+        "href": "#!/cy/supplements"
       }
     ]
   },{
@@ -405,7 +405,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/mv/charges"
+        "href": "#!/mv/supplements"
       }
     ]
   },{
@@ -424,7 +424,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/lk/charges"
+        "href": "#!/lk/supplements"
       }
     ]
   },{
@@ -443,7 +443,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/ad/charges"
+        "href": "#!/ad/supplements"
       }
     ]
   },{
@@ -462,7 +462,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/bg/charges"
+        "href": "#!/bg/supplements"
       }
     ]
   },{
@@ -481,7 +481,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/cz/charges"
+        "href": "#!/cz/supplements"
       }
     ]
   },{
@@ -500,7 +500,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/do/charges"
+        "href": "#!/do/supplements"
       }
     ]
   },{
@@ -519,7 +519,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/mx/charges"
+        "href": "#!/mx/supplements"
       }
     ]
   },{
@@ -538,7 +538,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/it/charges"
+        "href": "#!/it/supplements"
       }
     ]
   },{
@@ -557,7 +557,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/hr/charges"
+        "href": "#!/hr/supplements"
       }
     ]
   },{
@@ -576,7 +576,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/me/charges"
+        "href": "#!/me/supplements"
       }
     ]
   },{
@@ -595,7 +595,7 @@
       },
       {
         "name": "трансферы",
-        "href": "#!/gr/charges"
+        "href": "#!/gr/supplements"
       }
     ]
   }

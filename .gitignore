@@ -13,6 +13,7 @@ public/uploads
 build
 public/component.json
 npm-debug.log
+*.swp
 
 # Ignore config
 config.json
@@ -23,3 +24,4 @@ config.json
 
 public/styles/*.css
 public/styles/admin/*.css
+public/new/scripts/modules/*/*.css

@@ -1,0 +1,8 @@
+.gallery
+  .gallery__pic-big
+    a.gallery__pic-link
+      img(ng-src='{{ selectedImage }}', alt='', ng-click="openPopup()")
+  .gallery__pic-list
+    .gallery__pic-list-in
+      a.gallery__pic-link(ng-repeat="image in ptGalleryImages", ng-class="{'gallery__pic-link_active': isSelected(image)}", ng-click="selectImage(image)")
+        img(ng-src='{{ image }}', alt='')

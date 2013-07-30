@@ -1,0 +1,120 @@
+// BEGIN .wrap
+.wrap
+  // BEGIN .header
+  header.header
+    .logo
+      a.logo__pic(href='#') Polar Tour
+    a.link-old-version(href='#') старая версия
+    .label.header__region
+      .label__title ваш регион
+      .label__in
+        .label__select
+          input.label__text(type='text', value='Москва')
+          button.label__btn
+    pt-phones
+    pt-menu
+  // END .header
+  // BEGIN .layout
+  .layout
+    // BEGIN .country
+    pt-countries-menu(pt-countries-menu-type="yellow")
+    // END .countries
+    // BEGIN .container
+    .container
+      h1.container__title
+        | Экскурсии
+        .choice
+          .choice__in
+            .choice__done по Турции
+            ul.choice__list
+              li.choice__item
+                | Турция
+                i.flags-f3
+              li.choice__item
+                | Турция
+                i.flags-f3
+              li.choice__item
+                | Турция
+                i.flags-f3
+              li.choice__item
+                | Турция
+                i.flags-f3
+              li.choice__item
+                | Турция
+                i.flags-f3
+              li.choice__item
+                | Турция
+                i.flags-f3
+      // BEGIN .tours
+      .tours
+        ul.tours__nav
+          li.tours__nav-item(ng-repeat="excursion in excursions")
+            a.tours__nav-link(ng-click="scroll(excursion)") {{ excursion.name }}
+        .tours__list
+          .tours__item(ng-repeat="excursion in excursions", pt-excursion="{{ excursion._id }}")
+            .tours__name {{ excursion.name }}
+            .tours__detail
+              .tours__time(ng-show="excursion.duration")
+                | {{ excursion.duration }}
+                i.ico-time
+              .tours__move(ng-show="excursion.transport")
+                | {{ excursion.transport }}
+                i.ico-move
+              .tours__place(ng-show="excursion.place")
+                | {{ excursion.place }}
+                i.ico-place
+              .tours__price(ng-show="excursion.price")
+                | {{ excursion.price }}
+                i.ico-price
+            .tours__desc
+              pt-gallery(pt-gallery-images="excursion.images")
+              .tours__txt
+                .text
+                  p.text__p {{ excursion.description }}
+      // END .tours
+    // END .container
+  // END .layout
+  // BEGIN .pay-method
+  .pay-method
+    .title способы оплаты
+    ul.pay-method__list
+      li.pay-method__item
+        a.pay-method__link-1(href='#')
+      li.pay-method__item
+        a.pay-method__link-2(href='#')
+      li.pay-method__item
+        a.pay-method__link-3(href='#')
+      li.pay-method__item
+        a.pay-method__link-4(href='#')
+          | Платежные терминалы
+          i.pay-method__ico
+  // END .pay-method
+  // BEGIN .links
+  pt-footer-menu
+  // END .links
+  // BEGIN .systems
+  .systems
+    .title все наши предложения вы можете найти в системах
+    ul.systems__list
+      li.systems__item
+        a.systems__link-1(href='#')
+      li.systems__item
+        a.systems__link-2(href='#')
+      li.systems__item
+        a.systems__link-3(href='#')
+      li.systems__item
+        a.systems__link-4(href='#')
+      li.systems__item
+        a.systems__link-5(href='#')
+  // END .systems
+// END .wrap
+// BEGIN .footer
+footer.footer
+  .footer__in
+    .copyright © 2013 Полар Тур
+    .created
+      | Совместно со студией "
+      a.created__link(href='#') Ритхис
+      | "
+pt-gallery-popup
+// END .footer
