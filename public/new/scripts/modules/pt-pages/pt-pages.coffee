@@ -29,7 +29,7 @@ ptPages.factory "ptPagesManager", (ptPages) ->
 ptPages.controller "PtPagesCtrl", ($scope, $location, ptPagesManager, ptCountriesManager) ->
   part = $location.path().split("/")[1]
   if part and ptCountriesManager.exists part
-    $scope.country = ptCountriesManager.getName part
+    $scope.country = ptCountriesManager.getGenitiveByCode part
 
   setCountries = ->
     links = []
@@ -50,6 +50,5 @@ ptPages.controller "PtPagesCtrl", ($scope, $location, ptPagesManager, ptCountrie
       $scope.page = ptPagesManager.get $location.path()
       setCountries()
 
-  $scope.getGenitive = ptCountriesManager.getGenitive
-  $scope.getGenitiveByCode = (code) ->
-    ptCountriesManager.getGenitive ptCountriesManager.getName code
+  $scope.getCountryName = (code) ->
+    ptCountriesManager.getName code

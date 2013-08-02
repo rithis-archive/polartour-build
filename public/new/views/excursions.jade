@@ -25,26 +25,12 @@
         | Экскурсии
         .choice
           .choice__in
-            .choice__done по Турции
+            .choice__done по {{ country }}
             ul.choice__list
-              li.choice__item
-                | Турция
-                i.flags-f3
-              li.choice__item
-                | Турция
-                i.flags-f3
-              li.choice__item
-                | Турция
-                i.flags-f3
-              li.choice__item
-                | Турция
-                i.flags-f3
-              li.choice__item
-                | Турция
-                i.flags-f3
-              li.choice__item
-                | Турция
-                i.flags-f3
+              li.choice__item(ng-repeat="country in countries")
+                a(href="#!/{{ country }}/excursions")
+                  | {{ getCountryName(country) }}
+                  i(class="flags-f3 flag flag-{{ country }}")
       // BEGIN .tours
       .tours
         ul.tours__nav
@@ -70,7 +56,7 @@
               pt-gallery(pt-gallery-images="excursion.images")
               .tours__txt
                 .text
-                  p.text__p {{ excursion.description }}
+                  p {{ excursion.description }}
       // END .tours
     // END .container
   // END .layout

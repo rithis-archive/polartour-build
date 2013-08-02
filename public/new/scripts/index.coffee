@@ -1,9 +1,11 @@
 pt = angular.module "pt", [
   "ptSelect"
   "ptMenu"
+  "ptRegion"
   "ptCountries"
   "ptPhones"
   "ptNews"
+  "ptRange"
   "ptExchangeRates"
   "ptSearch"
   "ptPagination"
@@ -20,6 +22,11 @@ pt = angular.module "pt", [
   "ptCheckbox"
   "ptSubscribtion"
   "ptFormDescriptions"
+  "ptFeedback"
+  "ptBookingRequest"
+  "ptRadio"
+  "ptAccountingDocuments"
+  "ptAirfares"
 ]
 
 pt.filter "escape", ->
@@ -66,15 +73,19 @@ pt.config ($routeProvider) ->
     controller: "PtSupplementsCtrl"
 
   $routeProvider.when "/airfares",
+    controller: "PtAirfaresCtrl"
     templateUrl: "views/airfares.html"
 
   $routeProvider.when "/accounting-documents",
+    controller: "PtAccountingDocumentsCtrl"
     templateUrl: "views/accounting-documents.html"
 
   $routeProvider.when "/booking-request",
+    controller: "PtBookingRequestCtrl"
     templateUrl: "views/booking-request.html"
 
   $routeProvider.when "/feedback",
+    controller: "PtFeedbackCtrl"
     templateUrl: "views/feedback.html"
 
   $routeProvider.when "/subscribtion",

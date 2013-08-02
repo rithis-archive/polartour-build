@@ -5,8 +5,22 @@ ptExcursions = angular.module "ptExcursions", [
 ptExcursions.factory "ptExcursion", ($resource) ->
   $resource "/excursions"
 
-ptExcursions.controller "PtExcursionsCtrl", ($scope, $routeParams, ptExcursion, ptExcursionsScroll) ->
-  $scope.excursions = ptExcursion.query country: $routeParams.country
+ptExcursions.controller "PtExcursionsCtrl", ($scope, $routeParams, $filter, ptExcursion, ptExcursionsScroll, ptCountriesManager) ->
+  $scope.country =  ptCountriesManager.getGenitiveByCode $routeParams.country
+
+  ptExcursion.query (excursions) ->
+    $scope.excursions = $filter("filter") excursions,
+      country: $routeParams.country
+
+    countries = []
+    excursions.forEach (excursion) ->
+      if countries.indexOf(excursion.country) == -1 \
+        and $routeParams.country != excursion.country
+          countries.push excursion.country
+    $scope.countries = countries
+
+  $scope.getCountryName = (code) ->
+    ptCountriesManager.getName code
 
   $scope.scroll = (excursion) ->
     ptExcursionsScroll.scroll excursion._id

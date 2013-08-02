@@ -20,7 +20,7 @@ ptCheckbox.directive "ptCheckbox", ->
         
       return if init
         
-      element.on "ifChanged", (e) -> 
+      element.on "ifChecked", (e) -> 
         ngModel.$setViewValue !ngModel.$viewValue
 
       init = true

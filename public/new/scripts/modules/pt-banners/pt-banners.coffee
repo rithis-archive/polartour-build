@@ -40,16 +40,19 @@ ptBanners.directive "ptBanners", (ptBanner, $http, $compile, $templateCache, $co
   replace: true
   link: (scope, element) ->
     ptBanner.query (data) ->
-      $filter("orderBy")(data, "+position").forEach (banner) ->
+      banners = []
+      $filter("orderBy")(data, "+position").forEach (banner, index) ->
         tpl = "scripts/modules/pt-banners/pt-banners-#{banner.type}.html"
         $http.get(tpl, cache: $templateCache)
           .then ( response ) ->
             templateScope = scope.$new()
             templateScope.banner = banner
             templateElement = angular.element response.data
-            element.append $compile(templateElement)(templateScope)
+            banners[index] = $compile(templateElement)(templateScope)
             if banner.type is "gallery"
               templateCtrl = $controller "BannerGalleryCtrl",
                 $scope: templateScope 
               $timeout ->
                 templateScope.width = templateElement.width()
+            if banners.length is data.length
+              element.append banners

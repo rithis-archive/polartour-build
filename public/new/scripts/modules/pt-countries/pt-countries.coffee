@@ -297,6 +297,9 @@ class CountriesManager
   getGenitive: (name) =>
     @genitiveCountries[name] or name
 
+  getGenitiveByCode: (code) =>
+    @getGenitive(@getName(code) or code)
+
   exists: (code) ->
     @countries[code]?
 

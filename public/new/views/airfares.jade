@@ -25,48 +25,27 @@
       // BEGIN .reference
       .reference
         .reference__desc
-          .text
-            p.text__p
-              | Для получения справки по стоимости авиабилета, необходимо заполнить следующую форму (поля "Агентство", "Телефон агентства", "E-mail агентства", "Номер заявки" и первое поле "ФИО туристов" обязательны для заполнения).
-            p.text__p
-              | После нажатия кнопки "отправить" запрос уйдёт на обработку. Ответ будет получен на электронную почту указанную в форме. Если ответ не придёт в течении 24 часов необходимо выслать повторный запрос на doc@polartour.ru (с пометкой о дублировании письма).
-        .reference__form
+          .text(ng-bind-html-unsafe="description.description")
+        form.reference__form(name="airfaresForm")
           .fieldset
-            label.label
+            label.label(class="{{ airfaresForm.agency.$invalid && airfaresForm.agency.$dirty && 'label_error'}}")
               .label__title агентство
-              input.label__text(type='text')
-            label.label
+              input.label__text(type='text', name="agency", ng-model="airfares.agency", required)
+            label.label(class="{{ airfaresForm.phone.$invalid && airfaresForm.phone.$dirty && 'label_error'}}")
               .label__title телефон агентства
-              input.label__text(type='text')
+              input.label__text(type='text', name="phone", ng-model="airfares.phone", required)
           .fieldset
-            label.label
+            label.label(class="{{ airfaresForm.email.$invalid && airfaresForm.email.$dirty && 'label_error'}}")
               .label__title e-mail агентства
-              input.label__text(type='text')
-            label.label
+              input.label__text(type='email', name="email", ng-model="airfares.email", required)
+            label.label(class="{{ airfaresForm.number.$invalid && airfaresForm.number.$dirty && 'label_error'}}")
               .label__title номер заявки
-              input.label__text(type='text')
-          .label
+              input.label__text(type='text', name="number", ng-model="airfares.number", required)
+          .label(class="{{ airfaresForm.tourists.$invalid && airfaresForm.tourists.$dirty && 'label_error'}}")
             .label__title ФИО туристов для которых нужна справка о стоимости А/Б
-            .add-field
-              button.btn-field.btn-field-open
-                i.btn-field-ico
-              .add-field__input
-                input.label__text(type='text')
-            .add-field
-              button.btn-field.btn-field-open
-                i.btn-field-ico
-              .add-field__input
-                input.label__text(type='text')
-            .add-field
-              button.btn-field.btn-field-open
-                i.btn-field-ico
-              .add-field__input
-                input.label__text(type='text')
-            .add-field
-              button.btn-field.btn-field-add
-                i.btn-field-ico
+            pt-airfares-tourists(ng-model="airfares.tourists", name="tourists")
           .btn
-            button.btn__item отправить
+            button.btn__item(ng-click="send()") отправить
       // END .reference
     // END .container
   // END .layout

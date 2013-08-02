@@ -21,7 +21,16 @@
     // END .countries
     // BEGIN .container
     .container
-      h1.container__title Доплаты
+      h1.container__title
+        | Доплаты
+        .choice
+          .choice__in
+            .choice__done {{ country }}
+            ul.choice__list
+              li.choice__item(ng-repeat="country in countries")
+                a(href="#!/{{ country }}/supplements")
+                  | {{ getCountryName(country) }}
+                  i(class="flags-f3 flag flag-{{ country }}")
       // BEGIN .surcharge
       .surcharge
         .surcharge__form

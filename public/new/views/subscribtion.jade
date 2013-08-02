@@ -25,14 +25,11 @@
       // BEGIN .subscribe
       .subscribe
         .subscribe__desc
-          .text
-            p.text__p(ng-bind-html-unsafe="description.description")
+          .text(ng-bind-html-unsafe="description.description")
         form.subscribe__form(name="subscribtionForm")
           label.label(class="{{ subscribtionForm.email.$invalid && subscribtionForm.email.$dirty && 'label_error'}}")
             .label__title ваш e-mail
             input.label__text(type='email', ng-model="subscribtion.email", required, name="email")
-          pt-checkbox(label="Ежедневный информационный блок", ng-model="$parent.subscribtion.infoblock")
-          pt-checkbox(label="Спецпредложения", ng-model="$parent.subscribtion.specialOffer")
           .btn
             button.btn__item(ng-click="send()") подписаться
       // END .subscribe

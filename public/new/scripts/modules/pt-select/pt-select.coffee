@@ -14,6 +14,7 @@ ptSelect.directive "ptSelect", ($document) ->
     scope.selected = null
     scope.focused = false
     scope.values = []
+    scope.radio = attributes.hasOwnProperty "ptSelectRadio"
     scope.value = null
     scope.dirty = false
     scope.text = ""
@@ -56,6 +57,7 @@ ptSelect.directive "ptSelect", ($document) ->
       if scope.filteredValues[index]
         scope.selectedIndex = index
         scope.selected = scope.filteredValues[index]
+        scope.scrollList()
       else
         scope.selectedIndex = -1
         scope.selected = null
@@ -89,6 +91,7 @@ ptSelect.directive "ptSelect", ($document) ->
         scope.filteredValues = scope.values
 
       scope.selectValue()
+      scope.scrollList()
 
     scope.$watch "text", (value) ->
       if scope.ignoreFilter
@@ -115,7 +118,27 @@ ptSelect.directive "ptSelect", ($document) ->
       else
         scope.$apply callback
 
+    scope.scrollList = ->
+      if scope.selected
+        setTimeout -> # wait render
+          listScroll = list.scrollTop()
+          visibleHeight = list.height()
+          listPadding = list.innerHeight() - visibleHeight
+          height = list[0].scrollHeight - listPadding
+          itemHeight = height / scope.filteredValues.length
+          firstVisible = Math.ceil(listScroll / itemHeight)
+          lastVisible = Math.ceil((listScroll + visibleHeight - itemHeight) / itemHeight) - 1
+
+          if scope.selectedIndex < firstVisible
+            list.scrollTop itemHeight * scope.selectedIndex
+          else if scope.selectedIndex > lastVisible
+            list.scrollTop itemHeight * (scope.selectedIndex + 1) - visibleHeight
+        , 0
+
+    scope.$watch "focused", ->
+
     input = element.find "input"
+    list = element.find ".label__list"
 
     input.bind "focus", ->
       safeApply ->

@@ -4,7 +4,7 @@ ptCalendar.directive "ptCalendar", ($document) ->
   restrict: "E"
   replace: true
   templateUrl: "scripts/modules/pt-calendar/pt-calendar.html"
-  scope: {}
+  scope: placeholder: "@"
   require: "ngModel"
   link: (scope, element, attributes, ngModel) ->
     scope.focused = false
@@ -119,9 +119,9 @@ ptCalendar.directive "ptCalendar", ($document) ->
       scope.dateText = format date
 
     scope.$watch "dateText", (date) ->
-      if date.match /^\d\d\d$/
+      if date and date.match /^\d\d\d$/
         scope.dateText = date[0..1] + "." + date[2]
-      else if date.match /^\d\d\.\d\d\d$/
+      else if date and date.match /^\d\d\.\d\d\d$/
         scope.dateText = date[0..4] + "." + date[5]
       else
         if input.is ":focus"

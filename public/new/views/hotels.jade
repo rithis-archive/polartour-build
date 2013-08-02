@@ -21,7 +21,16 @@
     // END .countries
     // BEGIN .container
     .container
-      h1.container__title Гостиницы
+      h1.container__title
+        | Гостиницы
+        .choice
+          .choice__in
+            .choice__done {{ country }}
+            ul.choice__list
+              li.choice__item(ng-repeat="country in countries")
+                a(href="#!/{{ country }}/hotels")
+                  | {{ getCountryName(country) }}
+                  i(class="flags-f3 flag flag-{{ country }}")
       // BEGIN .search-hotel
       .search-hotel
         .search-hotel__form
@@ -37,19 +46,13 @@
                       .label__list-item Турция
                       .label__list-item Тунис
                       .label__list-item Туркменистан
-            //
-              .label
-                .label__title категория
-                .label__in
-                  .label__radio
-                    .label__radio-item.label__radio-item_active 3 и менее
-                    .label__radio-item 4
-                    .label__radio-item 5
-                    .label__radio-item HV
+            .label
+              .label__title категория
+              pt-select(ng-model="$parent.hotelsFilter.category", pt-select-values="hotelCategories")
             .label
               .label__title регион
               pt-select(ng-model="$parent.hotelsFilter.region", pt-select-values="hotelRegions")
-        .search-hotel__list(pt-pagination="hotels | filter:hotelsFilter", pt-pagination-id="hotels")
+        .search-hotel__list(pt-pagination="hotels | filter:hotelsFilter", pt-pagination-id="hotels-{{ country }}", pt-pagination-limit="50")
           table.table
             thead.table__head
               tr.table__row

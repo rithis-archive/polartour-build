@@ -13,7 +13,41 @@
       // BEGIN .search
       form.search(name="form")
         .search__form
-          .search__fields(ng-init="select1.value = 2; select1.values = [1, 2, 3, 4]")
+          .search__fields(ng-init="range1.value = [1, 3]")
+            .label(style="color: white") value: {{ range1.value }} valid: {{ form.range1.$valid }}
+            .label(ng-class="{label_error: form.range1.$invalid}")
+              .label__title range1
+              pt-range(ng-model="$parent.range1.value", name="range1")
+
+          .search__fields
+            .label(style="color: white") value: {{ range2.value }} valid: {{ form.range2.$valid }}
+            .label(ng-class="{label_error: form.range2.$invalid}")
+              .label__title range2
+              pt-range(ng-model="$parent.range2.value", name="range2", pt-range-min="100", pt-range-max="1000000")
+
+          .search__fields
+            .label
+              .label__title range3
+              pt-range
+
+          .search__fields(ng-init="radio1.value = 2; radio1.values = [1, 2, 3, 4]")
+            .label(style="color: white") value: {{ radio1.value }} valid: {{ form.radio1.$valid }}
+            .label(ng-class="{label_error: form.radio1.$invalid}")
+              .label__title radio1
+              pt-select(ng-model="$parent.radio1.value", name="radio1", pt-select-values="radio1.values", pt-select-radio)
+
+          .search__fields(ng-init="radio2.value = 'mow'; radio2.values = {mow: 'Moscow', nyc: 'New-York'}")
+            .label(style="color: white") value: {{ radio2.value }} valid: {{ form.radio2.$valid }}
+            .label(ng-class="{label_error: form.radio2.$invalid}")
+              .label__title radio2
+              pt-select(ng-model="$parent.radio2.value", name="radio2", pt-select-values="radio2.values", pt-select-radio)
+
+          .search__fields(ng-init="radio3.values = ['a', 'b', 'c']")
+            .label
+              .label__title radio3
+              pt-select(pt-select-values="radio3.values", pt-select-radio)
+
+          .search__fields(ng-init="select1.value = 7; select1.values = [1, 2, 3, 4, 5, 6, 7, 8, 9]")
             .label(style="color: white") value: {{ select1.value }} valid: {{ form.select1.$valid }}
             .label(ng-class="{label_error: form.select1.$invalid}")
               .label__title select1
@@ -29,6 +63,13 @@
             .label
               .label__title select3
               pt-select(pt-select-values="select3.values")
+
+          .search__fields(ng-init="bookingRequest = {'tourists': [{'gender': 'male'}]}")
+            .label(style="color: white") bookingRequest.tourists[0].gender: {{ bookingRequest.tourists[0].gender }}
+            .reserve__fields.reserve__fields_border
+              .data
+                div(ng-repeat="tourist in bookingRequest.tourists")
+                  pt-booking-requests-tourist(ng-model="tourist")
       // END .search
     // END .container
   // END .layout

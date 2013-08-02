@@ -25,22 +25,20 @@
       // BEGIN .reviews
       .reviews
         .reviews__desc
-          .text
-            p.text__p
-              | С целью повышения уровня оказываемых услуг, а также налаживания обратной связи, просим Вас оставлять замечания, просьбы и пожелания для улучшения работы компании "Полар". Наши сотрудники приложат максимальные усилия для решения любых вопросов. Ни одно из сообщений не будет оставлено без внимания.
-        .reviews__form
+          .text(ng-bind-html-unsafe="description.description")
+        form.reviews__form(name="feedbackForm")
           .fieldset
-            label.label
+            label.label(class="{{ feedbackForm.name.$invalid && feedbackForm.name.$dirty && 'label_error'}}")
               .label__title ваше имя
-              input.label__text(type='text')
-            label.label
+              input.label__text(type='text', name="name", ng-model="feedback.name", required)
+            label.label(class="{{ feedbackForm.email.$invalid && feedbackForm.email.$dirty && 'label_error'}}")
               .label__title ваш e-mail
-              input.label__text(type='text')
-          label.label
+              input.label__text(type='email', name="email", ng-model="feedback.email", required)
+          label.label(class="{{ feedbackForm.message.$invalid && feedbackForm.message.$dirty && 'label_error'}}")
             .label__title ваше сообщение
-            textarea.label__textarea
+            textarea.label__textarea(name="message", ng-model="feedback.message", required)
           .btn
-            button.btn__item отправить
+            button.btn__item(ng-click="send()") отправить
       // END .reviews
     // END .container
   // END .layout

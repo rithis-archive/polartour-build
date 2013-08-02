@@ -24,165 +24,88 @@
       h1.container__title Заявка на бронирование
       // BEGIN .reserve
       .reserve
-        .reserve__txt
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, sit, pariatur soluta tempore aspernatur alias officiis magnam vel perspiciatis ad fuga consequatur reprehenderit dolorum itaque quaerat labore dolores ducimus nisi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, excepturi non dicta libero at accusamus corrupti veniam minus perspiciatis porro dolorum molestias qui explicabo consectetur eum rerum voluptatibus! Nemo, amet.
-      .reserve__form
+        .text(ng-bind-html-unsafe="description.description")
+      form.reserve__form(name="bookingRequestForm")
         .title информация об агенстве
         .reserve__fields.reserve__fields_border
           .reserve__column
-            label.label
+            label.label(class="{{ bookingRequestForm.city.$invalid && bookingRequestForm.city.$dirty && 'label_error'}}")
               .label__title город
-              input.label__text(type='text')
-            label.label.reserve__agency
+              input.label__text(type='text', name="city", ng-model="bookingRequest.city", required)
+            label.label.reserve__agency(class="{{ bookingRequestForm.agency.$invalid && bookingRequestForm.agency.$dirty && 'label_error'}}")
               .label__title название агенства
-              input.label__text(type='text')
-            label.label.reserve__phone
+              input.label__text(type='text', name="agency", ng-model="bookingRequest.agency", required)
+            label.label.reserve__phone(class="{{ bookingRequestForm.phone.$invalid && bookingRequestForm.phone.$dirty && 'label_error'}}")
               .label__title телефон
-              input.label__text(type='text')
-            label.label.reserve__mail
+              input.label__text(type='text', name="phone", ng-model="bookingRequest.phone", required)
+            label.label.reserve__mail(class="{{ bookingRequestForm.email.$invalid && bookingRequestForm.email.$dirty && 'label_error'}}")
               .label__title email
-              input.label__text(type='text')
-            label.label.reserve__address
+              input.label__text(type='email', name="email", ng-model="bookingRequest.email", required)
+            label.label.reserve__address(class="{{ bookingRequestForm.address.$invalid && bookingRequestForm.address.$dirty && 'label_error'}}")
               .label__title адрес
-              input.label__text(type='text')
+              input.label__text(type='text', name="address", ng-model="bookingRequest.address", required)
         .title заявка на бронирование тура
         .reserve__fields
           .reserve__column.reserve__column_small
-            label.label
+            label.label(class="{{ bookingRequestForm.departure.$invalid && bookingRequestForm.departure.$dirty && 'label_error'}}")
               .label__title город отправления
-              input.label__text(type='text')
+              input.label__text(type='text', name="departure", ng-model="bookingRequest.departure", required)
           .reserve__column.reserve__column_small
-            label.label
+            label.label(class="{{ bookingRequestForm.country.$invalid && bookingRequestForm.country.$dirty && 'label_error'}}")
               .label__title страна
-              input.label__text(type='text')
+              input.label__text(type='text', name="country", ng-model="bookingRequest.country", required)
           .reserve__column.reserve__column_small
-            label.label
+            label.label(class="{{ bookingRequestForm.tour.$invalid && bookingRequestForm.tour.$dirty && 'label_error'}}")
               .label__title тур
-              input.label__text(type='text')
+              input.label__text(type='text', name="tour", ng-model="bookingRequest.tour", required))
         .reserve__fields
           .reserve__column.reserve__column_small
-            label.label
+            label.label(class="{{ bookingRequestForm.hotel.$invalid && bookingRequestForm.hotel.$dirty && 'label_error'}}")
               .label__title отель
-              input.label__text(type='text')
+              input.label__text(type='text', name="hotel", ng-model="bookingRequest.hotel", required)
           .reserve__column.reserve__column_small
-            label.label
+            label.label(class="{{ bookingRequestForm.placing.$invalid && bookingRequestForm.placing.$dirty && 'label_error'}}")
               .label__title размещение
-              input.label__text(type='text')
+              input.label__text(type='text', name="placing", ng-model="bookingRequest.placing", required)
           .reserve__column.reserve__column_small
             .label.reserve__date
               .label__title дата (от и до)
               .label__in
-                .label__select.label__select_date
-                  input.label__text(type='text', value='')
-                  button.label__btn
+                pt-calendar(ng-model="bookingRequest.dateFrom", name="date")
               .label__dash —
               .label__in
-                .label__select.label__select_date
-                  input.label__text(type='text', value='')
-                  button.label__btn
+                pt-calendar(ng-model="bookingRequest.dateTo", name="date")
         .reserve__fields.reserve__fields_border
           .reserve__column.reserve__column_small
             .fieldset.reserve__detail
-              .label
+              .label(class="{{ bookingRequestForm.nights.$invalid && bookingRequestForm.nights.$dirty && 'label_error'}}")
                 .label__title ночей
                 .label__in
-                  .label__select
-                    input.label__text(type='text', value='')
-                    button.label__btn
-              label.label
+                  pt-select(ng-model="bookingRequest.nights", pt-select-values="nights")
+              label.label(class="{{ bookingRequestForm.count.$invalid && bookingRequestForm.count.$dirty && 'label_error'}}")
                 .label__title ко-ство туристов
-                input.label__text(type='text')
+                input.label__text(type='text', name="count", ng-model="bookingRequest.count", required)
           .reserve__column.reserve__column_small
-            label.label
+            label.label(class="{{ bookingRequestForm.price.$invalid && bookingRequestForm.price.$dirty && 'label_error'}}")
               .label__title цена
-              input.label__text(type='text')
+              input.label__text(type='text', name="price", ng-model="bookingRequest.price", required)
           .reserve__column.reserve__column_small
-            label.label
+            label.label(class="{{ bookingRequestForm.number.$invalid && bookingRequestForm.number.$dirty && 'label_error'}}")
               .label__title № СПО
-              input.label__text(type='text')
+              input.label__text(type='text', name="number", ng-model="bookingRequest.number", required)
         .title данные туристов
         .reserve__fields.reserve__fields_border
           .data
-            button.btn-field.btn-field-add
+            button.btn-field.btn-field-add(ng-click="addTourist()")
               i.btn-field-ico
-            .data__item
-              button.btn-field.btn-field-open
-                i.btn-field-ico
-              .data__fields
-                .data__sex
-                  label.label.label_radio
-                    .input-radio.input-radio_checked
-                    .label__title муж.
-                  label.label.label_radio
-                    .input-radio
-                    .label__title жен.
-                label.label.data__fio
-                  .label__title ФИО
-                  input.label__text(type='text')
-                .label
-                  .label__title дата рождения
-                  .label__in
-                    .label__select.label__select_date
-                      input.label__text(type='text', value='')
-                      button.label__btn
-              .data__fields.data__fields_down
-                .label
-                  .label__title паспортные данные
-                  .data__group
-                    input.label__text.data__series(type='text', placeholder='серия')
-                    input.label__text.data__number(type='text', placeholder='номер')
-                    .label__in.data__validity
-                      .label__select.label__select_date
-                        input.label__text(type='text', placeholder='срок действия')
-                        button.label__btn
-                    .label__in.data__when
-                      .label__select.label__select_date
-                        input.label__text(type='text', placeholder='когда выдан')
-                        button.label__btn
-                    input.label__text.data__who(type='text', placeholder='кем выдан')
-                    input.label__text.data__nationality(type='text', placeholder='гражданство')
-            .data__item
-              button.btn-field.btn-field-open
-                i.btn-field-ico
-              .data__fields
-                .data__sex
-                  label.label.label_radio
-                    .input-radio.input-radio_checked
-                    .label__title муж.
-                  label.label.label_radio
-                    .input-radio
-                    .label__title жен.
-                label.label.data__fio
-                  .label__title ФИО
-                  input.label__text(type='text')
-                .label
-                  .label__title дата рождения
-                  .label__in
-                    .label__select.label__select_date
-                      input.label__text(type='text', value='')
-                      button.label__btn
-              .data__fields.data__fields_down
-                .label
-                  .label__title паспортные данные
-                  .data__group
-                    input.label__text.data__series(type='text', placeholder='серия')
-                    input.label__text.data__number(type='text', placeholder='номер')
-                    .label__in.data__validity
-                      .label__select.label__select_date
-                        input.label__text(type='text', placeholder='срок действия')
-                        button.label__btn
-                    .label__in.data__when
-                      .label__select.label__select_date
-                        input.label__text(type='text', placeholder='когда выдан')
-                        button.label__btn
-                    input.label__text.data__who(type='text', placeholder='кем выдан')
-                    input.label__text.data__nationality(type='text', placeholder='гражданство')
+            div(ng-repeat="tourist in bookingRequest.tourists")
+              pt-booking-requests-tourist(ng-model="tourist")
         .reserve__fields.reserve__fields_comm
-          label.label
+          label.label(class="{{ bookingRequestForm.comment.$invalid && bookingRequestForm.comment.$dirty && 'label_error'}}")
             .label__title ваши комментарии
-            textarea.label__textarea
+            textarea.label__textarea(name="comment", ng-model="bookingRequest.comment")
           .btn
-            button.btn__item отправить заявку
+            button.btn__item(ng-click="send()") отправить заявку
       // END .reserve
     // END .container
   // END .layout

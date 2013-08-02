@@ -26,28 +26,31 @@
       .request
         .request__desc
           .text
-            p.text__p
-              | В случае, если Вы забираете бухгалтерские документы в офисе ООО «Полар тур», при себе иметь Доверенность (Типовая межотраслевая форма №М-2) «на получение бухгалтерских документов» (которую Вы сдаете в бухгалтерию ООО «Полар тур»), или печать.
-            p.text__p
-              | Информация о готовности бухгалтерских документов поступит на электронный адрес Вашей организации, который вы указали в форме.
-        .request__form
-          label.label
-            .label__title ваше имя
-            input.label__text(type='text')
-          label.label
+            p В случае, если Вы забираете бухгалтерские документы в офисе ООО «Полар тур», при себе иметь Доверенность (Типовая межотраслевая форма №М-2) «на получение бухгалтерских документов» (которую Вы сдаете в бухгалтерию ООО «Полар тур»), или печать.
+            p Информация о готовности бухгалтерских документов поступит на электронный адрес Вашей организации, который вы указали в форме.
+        .request__form(ng-show="sent")
+          .success
+            p Ваш запрос успешно отправлен. Спасибо!
+            p
+              a(href="#!/") вернуться на главную
+        form.request__form(name="documentForm", ng-submit="send(document, documentForm)", ng-hide="sent")
+          label.label(ng-class="{label_error: documentForm.email.$dirty && documentForm.email.$invalid}")
+            .label__title ваш e-mail
+            input.label__text(type='email', ng-model="document.email", name="email", required)
+          label.label(ng-class="{label_error: documentForm.organization.$dirty && documentForm.organization.$invalid}")
             .label__title официальное наименование организации
-            input.label__text(type='text')
-          label.label
+            input.label__text(type='text', ng-model="document.organization", required, name="organization")
+          label.label(ng-class="{label_error: documentForm.inn.$dirty && documentForm.inn.$invalid}")
             .label__title ИНН
-            input.label__text(type='text')
-          label.label
+            input.label__text(type='text', ng-model="document.inn", required, name="inn")
+          label.label(ng-class="{label_error: documentForm.numbers.$dirty && documentForm.numbers.$invalid}")
             .label__title номера заявок
-            input.label__text(type='text')
-          label.label
+            input.label__text(type='text', ng-model="document.numbers", required, name="numbers")
+          label.label(ng-class="{label_error: documentForm.address.$dirty && documentForm.address.$invalid}")
             .label__title почтовый адрес с индексом
-            input.label__text(type='text')
+            input.label__text(type='text', ng-model="document.address", required, name="address")
           .btn
-            button.btn__item отправить
+            button.btn__item(ng-click="send()") отправить
       // END .request
     // END .container
   // END .layout

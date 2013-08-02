@@ -1,0 +1,9 @@
+div
+  .add-field(ng-repeat="tourist in tourists")
+    button.btn-field.btn-field-open(ng-click="remove($index)")
+      i.btn-field-ico
+    .add-field__input
+      input.label__text(type='text', ng-model="tourist.value", required)
+  .add-field
+    button.btn-field.btn-field-add(ng-click="add()")
+      i.btn-field-ico

@@ -1,6 +1,6 @@
 .label__in
   .label__select.label__select_date
-    input.label__text(type='text', ng-model="dateText")
+    input.label__text(type='text', ng-model="dateText", placeholder="{{ placeholder }}")
     button.label__btn
     .label__drop.label__drop_dp(ng-show="focused")
       .dp

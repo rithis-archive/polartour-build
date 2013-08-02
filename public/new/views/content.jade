@@ -21,9 +21,17 @@
     // END .countries
     // BEGIN .container
     .container
+      h1.container__title
+        | {{ page.name }}
+        .choice
+          .choice__in
+            .choice__done {{ country }}
+            ul.choice__list
+              li.choice__item(ng-repeat="link in links")
+                | {{ getCountryName(link.code) }}
+                i(class="flags-f3 flag flag-{{ link.code }}")
       // BEGIN .content
       .content
-        h1 {{ page.name }}
         div(ng-bind-html-unsafe="page.description")
       // END .content
     // END .container

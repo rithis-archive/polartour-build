@@ -1,12 +1,14 @@
-ptSearch = angular.module "ptSearch", []
+ptSearch = angular.module "ptSearch", [
+  "ptRegion"
+]
 
-ptSearch.controller "PtFastSearchCtrl", ($scope, ptCountriesManager) ->
+ptSearch.controller "PtFastSearchCtrl", ($scope, ptCountriesManager, ptRegion) ->
   $scope.search =
-    from: "Москва"
+    from: ptRegion.getRegion()
     to: "tr"
     date: new Date Date.now() + 1000 * 60 * 60 * 24 * 14
     nights: 7
 
   $scope.values =
-    from: ["Москва", "Санкт-Петербург", "Екатеринбург", "Самара", "Ростов-на-Дону", "Уфа", "Казань"]
+    from: ptRegion.regions
     to: ptCountriesManager.countries

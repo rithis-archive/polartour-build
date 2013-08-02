@@ -5,12 +5,9 @@
     .logo
       a.logo__pic(href='#') Polar Tour
     a.link-old-version(href='#') старая версия
-    .label.header__region
+    .label.header__region(ng-controller="PtRegionCtrl")
       .label__title ваш регион
-      .label__in
-        .label__select
-          input.label__text(type='text', value='Москва')
-          button.label__btn
+      pt-select(ng-model="$parent.region", pt-select-values="regions")
     pt-phones
     pt-menu
   // END .header
@@ -201,7 +198,7 @@
         a.link-search-extended(href='#') расширенный поиск
       // END .search-tour
       // BEGIN .s-events
-      .s-events(ng-controller="PtImportantNewsCtrl")
+      .s-events(ng-controller="PtImportantNewsCtrl", ng-show="importantNews.length > 0")
         .title важные события
         ul.s-events__list
           li.s-events__item(ng-repeat="news in importantNews")
