@@ -15,7 +15,7 @@ class MenuManager
 
   getCountriesMenu: =>
     @getByType "countries"
-    
+
   getByType: (type) =>
     menu = []
     @menu.forEach (item) =>
@@ -44,9 +44,13 @@ ptMenu.directive "ptCountriesMenu", (ptMenuManager) ->
   restrict: "E"
   templateUrl: "scripts/modules/pt-menu/pt-countries-menu.html"
   replace: true
+  scope: {}
   link: (scope, element, attrs) ->
-    scope.type = attrs.ptCountriesMenuType or "white"
+    scope.white = false
     scope.countriesMenu = ptMenuManager.getCountriesMenu()
+
+    scope.$watch attrs.ptCountriesWhite, (value) ->
+      scope.white = value
 
     $(ptMenuManager).on "loaded", ->
       scope.countriesMenu = ptMenuManager.getCountriesMenu()

@@ -94,6 +94,8 @@ pt.config ($routeProvider) ->
 
   $routeProvider.when "/test",
     templateUrl: "views/test.html"
+    controller: ($scope) ->
+      $scope.calendar1 = value: new Date
 
   $routeProvider.otherwise
     controller: "PtPagesCtrl"

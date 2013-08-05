@@ -4,6 +4,7 @@ ptRange.directive "ptRange", ($document) ->
   scope: ptRangeMin: "@", ptRangeMax: "@"
   templateUrl: "scripts/modules/pt-range/pt-range.html"
   replace: true
+  transclude: true
   restrict: "E"
   require: "?ngModel"
   link: (scope, element, attributes, ngModel) ->
@@ -14,10 +15,24 @@ ptRange.directive "ptRange", ($document) ->
     scope.max = null
 
     scope.$watch "ptRangeMin", (min) ->
-      scope.min = min or 1
+      scope.min = if min then Number(min) else 1
 
     scope.$watch "ptRangeMax", (max) ->
-      scope.max = max or 10
+      scope.max = if max then Number(max) else 10
+
+    moveLine = ->
+      start = if scope.start then Number scope.start else scope.min
+      end = if scope.end then Number scope.end else scope.max
+      if start <= end and start >= scope.min and end <= scope.max
+        left = (start - scope.min) / (scope.max - scope.min) * 100
+        width = (end - scope.min) / (scope.max - scope.min) * 100 - left
+        line.css "left", String(left) + "%"
+        line.css "width", String(width) + "%"
+
+    scope.$watch "start", moveLine
+    scope.$watch "end", moveLine
+    scope.$watch "min", moveLine
+    scope.$watch "max", moveLine
 
     setText = ->
       if not scope.start or not scope.end
@@ -60,6 +75,60 @@ ptRange.directive "ptRange", ($document) ->
         scope.$apply callback
 
     input = element.find "input"
+    line = element.find ".toddler__drag"
+    leftButton = line.find ".toddler__btn-left"
+    rightButton = line.find ".toddler__btn-right"
+
+    lineOffset = null
+    lineWidth = null
+    lineStep = null
+    button = null
+
+    calculateLineSize = ->
+      line.css "width", "100%"
+      line.css "left", "0%"
+      lineOffset = line.offset().left
+      lineWidth = line.width()
+      lineStep = lineWidth / (scope.max - scope.min)
+      moveLine()
+
+    downHandler = (event) ->
+      event.preventDefault()
+      calculateLineSize()
+      $document.bind "mousemove", moveHandler
+      $document.bind "mouseup", upHandler
+
+    moveHandler = (event) ->
+      event.preventDefault()
+      pos = Math.round((event.pageX - lineOffset) / lineStep) + scope.min
+      switch button
+        when "start"
+          if scope.min <= pos
+            unless scope.end
+              scope.end = String scope.max
+            if pos <= Number(scope.end)
+              safeApply ->
+                scope.start = String pos
+        when "end"
+          if pos <= scope.max
+            unless scope.start
+              scope.start = String scope.min
+            if Number(scope.start) <= pos
+              safeApply ->
+                scope.end = String pos
+
+    upHandler = (event) ->
+      event.preventDefault()
+      $document.unbind "mousemove", moveHandler
+      $document.unbind "mouseup", upHandler
+
+    leftButton.bind "mousedown", (event) ->
+      button = "start"
+      downHandler event
+
+    rightButton.bind "mousedown", (event) ->
+      button = "end"
+      downHandler event
 
     input.bind "focus", ->
       safeApply ->

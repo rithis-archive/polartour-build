@@ -2,25 +2,32 @@ ptRadio = angular.module "ptRadio", []
 
 
 ptRadio.directive "ptRadioGroup", ($timeout) ->
-  scope: values: "=", model: "=ngModel"
+  scope: ptRadioGroupValues: "="
   templateUrl: "scripts/modules/pt-radio/pt-radio.html"
   restrict: "E"
   require: "?ngModel"
   link: (scope, element, attributes, ngModel) ->
-    scope.name = (new Date()).getTime()
+    scope.values = []
+    scope.selected = null
 
-    init = false
-    scope.$watch "model", (newVal) ->
-      return if init
+    scope.$watch "ptRadioGroupValues", (values) ->
+      scope.values = []
+      if Array.isArray values
+        for value in values
+          scope.values.push key: value, value: value
+      else if typeof values is "object"
+        for key, value of values
+          scope.values.push key: key, value: value
 
-      element.iCheck
-        radioClass: "input-radio"
-        checkedRadioClass: "input-radio_checked"
+    scope.setValue = (value) ->
+      scope.selected = value.key
 
-      element.on "ifChecked", (e) ->
-        ngModel.$setViewValue $(e.target).val()
+    scope.isSelected = (value) ->
+      value.key is scope.selected
 
-      $timeout ->
-        element.find("[value=\"#{ newVal }\"]").iCheck "check"
+    if ngModel
+      ngModel.$formatters.unshift (modelValue) ->
+        scope.selected = modelValue
 
-      init = true
+      scope.$watch "selected", (selected) ->
+        ngModel.$setViewValue selected

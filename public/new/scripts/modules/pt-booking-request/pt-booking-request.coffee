@@ -35,12 +35,11 @@ ptBookingRequest.controller "PtBookingRequestCtrl", ($scope, $location, ptBookin
       $scope.bookingRequest.$save ->
         alert "Ваш запрос успешно сохранен."
         $location.url "/"
-        
+
 ptBookingRequest.directive "ptBookingRequestsTourist", ->
   templateUrl: "scripts/modules/pt-booking-request/pt-booking-request-tourist.html"
   restrict: "E"
   link: (scope) ->
-    scope.genderValues = [
-      {value: "male", label: "муж."}
-      {value: "female", label: "жен."}
-    ]
+    scope.genderValues =
+      male: "муж."
+      female: "жен."

@@ -1,10 +1,11 @@
 .label__in(ng-class="{label_active: focused}")
   input.label__text(type='text', ng-model="text")
-  button.label__btn
+  .label__btn
   .label__drop(ng-show="focused")
+    div(ng-transclude)
     .toddler
       .toddler__line
-        .toddler__drag(style='width: 40%; left: 10%')
+        .toddler__drag
           .toddler__btn-left
           .toddler__btn-right
       .toddler__values

@@ -13,6 +13,41 @@
       // BEGIN .search
       form.search(name="form")
         .search__form
+          .search__fields(ng-init="number1.value = 8")
+            .label(style="color: white") value: {{ number1.value }} valid: {{ form.number1.$valid }}
+            .label.label_mod(ng-class="{label_error: form.number1.$invalid}")
+              .label__title number1
+              pt-number(ng-model="$parent.number1.value", name="number1", pt-number-min="2", pt-number-max="14")
+
+          .search__fields(ng-init="multiselect1.value = ['a', 'b']; multiselect1.values = ['a', 'b', 'c']")
+            .label(ng-class="{label_error: form.multiselect1.$invalid}")
+              .label__title multiselect1
+              pt-select(pt-select-values="multiselect1.values", pt-select-multiselect, name="multiselect1", ng-model="$parent.multiselect1.value")
+
+          .search__fields(ng-init="checkbox1.value = true")
+            .label(style="color: white") value: {{ checkbox1.value }} valid: {{ form.checkbox1.$valid }}
+            .label.label_checkbox(ng-class="{label_error: form.checkbox1.$invalid}")
+              pt-checkbox(name="checkbox1", ng-model="$parent.checkbox1.value")
+              .label__title checkbox1
+
+          .search__fields(ng-init="radioGroup1.value = 'male'; radioGroup1.values = {male: 'Male', female: 'Female'}")
+            .label(style="color: white") value: {{ radioGroup1.value }} valid: {{ form.radioGroup1.$valid }}
+            .label(ng-class="{label_error: form.radioGroup1.$invalid}")
+              .label__title radioGroup1
+              pt-radio-group(pt-radio-group-values="radioGroup1.values", name="radioGroup1", ng-model="$parent.radioGroup1.value")
+
+          .search__fields
+            .label(style="color: white") value: {{ calendar1.value | date:"dd.MM.yyyy" }} valid: {{ form.calendar1.$valid }}
+            .label(ng-class="{label_error: form.calendar1.$invalid}")
+              .label__title calendar1
+            pt-calendar(ng-model="$parent.calendar1.value", name="calendar1", pt-calendar-min="today", pt-calendar-max="22.09.2013")
+
+          .search__fields(ng-init="datalist1.values = {mow: 'Moscow', nyc: 'New-York'}")
+            .label(style="color: white") value: {{ datalist1.value }} valid: {{ form.datalist1.$valid }}
+            .label(ng-class="{label_error: form.datalist1.$invalid}")
+              .label__title datalist1
+              pt-select(ng-model="$parent.datalist1.value", name="datalist1", pt-select-values="datalist1.values", pt-select-datalist)
+
           .search__fields(ng-init="range1.value = [1, 3]")
             .label(style="color: white") value: {{ range1.value }} valid: {{ form.range1.$valid }}
             .label(ng-class="{label_error: form.range1.$invalid}")
@@ -63,13 +98,6 @@
             .label
               .label__title select3
               pt-select(pt-select-values="select3.values")
-
-          .search__fields(ng-init="bookingRequest = {'tourists': [{'gender': 'male'}]}")
-            .label(style="color: white") bookingRequest.tourists[0].gender: {{ bookingRequest.tourists[0].gender }}
-            .reserve__fields.reserve__fields_border
-              .data
-                div(ng-repeat="tourist in bookingRequest.tourists")
-                  pt-booking-requests-tourist(ng-model="tourist")
       // END .search
     // END .container
   // END .layout

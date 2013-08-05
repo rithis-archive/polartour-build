@@ -1,5 +1,5 @@
 // BEGIN .wrap
-.wrap
+.wrap(ng-controller="PtSearchCtrl")
   // BEGIN .header
   header.header
     .logo
@@ -12,138 +12,79 @@
     pt-menu
   // END .header
   // BEGIN .search
-    form.search(name="searchForm")
-      .title поиск тура
-      button.search__close
-      .search__form
-        .search__fields
-          .search__column(ng-init="search.from = 2; values.from = [1, 2, 3, 4]")
-            .label(ng-class="{label_error: searchForm.from.$invalid}")
-              .label__title откуда летим?
-              pt-select(ng-model="$parent.search.from", name="from", pt-select-values="values.from")
-          .search__column
-            .label.label_error
-              .label__title куда направляемся?
-              .label__in
-                input.label__text(type='text', value='Африка')
-                button.label__btn
-          .search__column
-            .label
-              .label__title тур
-              .label__in
-                input.label__text(type='text', value='Любой')
-                button.label__btn
-        .search__fields
-          .search__column.search__column_date
-            .label
-              .label__title дата вылета
-              .label__in
-                .label__select.label__select_date
-                  input.label__text(type='text', value='Африка')
-                  button.label__btn
-              .label__dash —
-              .label__in
-                .label__select.label__select_date
-                  input.label__text(type='text', value='Африка')
-                  button.label__btn
-          .search__column.search__column_time
-            .label.label_active
-              .label__title ночей
-              .label__in
-                input.label__text(type='text', value='от 7 до 9')
-                button.label__btn
-                .label__drop
-                  .toddler
-                    .toddler__line
-                      .toddler__drag(style='width: 70px')
-                        .toddler__btn-left
-                        .toddler__btn-right
-                    .toddler__values
-                      .toddler__min 2
-                      .toddler__max 14
-            .label.label_active
-              .label__title стоимость
-              .label__in
-                input.label__text(type='text', value='100 000 - 500 000')
-                button.label__btn
-                .label__drop
-                  .currency
-                    .currency__item.currency__item_active RUB
-                    .currency__item USD
-                    .currency__item EUR
-                  .toddler
-                    .toddler__line
-                      .toddler__drag(style='width: 120px')
-                        .toddler__btn-left
-                        .toddler__btn-right
-                    .toddler__values
-                      .toddler__min 100 000
-                      .toddler__max 1000 000
-          .search__column.search__column_tourists
-            .label.label_active
-              .label__title путешественники
-              .label__in
-                input.label__text(type='text', value='2 взрослых, 2 ребенка, 1 младенец')
-                button.label__btn
-                .label__drop.label__drop_numbers
-                  .label
-                    .label__title взрослых
-                    .label__number
-                      button.label__number-minus
-                      input.label__number-value(type='text', value='7')
-                      button.label__number-plus
-                  .label
-                    .label__title взрослых
-                    .label__number
-                      button.label__number-minus
-                      input.label__number-value(type='text', value='7')
-                      button.label__number-plus
-                  .label
-                    .label__title взрослых
-                    .label__number
-                      button.label__number-minus
-                      input.label__number-value(type='text', value='7')
-                      button.label__number-plus
-        .search__fields.search__fields_detail
-          .search__column
-            .label
-              .label__title город
-              .label__in
-                .label__select
-                  input.label__text(type='text', value='Вена')
-                  button.label__btn
-          .search__column
-            .label
-              .label__title категория
-              .label__radio
-                .label__radio-item.label__radio-item_active 3 и менее
-                .label__radio-item 4
-                .label__radio-item 5
-                .label__radio-item HV
-          .search__column
-            .label
-              .label__title гостинницы
-              .label__in
-                .label__chosen
-                  .label__chosen-item TezTour
-                  .label__chosen-item Pegastouristic
-                  .label__chosen-item TezTour
-                button.label__btn
-        .search__fields.search__fields_down
-          .search__column
-            .label
-              .label__title питание
-              .label__radio
-                .label__radio-item.label__radio-item_active AI
-                .label__radio-item BB
-                .label__radio-item HB
-                .label__radio-item RO
+  form.search(name="searchForm", ng-show="bigSearch", ng-submit="send(search, searchForm, true)")
+    .title поиск тура
+    a.search__close(ng-click="bigSearch = false")
+    .search__form
+      .search__fields
+        .search__column
+          .label(ng-class="{label_error: searchForm.from.$invalid}")
+            .label__title город отправления
+            pt-select(ng-model="$parent.search.from", name="from", pt-select-values="values.from")
+        .search__column
+          .label(ng-class="{label_error: searchForm.to.$invalid}")
+            .label__title страна
+            pt-select(ng-model="$parent.search.to", name="to", pt-select-values="values.to")
+        .search__column
+          .label(ng-class="{label_error: searchForm.tour.$invalid}")
+            .label__title тур
+            pt-select(ng-model="$parent.search.tour", name="to", pt-select-values="values.tour")
+      .search__fields
+        .search__column.search__column_date
+          .label(ng-class="{label_error: searchForm.dateStart.$invalid || searchFrom.dateEnd.$invalid}")
+            .label__title дата вылета
+            pt-calendar(ng-model="$parent.search.dateStart", name="dateStart", pt-calendar-year-stop="2013", pt-calendar-year-reverse)
+            .label__dash —
+            pt-calendar(ng-model="$parent.search.dateEnd", name="dateEnd", pt-calendar-year-stop="2013", pt-calendar-year-reverse)
+        .search__column.search__column_time
+          .label
+            .label__title ночей
+            pt-range(ng-model="$parent.search.nights", pt-range-min="2", pt-range-max="14")
+          .label
+            .label__title стоимость
+            pt-range(pt-range-min="{{ priceMin }}", pt-range-max="{{ priceMax }}", ng-model="$parent.search.price")
+              pt-select-currency(pt-select-values="values.currency", pt-select-radio, ng-model="$parent.search.currency")
+        .search__column.search__column_tourists
+          .label(ng-class="{label_error: searchForm.adults.$invalid || searchFrom.childs.$invalid || searchForm.infants.$invalid}")
+            .label__title путешественники
+            .label__in(ng-class="{'label_active': showPassengers}")
+              input.label__text(type='text', ng-model="passengersText")
+              .label__btn(ng-click="showPassengers = !showPassengers")
+              .label__drop.label__drop_numbers(ng-show="showPassengers")
+                .label
+                  .label__title взрослых
+                  pt-number(ng-model="$parent.search.adults", pt-number-min="1", pt-number-max="9", name="adults")
+                .label
+                  .label__title детей
+                  pt-number(ng-model="$parent.search.childs", pt-number-min="0", pt-number-max="8", name="childs")
+                .label
+                  .label__title младенцев
+                  pt-number(ng-model="$parent.search.infants", pt-number-min="0", pt-number-max="8", name="infants")
+      .search__fields.search__fields_detail
+        .search__column
+          .label(ng-class="{label_error: searchForm.town.$invalid}")
+            .label__title город
+            pt-select(ng-model="$parent.search.town", pt-select-values="values.town")
+        .search__column
+          .label(ng-class="{label_error: searchForm.category.$invalid}")
+            .label__title категория
+            pt-select(ng-model="$parent.search.category", pt-select-values="values.category", pt-select-radio)
+        .search__column
+          .label(ng-class="{label_error: searchForm.hotels.$invalid}")
+            .label__title гостиницы
+            pt-select(ng-model="$parent.search.hotels", pt-select-values="values.hotels", pt-select-multiselect)
+      .search__fields.search__fields_down
+        .search__column
+          .label(ng-class="{label_error: searchForm.meal.$invalid}")
+            .label__title питание
+            pt-select(ng-model="$parent.search.meal", pt-select-values="values.meal", pt-select-radio)
+        //
           .search__column.search__column_side
             .label.label_active
               .label__title Принимающая сторона
               .label__in
                 input.label__text(type='text', value='Tadam')
-                button.label__btn
+                .label__btn
                 .label__drop
                   .label__chosen
                     .label__chosen-item TezTour
@@ -158,25 +99,25 @@
                     .label__list-item Тунис
                     .label__list-item Тунис
                     .label__list-item Тунис
-          .search__column.search__column_param
-            label.label.label_checkbox
-              .input-checkbox
-              .label__title есть места на рейсах
-            label.label.label_checkbox
-              .input-checkbox.input-checkbox_checked
-              .label__title нет остановки продаж
-          .btn
-            button.btn__item искать
+        .search__column.search__column_param
+          .label.label_checkbox(ng-class="{label_error: searchForm.places.$invalid}")
+            pt-checkbox(ng-model="$parent.search.places", name="places")
+            .label__title есть места на рейсах
+          .label.label_checkbox(ng-class="{label_error: searchForm.stop.$invalid}")
+            pt-checkbox(ng-model="$parent.search.stop", name="stop")
+            .label__title нет остановки продаж
+        .btn
+          button.btn__item искать
   // END .search
   // BEGIN .layout
   .layout
     .right
       // BEGIN .country
-      pt-countries-menu(pt-countries-menu-type="yellow")
+      pt-countries-menu(pt-countries-white="$parent.bigSearch")
       // END .countries
     aside.aside
       // BEGIN .search-tour
-      form.search-tour(ng-controller="PtFastSearchCtrl", name="searchForm")
+      form.search-tour(name="smallSearchForm", ng-hide="bigSearch", ng-submit="send(search, smallSearchForm, false)")
         .title поиск тура
         .search-tour__form
           .fieldset
@@ -187,15 +128,15 @@
               .label__title страна
               pt-select(ng-model="$parent.search.to", name="to", pt-select-values="values.to")
           .fieldset
-            .label(ng-class="{label_error: searchForm.from.$invalid}")
+            .label(ng-class="{label_error: smallSearchForm.dateSmall.$invalid}")
               .label__title дата вылета
-              pt-calendar(ng-model="$parent.search.date", name="date", pt-calendar-year-stop="2013", pt-calendar-year-reverse)
-            .label.label_mod(ng-class="{label_error: searchForm.nights.$invalid}")
+              pt-calendar(ng-model="$parent.search.dateSmall", name="dateSmall", pt-calendar-year-stop="2013", pt-calendar-year-reverse)
+            .label.label_mod(ng-class="{label_error: smallSearchForm.nights.$invalid}")
               .label__title ночей
-              pt-number(ng-model="$parent.search.nights", name="nights", pt-number-min="1", pt-number-max="29")
+              pt-number(ng-model="$parent.search.nightsSmall", name="nights", pt-number-min="2", pt-number-max="14")
         .btn
           button.btn__item искать
-        a.link-search-extended(href='#') расширенный поиск
+        a.link-search-extended(ng-click="bigSearch = true") расширенный поиск
       // END .search-tour
       // BEGIN .s-events
       .s-events(ng-controller="PtImportantNewsCtrl", ng-show="importantNews.length > 0")

@@ -4,11 +4,11 @@ ptCalendar.directive "ptCalendar", ($document) ->
   restrict: "E"
   replace: true
   templateUrl: "scripts/modules/pt-calendar/pt-calendar.html"
-  scope: placeholder: "@"
-  require: "ngModel"
+  scope: placeholder: "@", ptCalendarMin: "@", ptCalendarMax: "@"
+  require: "?ngModel"
   link: (scope, element, attributes, ngModel) ->
-    scope.focused = false
-    scope.months = [
+    today = new Date
+    months = [
       "янв"
       "фев"
       "мар"
@@ -23,43 +23,126 @@ ptCalendar.directive "ptCalendar", ($document) ->
       "дек"
     ]
 
-    yearStart = Number(attributes.ptCalendarYearStart or (new Date).getUTCFullYear()-100)
-    yearStop = Number(attributes.ptCalendarYearStop or (new Date).getUTCFullYear()+100)
+    scope.showMonths = false
+    scope.showYears = false
+    scope.focused = false
+    scope.months = months
+    scope.month = new Date today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()
+    scope.min = new Date today.getUTCFullYear() - 100, today.getUTCMonth(), today.getUTCDate()
+    scope.max = new Date today.getUTCFullYear() + 100, today.getUTCMonth(), today.getUTCDate()
 
-    scope.years = (y for y in [yearStart..yearStop])
-    if attributes.ptCalendarYearReverse
+    scope.calculateYears = ->
+      minYear = scope.min.getUTCFullYear()
+      maxYear = scope.max.getUTCFullYear()
+      scope.years = (year for year in [minYear..maxYear])
       scope.years.reverse()
 
-    scope.showNext = ->
-      return true unless scope.month
-      return true if scope.month.getUTCFullYear() < yearStop
-      scope.month.getUTCMonth() < 11
+    scope.$watch "min", scope.calculateYears
+    scope.$watch "max", scope.calculateYears
 
-    scope.showPrev = ->
-      return true unless scope.month
-      return true if scope.month.getUTCFullYear() > yearStart
-      scope.month.getUTCMonth() > 0
+    scope.setDate = (date) ->
+      scope.date = date
+      scope.blur()
 
     scope.setYear = (year) ->
       scope.showYears = false
       scope.month.setUTCFullYear year
-      scope.setCurrentMonth scope.month
+      scope.calculateMonth()
 
     scope.setMonth = (index) ->
       scope.showMonths = false
       scope.month.setUTCMonth index
-      scope.setCurrentMonth scope.month
+      scope.calculateMonth()
 
-    scope.setCurrentMonth = (month) ->
-      scope.month = month
+    scope.prevMonth = ->
+      scope.month.setUTCMonth scope.month.getUTCMonth()-1
+      scope.calculateMonth()
+
+    scope.nextMonth = ->
+      scope.month.setUTCMonth scope.month.getUTCMonth()+1
+      scope.calculateMonth()
+
+    format = (date) ->
+      day = date.getUTCDate()
+      day = "0#{day}" if day < 10
+      month = date.getUTCMonth() + 1
+      month = "0#{month}" if month < 10
+      year = date.getUTCFullYear()
+      "#{day}.#{month}.#{year}"
+
+    parseDate = (str) ->
+      if typeof str is "string" and str.match /^\d\d\.\d\d\.\d\d\d\d$/
+        arr = str.split "."
+        year = Number arr[2]
+        month = Number arr[1]
+        day = Number arr[0]
+        new Date Date.UTC year, month - 1, day
+      else
+        false
+
+    scope.$watch "ptCalendarMin", (min) ->
+      if typeof min is "string"
+        if min is "today"
+          scope.min = new Date Date.UTC today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()
+        else
+          min = parseDate min
+          scope.min = min if min
+
+    scope.$watch "ptCalendarMax", (max) ->
+      if typeof max is "string"
+        if max is "today"
+          scope.max = new Date Date.UTC today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()
+        else
+          max = parseDate max
+          scope.max = max if max
+
+    scope.focus = ->
+      scope.focused = true
+      input.focus() unless input.is ":focus"
+
+    scope.unfocus = ->
+      scope.focused = false
+      if scope.date
+        scope.dateText = format scope.date
+
+    scope.blur = ->
+      scope.unfocus()
+      input.blur() if input.is ":focus"
+
+    scope.showNext = ->
+      return true if scope.month.getUTCFullYear() < scope.max.getUTCFullYear()
+      scope.month.getUTCFullYear() == scope.max.getUTCFullYear() and
+      scope.month.getUTCMonth() < scope.max.getUTCMonth()
+
+    scope.showPrev = ->
+      return true if scope.month.getUTCFullYear() > scope.min.getUTCFullYear()
+      scope.month.getUTCFullYear() == scope.min.getUTCFullYear() and
+      scope.month.getUTCMonth() > scope.min.getUTCMonth()
+
+    scope.$watch "date", (date) ->
+      if date
+        scope.dateText = format date
+        scope.month = new Date date
+        scope.calculateMonth()
+
+    scope.$watch "dateText", (dateText) ->
+      date = parseDate dateText
+      if date
+        scope.date = date
+
+    scope.calculateMonth = ->
       scope.month.setUTCDate 1
+      scope.month.setUTCHours 0
+      scope.month.setUTCMinutes 0
+      scope.month.setUTCSeconds 0
+      scope.month.setUTCMilliseconds 0
       scope.weeks = []
-      start = new Date month
+      start = new Date scope.month
       if start.getUTCDay() == 0
         start.setUTCDate start.getUTCDate() - 6
       else if start.getUTCDay() > 1
         start.setUTCDate start.getUTCDate() - start.getUTCDay() + 1
-      end = new Date month
+      end = new Date scope.month
       end.setUTCMonth end.getUTCMonth() + 1
       end.setUTCDate 0
       if end.getUTCDay() != 0
@@ -72,111 +155,55 @@ ptCalendar.directive "ptCalendar", ($document) ->
           scope.weeks[w][d] =
             date: start
             day: start.getUTCDate()
-            inactive: start.getUTCMonth() != month.getUTCMonth()
+            inactive: start.getUTCMonth() != scope.month.getUTCMonth() or start < scope.min or start > scope.max
+            today: scope.date and scope.date.getUTCFullYear() is start.getUTCFullYear() and scope.date.getUTCMonth() is start.getUTCMonth() and scope.date.getUTCDate() is start.getUTCDate()
           prev = new Date start.getTime()
           start = new Date start.getTime() + 86400000
           if prev.getUTCDay() == start.getUTCDay()
             start = new Date start.getTime() + 86400000
         w += 1
 
-    scope.isToday = (date) ->
-      scope.dateText == format date
+    scope.calculateMonth()
 
-    scope.blur = ->
-      return unless scope.focused
-
-      fn = ->
-        input.blur()
-        scope.focused = false
-
+    safeApply = (callback) ->
       if scope.$root.$$phase in ["$apply", "$digest"]
-        fn()
+        callback()
       else
-        scope.$apply fn
-
-    scope.setDate = (date) ->
-      scope.date = date
-      scope.blur()
-
-    scope.prevMonth = ->
-      scope.month.setUTCMonth scope.month.getUTCMonth()-1
-      scope.setCurrentMonth scope.month
-
-    scope.nextMonth = ->
-      scope.month.setUTCMonth scope.month.getUTCMonth()+1
-      scope.setCurrentMonth scope.month
-
-    format = (date) ->
-      day = date.getUTCDate()
-      day = "0#{day}" if day < 10
-      month = date.getUTCMonth() + 1
-      month = "0#{month}" if month < 10
-      year = date.getUTCFullYear()
-      "#{day}.#{month}.#{year}"
-
-    scope.$watch "date", (date) ->
-      return unless date
-      scope.dateText = format date
-
-    scope.$watch "dateText", (date) ->
-      if date and date.match /^\d\d\d$/
-        scope.dateText = date[0..1] + "." + date[2]
-      else if date and date.match /^\d\d\.\d\d\d$/
-        scope.dateText = date[0..4] + "." + date[5]
-      else
-        if input.is ":focus"
-          input[0].selectionStart = input[0].selectionEnd = date.length
-        ngModel.$setViewValue date
-
-    ngModel.$formatters.unshift (modelValue) ->
-      if modelValue instanceof Date
-        scope.date = new Date Date.UTC modelValue.getFullYear(), modelValue.getMonth(), modelValue.getDate()
-      modelValue
-
-    ngModel.$parsers.unshift (viewValue) ->
-      if viewValue is undefined or viewValue is null or viewValue is ""
-        ngModel.$setValidity "date", true
-        return undefined
-      if typeof viewValue is "string" and viewValue.match /^\d\d\.\d\d\.\d\d\d\d$/
-        ngModel.$setValidity "date", true
-        date = viewValue.split "."
-        day = Number(date[0])
-        month = Number(date[1])
-        year = Number(date[2])
-        if yearStart <= year <= yearStop
-          viewValue = new Date year, month-1, day
-          scope.setCurrentMonth viewValue
-          return viewValue
-      ngModel.$setValidity "date", false
-      return undefined
+        scope.$apply callback
 
     input = element.find "input"
-    button = element.find "button.label__btn"
-
-    button.bind "click", ->
-      input.focus()
 
     input.bind "focus", ->
-      scope.$apply ->
-        scope.focused = true
-        scope.showMonths = false
-        scope.showYears = false
-        if scope.date
-          scope.setCurrentMonth new Date scope.date
-        else
-          date = new Date
-          scope.setCurrentMonth new Date Date.UTC date.getFullYear(), date.getMonth(), date.getDate()
+      safeApply ->
+        scope.focus()
 
     input.bind "keydown", (event) ->
       switch event.keyCode
+        when 9 # tab
+          safeApply ->
+            scope.unfocus()
         when 27 # esc
-          scope.blur()
-
-    $document.bind "keyup", (event) ->
-      if event.keyCode == 9
-        unless input.is ":focus"
-          scope.blur()
+          safeApply ->
+            scope.blur()
 
     $document.bind "click", (event) ->
       if not element.is(event.target) and element.has(event.target).length == 0
         scope.blur()
+
+    if ngModel
+      ngModel.$formatters.unshift (modelValue) ->
+        if modelValue instanceof Date
+          scope.date = new Date Date.UTC modelValue.getFullYear(), modelValue.getMonth(), modelValue.getDate()
+
+      ngModel.$parsers.unshift (viewValue) ->
+        if scope.min <= viewValue <= scope.max
+          ngModel.$setValidity "date", true
+          viewValue
+        else
+          ngModel.$setValidity "date", false
+          undefined
+
+      scope.$watch "date", (date) ->
+        if date instanceof Date
+          ngModel.$setViewValue date
+

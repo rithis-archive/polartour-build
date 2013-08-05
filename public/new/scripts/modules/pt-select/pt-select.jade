@@ -1,9 +1,13 @@
 .label__in(ng-class="{label_active: focused}")
   .label__select(ng-hide="radio")
-    input.label__text(type='text', autocorrect="off", autocapitalize="off", ng-model="text")
-    button.label__btn(ng-click="focus()")
-  .label__drop(ng-show="focused")
-    .label__list
+    input.label__text(type='text', autocorrect="off", autocapitalize="off", ng-model="text", ng-show="!multiselect || focused")
+    .label__chosen(ng-show="multiselect && !focused")
+      .label__chosen-item(ng-repeat="val in value", ng-click="removeValue(val)") {{ val.value }}
+    .label__btn(ng-click="focus()", ng-hide="datalist")
+  .label__drop(ng-show="focused && (!datalist || filteredValues.length > 0)")
+    .label__chosen(ng-show="multiselect")
+      .label__chosen-item(ng-repeat="val in value", ng-click="removeValue(val)") {{ val.value }}
+    .label__list(ng-show="filteredValues.length > 0")
       .label__list-item(ng-repeat="value in filteredValues", ng-class="{'label__list-item_selected': value == selected}", ng-click="setValue(value)") {{ value.value }}
   .label__radio(ng-show="radio")
     .label__radio-item(ng-repeat="value in values", ng-class="{'label__radio-item_active': value == selected}", ng-click="setValue(value)") {{ value.value }}

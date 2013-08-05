@@ -1,26 +1,18 @@
 ptCheckbox = angular.module "ptCheckbox", []
 
 ptCheckbox.directive "ptCheckbox", ->
-  scope: label: "@"
+  scope: {}
   templateUrl: "scripts/modules/pt-checkbox/pt-checkbox.html"
   replace: true
-  transclude: true
   restrict: "E"
   require: "?ngModel"
   link: (scope, element, attributes, ngModel) ->
-    element.iCheck
-      checkboxClass: "input-checkbox"
-      checkedClass: "input-checkbox_checked"
+    scope.checked = false
 
-    return unless ngModel
+    if ngModel
+      ngModel.$formatters.unshift (modelValue) ->
+        if typeof modelValue is "boolean"
+          scope.checked = modelValue
 
-    init = false
-    scope.$watch "model", ->
-      element.iCheck "check" if ngModel.$viewValue
-        
-      return if init
-        
-      element.on "ifChecked", (e) -> 
-        ngModel.$setViewValue !ngModel.$viewValue
-
-      init = true
+      scope.$watch "checked", (checked) ->
+        ngModel.$setViewValue checked
