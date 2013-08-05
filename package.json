@@ -35,6 +35,7 @@
   , "cruder": "https://github.com/rithis/cruder/tarball/callback"
   , "superagent": "~0.15"
   , "async": "~0.2"
+  , "memory-cache": "~0.0"
   , "jade": "~0.32"
   , "jsdom": "~0.7"
   , "tds": "https://github.com/cretz/node-tds/tarball/master"

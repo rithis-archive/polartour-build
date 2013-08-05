@@ -32,11 +32,11 @@
         .hotel__title {{ hotel.name }} {{ hotel.category }}*
         .hotel__title-desc {{ hotel.region }}
         .layout.layout_hotel
-          .aside(ng-show="hotel.images.length > 0")
-            //
-              .btn.hotel__price
-                button.btn__item 45 184 p.
-              .hotel__detail 7 ночей, 2 взрослых
+          .aside(ng-show="hotel.images.length > 0 || price")
+            div(ng-show="price")
+              .btn.hotel__price(ng-click="openPrice()")
+                button.btn__item {{ price.price }} pуб.
+              .hotel__detail {{ price.nights }} ночей, {{ price.adults }} взрослых
             pt-gallery(pt-gallery-images="hotel.images")
           .right
             // BEGIN .content

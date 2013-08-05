@@ -35,5 +35,12 @@ ptHotels.controller "PtHotelsCtrl", ($scope, $routeParams, $filter, ptHotel, ptC
   $scope.getCountryName = (code) ->
     ptCountriesManager.getName code
 
-ptHotels.controller "PtHotelCtrl", ($scope, $routeParams, ptHotel) ->
+ptHotels.controller "PtHotelCtrl", ($scope, $routeParams, ptHotel, ptRegion, $http) ->
   $scope.hotel = ptHotel.get _id: $routeParams.hotelId
+
+  $scope.openPrice = ->
+    document.location.href = $scope.price.url
+
+  $http.get("/hotels/#{$routeParams.hotelId}/prices/#{ptRegion.getRegion()}")
+    .success (price) ->
+      $scope.price = price
