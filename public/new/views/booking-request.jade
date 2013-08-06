@@ -29,42 +29,42 @@
         .title информация об агенстве
         .reserve__fields.reserve__fields_border
           .reserve__column
-            label.label(class="{{ bookingRequestForm.city.$invalid && bookingRequestForm.city.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.city.$invalid && showValidation && 'label_error'}}")
               .label__title город
               input.label__text(type='text', name="city", ng-model="bookingRequest.city", required)
-            label.label.reserve__agency(class="{{ bookingRequestForm.agency.$invalid && bookingRequestForm.agency.$dirty && 'label_error'}}")
+            label.label.reserve__agency(class="{{ bookingRequestForm.agency.$invalid && showValidation && 'label_error'}}")
               .label__title название агенства
               input.label__text(type='text', name="agency", ng-model="bookingRequest.agency", required)
-            label.label.reserve__phone(class="{{ bookingRequestForm.phone.$invalid && bookingRequestForm.phone.$dirty && 'label_error'}}")
+            label.label.reserve__phone(class="{{ bookingRequestForm.phone.$invalid && showValidation && 'label_error'}}")
               .label__title телефон
               input.label__text(type='text', name="phone", ng-model="bookingRequest.phone", required)
-            label.label.reserve__mail(class="{{ bookingRequestForm.email.$invalid && bookingRequestForm.email.$dirty && 'label_error'}}")
+            label.label.reserve__mail(class="{{ bookingRequestForm.email.$invalid && showValidation && 'label_error'}}")
               .label__title email
               input.label__text(type='email', name="email", ng-model="bookingRequest.email", required)
-            label.label.reserve__address(class="{{ bookingRequestForm.address.$invalid && bookingRequestForm.address.$dirty && 'label_error'}}")
+            label.label.reserve__address(class="{{ bookingRequestForm.address.$invalid && showValidation && 'label_error'}}")
               .label__title адрес
               input.label__text(type='text', name="address", ng-model="bookingRequest.address", required)
         .title заявка на бронирование тура
         .reserve__fields
           .reserve__column.reserve__column_small
-            label.label(class="{{ bookingRequestForm.departure.$invalid && bookingRequestForm.departure.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.departure.$invalid && showValidation && 'label_error'}}")
               .label__title город отправления
               input.label__text(type='text', name="departure", ng-model="bookingRequest.departure", required)
           .reserve__column.reserve__column_small
-            label.label(class="{{ bookingRequestForm.country.$invalid && bookingRequestForm.country.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.country.$invalid && showValidation && 'label_error'}}")
               .label__title страна
               input.label__text(type='text', name="country", ng-model="bookingRequest.country", required)
           .reserve__column.reserve__column_small
-            label.label(class="{{ bookingRequestForm.tour.$invalid && bookingRequestForm.tour.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.tour.$invalid && showValidation && 'label_error'}}")
               .label__title тур
               input.label__text(type='text', name="tour", ng-model="bookingRequest.tour", required))
         .reserve__fields
           .reserve__column.reserve__column_small
-            label.label(class="{{ bookingRequestForm.hotel.$invalid && bookingRequestForm.hotel.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.hotel.$invalid && showValidation && 'label_error'}}")
               .label__title отель
               input.label__text(type='text', name="hotel", ng-model="bookingRequest.hotel", required)
           .reserve__column.reserve__column_small
-            label.label(class="{{ bookingRequestForm.placing.$invalid && bookingRequestForm.placing.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.placing.$invalid && showValidation && 'label_error'}}")
               .label__title размещение
               input.label__text(type='text', name="placing", ng-model="bookingRequest.placing", required)
           .reserve__column.reserve__column_small
@@ -78,19 +78,19 @@
         .reserve__fields.reserve__fields_border
           .reserve__column.reserve__column_small
             .fieldset.reserve__detail
-              .label(class="{{ bookingRequestForm.nights.$invalid && bookingRequestForm.nights.$dirty && 'label_error'}}")
+              .label(class="{{ bookingRequestForm.nights.$invalid && showValidation && 'label_error'}}")
                 .label__title ночей
                 .label__in
                   pt-select(ng-model="bookingRequest.nights", pt-select-values="nights")
-              label.label(class="{{ bookingRequestForm.count.$invalid && bookingRequestForm.count.$dirty && 'label_error'}}")
+              label.label(class="{{ bookingRequestForm.count.$invalid && showValidation && 'label_error'}}")
                 .label__title ко-ство туристов
                 input.label__text(type='text', name="count", ng-model="bookingRequest.count", required)
           .reserve__column.reserve__column_small
-            label.label(class="{{ bookingRequestForm.price.$invalid && bookingRequestForm.price.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.price.$invalid && showValidation && 'label_error'}}")
               .label__title цена
               input.label__text(type='text', name="price", ng-model="bookingRequest.price", required)
           .reserve__column.reserve__column_small
-            label.label(class="{{ bookingRequestForm.number.$invalid && bookingRequestForm.number.$dirty && 'label_error'}}")
+            label.label(class="{{ bookingRequestForm.number.$invalid && showValidation && 'label_error'}}")
               .label__title № СПО
               input.label__text(type='text', name="number", ng-model="bookingRequest.number", required)
         .title данные туристов
@@ -101,7 +101,7 @@
             div(ng-repeat="tourist in bookingRequest.tourists")
               pt-booking-requests-tourist(ng-model="tourist")
         .reserve__fields.reserve__fields_comm
-          label.label(class="{{ bookingRequestForm.comment.$invalid && bookingRequestForm.comment.$dirty && 'label_error'}}")
+          label.label(class="{{ bookingRequestForm.comment.$invalid && showValidation && 'label_error'}}")
             .label__title ваши комментарии
             textarea.label__textarea(name="comment", ng-model="bookingRequest.comment")
           .btn

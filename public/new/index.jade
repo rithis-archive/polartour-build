@@ -1,6 +1,6 @@
 !!! 5
 //if IE 8
-  html.ie8(lang='ru-RU', ng-app='polartour')
+  html.ie8(lang='ru-RU', ng-app='pt')
 // [if gt IE 8] <!
 html(lang='ru-RU', ng-app='pt')
   // <![endif]
@@ -14,6 +14,7 @@ html(lang='ru-RU', ng-app='pt')
     link(href='//fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,cyrillic', rel='stylesheet', type='text/css')
     //if lt IE 9
       script(src='/components/html5shiv/dist/html5shiv.js')
+      script(src='/components/es5-shim/es5-shim.min.js')
     script(src="//api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU")
     script(src='/components/jquery/jquery.min.js')
     script(src='/components/store/store.min.js')

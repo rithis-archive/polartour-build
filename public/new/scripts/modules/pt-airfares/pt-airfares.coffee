@@ -6,11 +6,12 @@ ptAirfares.factory "ptAirfares", ($resource) ->
   $resource "/certificates/:_id"
 
 ptAirfares.controller "PtAirfaresCtrl", ($scope, $location, ptAirfares, ptFormDescriptions) ->
+  $scope.showValidation = false
   $scope.airfares = new ptAirfares tourists: [""]
   $scope.description = ptFormDescriptions.get code: "ticket-price-request"
 
   $scope.send = ->
-    console.log $scope.airfaresForm
+    $scope.showValidaiton = true
     if $scope.airfaresForm.$valid
       $scope.airfares.$save ->
         alert "Ваш запрос успешно сохранен."

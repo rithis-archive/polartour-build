@@ -6,6 +6,7 @@ ptBookingRequest.factory "ptBookingRequests", ($resource) ->
   $resource "/reservations/:_id"
 
 ptBookingRequest.controller "PtBookingRequestCtrl", ($scope, $location, ptBookingRequests, ptFormDescriptions) ->
+  $scope.showValidation = false
   $scope.bookingRequest = new ptBookingRequests tourists: [gender: "male"]
   $scope.childrenForms = []
   $scope.description = ptFormDescriptions.get code: "reservations"
@@ -31,6 +32,7 @@ ptBookingRequest.controller "PtBookingRequestCtrl", ($scope, $location, ptBookin
     valid
 
   $scope.send = ->
+    $scope.showValidation = true
     if $scope.bookingRequestForm.$valid and $scope.childrenFormsValid()
       $scope.bookingRequest.$save ->
         alert "Ваш запрос успешно сохранен."

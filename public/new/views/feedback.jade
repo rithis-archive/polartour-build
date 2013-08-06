@@ -28,13 +28,13 @@
           .text(ng-bind-html-unsafe="description.description")
         form.reviews__form(name="feedbackForm")
           .fieldset
-            label.label(class="{{ feedbackForm.name.$invalid && feedbackForm.name.$dirty && 'label_error'}}")
+            label.label(class="{{ feedbackForm.name.$invalid && showValidation && 'label_error'}}")
               .label__title ваше имя
               input.label__text(type='text', name="name", ng-model="feedback.name", required)
-            label.label(class="{{ feedbackForm.email.$invalid && feedbackForm.email.$dirty && 'label_error'}}")
+            label.label(class="{{ feedbackForm.email.$invalid && showValidation && 'label_error'}}")
               .label__title ваш e-mail
               input.label__text(type='email', name="email", ng-model="feedback.email", required)
-          label.label(class="{{ feedbackForm.message.$invalid && feedbackForm.message.$dirty && 'label_error'}}")
+          label.label(class="{{ feedbackForm.message.$invalid && showValidation && 'label_error'}}")
             .label__title ваше сообщение
             textarea.label__textarea(name="message", ng-model="feedback.message", required)
           .btn

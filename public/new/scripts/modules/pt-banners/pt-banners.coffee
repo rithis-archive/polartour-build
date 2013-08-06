@@ -6,20 +6,29 @@ ptBanners.factory "ptBanner", ($resource) ->
   $resource "/banners"
 
 ptBanners.controller "BannerGalleryCtrl", ($scope) ->
-  scrollTo = (banner) =>
-    current = banner or $scope.current
-    $scope.listposition = left: ($scope.width * current * -1) + "px"
-    $scope.$apply()
+  timeout = 3000
 
-    if $scope.banner.content.length == current + 1
+  scrollTo = (banner, clear) =>
+    if banner
+      $scope.current = banner
+    else if $scope.banner.content.length == $scope.current + 1
       $scope.current = 0
     else
-      $scope.current = current + 1
+      $scope.current++
+
+    $scope.listposition = left: ($scope.width * $scope.current * -1) + "px"
+
+    $scope.$apply() unless clear
 
   $scope.current = 0
   $scope.scrollTo = scrollTo
 
-  setInterval scrollTo, 3000
+  interval = setInterval scrollTo, timeout
+  
+  $scope.select = (banner) =>
+    clearInterval interval
+    scrollTo banner, true
+    interval = setInterval scrollTo, timeout
 
 
 ptBanners.directive "ptBanner", ($http, $compile, $templateCache) ->

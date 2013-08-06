@@ -4,7 +4,7 @@ form.data__item(name="bookingRequestTouristForm")
   .data__fields
     .data__sex
       pt-radio-group(pt-radio-group-values="genderValues", name="gender", ng-model="$parent.tourist.gender")
-    label.label.data__fio(class="{{ bookingRequestTouristForm.fio.$invalid && bookingRequestTouristForm.fio.$dirty && 'label_error'}}")
+    label.label.data__fio(class="{{ bookingRequestTouristForm.fio.$invalid && $parent.showValidation && 'label_error'}}")
       .label__title ФИО
       input.label__text(type='text', name="fio", ng-model="tourist.fio", required)
     .label

@@ -3,3 +3,6 @@ span.hot__gallery(class="hot__{{ getSize(banner.size) }}", pt-banner)
     li(ng-repeat="image in banner.content")
       a(href="{{ image.href }}")
         img(ng-src="{{ image.image }}", alt='')
+  ul.hot__gallery-thumbs
+    li(ng-repeat="image in banner.content")
+      span(ng-click="select($index)", class="{{ current == $index && 'hot__gallery-thumbs-active' }}")

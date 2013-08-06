@@ -28,20 +28,20 @@
           .text(ng-bind-html-unsafe="description.description")
         form.reference__form(name="airfaresForm")
           .fieldset
-            label.label(class="{{ airfaresForm.agency.$invalid && airfaresForm.agency.$dirty && 'label_error'}}")
+            label.label(class="{{ airfaresForm.agency.$invalid && showValidaiton && 'label_error'}}")
               .label__title агентство
               input.label__text(type='text', name="agency", ng-model="airfares.agency", required)
-            label.label(class="{{ airfaresForm.phone.$invalid && airfaresForm.phone.$dirty && 'label_error'}}")
+            label.label(class="{{ airfaresForm.phone.$invalid && showValidaiton && 'label_error'}}")
               .label__title телефон агентства
               input.label__text(type='text', name="phone", ng-model="airfares.phone", required)
           .fieldset
-            label.label(class="{{ airfaresForm.email.$invalid && airfaresForm.email.$dirty && 'label_error'}}")
+            label.label(class="{{ airfaresForm.email.$invalid && showValidaiton && 'label_error'}}")
               .label__title e-mail агентства
               input.label__text(type='email', name="email", ng-model="airfares.email", required)
-            label.label(class="{{ airfaresForm.number.$invalid && airfaresForm.number.$dirty && 'label_error'}}")
+            label.label(class="{{ airfaresForm.number.$invalid && showValidaiton && 'label_error'}}")
               .label__title номер заявки
               input.label__text(type='text', name="number", ng-model="airfares.number", required)
-          .label(class="{{ airfaresForm.tourists.$invalid && airfaresForm.tourists.$dirty && 'label_error'}}")
+          .label(class="{{ airfaresForm.tourists.$invalid && showValidaiton && 'label_error'}}")
             .label__title ФИО туристов для которых нужна справка о стоимости А/Б
             pt-airfares-tourists(ng-model="airfares.tourists", name="tourists")
           .btn
