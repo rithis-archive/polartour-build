@@ -5,12 +5,9 @@
     .logo
       a.logo__pic(href='#') Polar Tour
     a.link-old-version(href='#') старая версия
-    .label.header__region
+    .label.header__region(ng-controller="PtRegionCtrl")
       .label__title ваш регион
-      .label__in
-        .label__select
-          input.label__text(type='text', value='Москва')
-          button.label__btn
+      pt-select(ng-model="$parent.region", pt-select-values="regions")
     pt-phones
     pt-menu
   // END .header
@@ -26,7 +23,12 @@
       .subscribe
         .subscribe__desc
           .text(ng-bind-html-unsafe="description.description")
-        form.subscribe__form(name="subscribtionForm")
+        .subscribe__form(ng-show="sent")
+          .success
+            p Ваш запрос успешно отправлен. Спасибо!
+            p
+              a(href="#!/") вернуться на главную
+        form.subscribe__form(name="subscribtionForm", ng-hide="sent", novalidate="novalidate")
           label.label(class="{{ subscribtionForm.email.$invalid && showValidation && 'label_error'}}")
             .label__title ваш e-mail
             input.label__text(type='email', ng-model="subscribtion.email", required, name="email")

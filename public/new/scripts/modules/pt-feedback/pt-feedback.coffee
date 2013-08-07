@@ -14,5 +14,4 @@ ptFeedback.controller "PtFeedbackCtrl", ($scope, $location, ptFeedbacks, ptFormD
     $scope.showValidation = true
     if $scope.feedbackForm.$valid
       $scope.feedback.$save ->
-        alert "Спасибо! Ваше письмо успешно сохранено."
-        $location.url "/"
+        $scope.sent = true

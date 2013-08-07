@@ -5,12 +5,9 @@
     .logo
       a.logo__pic(href='#') Polar Tour
     a.link-old-version(href='#') старая версия
-    .label.header__region
+    .label.header__region(ng-controller="PtRegionCtrl")
       .label__title ваш регион
-      .label__in
-        .label__select
-          input.label__text(type='text', value='Москва')
-          button.label__btn
+      pt-select(ng-model="$parent.region", pt-select-values="regions")
     pt-phones
     pt-menu
   // END .header
@@ -23,13 +20,14 @@
     .container
       h1.container__title
         | {{ page.name }}
-        .choice
+        .choice(ng-show="links.length > 0")
           .choice__in
             .choice__done {{ country }}
             ul.choice__list
               li.choice__item(ng-repeat="link in links")
-                | {{ getCountryName(link.code) }}
-                i(class="flags-f3 flag flag-{{ link.code }}")
+                a(href="#!{{ link.href }}")
+                  | {{ getCountryName(link.code) }}
+                  i(class="flags-f3 flag flag-{{ link.code }}")
       // BEGIN .content
       .content
         div(ng-bind-html-unsafe="page.description")

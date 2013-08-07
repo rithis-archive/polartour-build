@@ -19,7 +19,8 @@ polartourAdmin.controller "FilesCtrl", ($scope, Files, configs) ->
     $scope.data = $scope.queue
     files = data.response().result.files
     return unless files or files[0]
-    host = configs.get("domain") or location.origin
+    #host = configs.get("domain") or location.origin
+    host = location.origin
     $scope.clipboardText = "#{host}/#{files[0].path}"
 
   $scope.$on "fileuploadadd", ->

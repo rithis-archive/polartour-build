@@ -14,5 +14,4 @@ ptSubscribtion.controller "PtSubscribtionCtrl", ($scope, $location, ptSubscribti
     $scope.showValidation = true
     if $scope.subscribtionForm.$valid
       $scope.subscribtion.$save ->
-        alert "Вы успешно подписались на рассылку"
-        $location.url "/"
+        $scope.sent = true

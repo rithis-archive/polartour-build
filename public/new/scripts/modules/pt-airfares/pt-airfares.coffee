@@ -14,8 +14,7 @@ ptAirfares.controller "PtAirfaresCtrl", ($scope, $location, ptAirfares, ptFormDe
     $scope.showValidaiton = true
     if $scope.airfaresForm.$valid
       $scope.airfares.$save ->
-        alert "Ваш запрос успешно сохранен."
-        $location.url "/"
+        $scope.sent = true
 
 ptAirfares.directive "ptAirfaresTourists", ->
   templateUrl: "scripts/modules/pt-airfares/pt-airfares-tourists.html"

@@ -5,12 +5,9 @@
     .logo
       a.logo__pic(href='#') Polar Tour
     a.link-old-version(href='#') старая версия
-    .label.header__region
+    .label.header__region(ng-controller="PtRegionCtrl")
       .label__title ваш регион
-      .label__in
-        .label__select
-          input.label__text(type='text', value='Москва')
-          button.label__btn
+      pt-select(ng-model="$parent.region", pt-select-values="regions")
     pt-phones
     pt-menu
   // END .header
@@ -25,7 +22,12 @@
       // BEGIN .reserve
       .reserve
         .text(ng-bind-html-unsafe="description.description")
-      form.reserve__form(name="bookingRequestForm")
+      .reserve__form(ng-show="sent")
+        .success
+          p Ваш запрос успешно отправлен. Спасибо!
+          p
+            a(href="#!/") вернуться на главную
+      form.reserve__form(name="bookingRequestForm", ng-hide="sent", novalidate="novalidate")
         .title информация об агенстве
         .reserve__fields.reserve__fields_border
           .reserve__column
@@ -83,7 +85,7 @@
                 .label__in
                   pt-select(ng-model="bookingRequest.nights", pt-select-values="nights")
               label.label(class="{{ bookingRequestForm.count.$invalid && showValidation && 'label_error'}}")
-                .label__title ко-ство туристов
+                .label__title количество туристов
                 input.label__text(type='text', name="count", ng-model="bookingRequest.count", required)
           .reserve__column.reserve__column_small
             label.label(class="{{ bookingRequestForm.price.$invalid && showValidation && 'label_error'}}")

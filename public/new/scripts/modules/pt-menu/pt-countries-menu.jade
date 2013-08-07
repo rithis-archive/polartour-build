@@ -5,4 +5,4 @@
         | {{ menuItem.name }}
         i.flag(class="flag-{{ menuItem.code }}")
       .country__nav
-        a.country__link(ng-repeat="submenuItem in menuItem.submenu", href='{{ submenuItem.href }}') {{ submenuItem.name }}
+        a.country__link(ng-repeat="submenuItem in menuItem.submenu | orderBy:'+position'", href='{{ submenuItem.href }}') {{ submenuItem.name }}

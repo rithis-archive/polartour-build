@@ -35,8 +35,7 @@ ptBookingRequest.controller "PtBookingRequestCtrl", ($scope, $location, ptBookin
     $scope.showValidation = true
     if $scope.bookingRequestForm.$valid and $scope.childrenFormsValid()
       $scope.bookingRequest.$save ->
-        alert "Ваш запрос успешно сохранен."
-        $location.url "/"
+        $scope.sent = true
 
 ptBookingRequest.directive "ptBookingRequestsTourist", ->
   templateUrl: "scripts/modules/pt-booking-request/pt-booking-request-tourist.html"

@@ -5,12 +5,9 @@
     .logo
       a.logo__pic(href='#') Polar Tour
     a.link-old-version(href='#') старая версия
-    .label.header__region
+    .label.header__region(ng-controller="PtRegionCtrl")
       .label__title ваш регион
-      .label__in
-        .label__select
-          input.label__text(type='text', value='Москва')
-          button.label__btn
+      pt-select(ng-model="$parent.region", pt-select-values="regions")
     pt-phones
     pt-menu
   // END .header
@@ -33,20 +30,20 @@
             p Ваш запрос успешно отправлен. Спасибо!
             p
               a(href="#!/") вернуться на главную
-        form.request__form(name="documentForm", ng-submit="send(document, documentForm)", ng-hide="sent")
-          label.label(ng-class="{label_error: documentForm.email.$dirty && documentForm.email.$invalid}")
+        form.request__form(name="documentForm", ng-hide="sent", novalidate="novalidate")
+          label.label(ng-class="{label_error: documentForm.email.$invalid && showValidation}")
             .label__title ваш e-mail
             input.label__text(type='email', ng-model="document.email", name="email", required)
-          label.label(ng-class="{label_error: documentForm.organization.$dirty && documentForm.organization.$invalid}")
+          label.label(ng-class="{label_error: documentForm.organization.$invalid && showValidation}")
             .label__title официальное наименование организации
             input.label__text(type='text', ng-model="document.organization", required, name="organization")
-          label.label(ng-class="{label_error: documentForm.inn.$dirty && documentForm.inn.$invalid}")
+          label.label(ng-class="{label_error: documentForm.inn.$invalid && showValidation}")
             .label__title ИНН
             input.label__text(type='text', ng-model="document.inn", required, name="inn")
-          label.label(ng-class="{label_error: documentForm.numbers.$dirty && documentForm.numbers.$invalid}")
+          label.label(ng-class="{label_error: documentForm.numbers.$invalid && showValidation}")
             .label__title номера заявок
             input.label__text(type='text', ng-model="document.numbers", required, name="numbers")
-          label.label(ng-class="{label_error: documentForm.address.$dirty && documentForm.address.$invalid}")
+          label.label(ng-class="{label_error: documentForm.address.$invalid && showValidation}")
             .label__title почтовый адрес с индексом
             input.label__text(type='text', ng-model="document.address", required, name="address")
           .btn

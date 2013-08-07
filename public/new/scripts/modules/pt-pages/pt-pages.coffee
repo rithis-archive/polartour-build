@@ -33,13 +33,13 @@ ptPages.controller "PtPagesCtrl", ($scope, $location, ptPagesManager, ptCountrie
 
   setCountries = ->
     links = []
-    pattern = new RegExp "#{$location.path().replace part, "*"}$"
+    pattern = new RegExp "^#{$location.path().replace part, "\\S\\S"}$"
 
     for name, page of ptPagesManager.all()
       if $location.path() != page.href and pattern.test page.href
         links.push
           href: page.href
-          code: page.href.split(pattern)[0].replace("/", "").trim()
+          code: page.href.split("/")[1]
     $scope.links = links
 
   if ptPagesManager.loaded()

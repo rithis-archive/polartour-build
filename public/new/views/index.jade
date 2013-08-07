@@ -39,7 +39,7 @@
         .search__column.search__column_time
           .label
             .label__title ночей
-            pt-range(ng-model="$parent.search.nights", pt-range-min="2", pt-range-max="14")
+            pt-range(ng-model="$parent.search.nights", pt-range-min="1", pt-range-max="14")
           .label
             .label__title стоимость
             pt-range(pt-range-min="{{ priceMin }}", pt-range-max="{{ priceMax }}", ng-model="$parent.search.price")
@@ -133,7 +133,7 @@
               pt-calendar(ng-model="$parent.search.dateSmall", name="dateSmall", pt-calendar-year-stop="2013", pt-calendar-year-reverse)
             .label.label_mod(ng-class="{label_error: smallSearchForm.nights.$invalid}")
               .label__title ночей
-              pt-number(ng-model="$parent.search.nightsSmall", name="nights", pt-number-min="2", pt-number-max="14")
+              pt-number(ng-model="$parent.search.nightsSmall", name="nights", pt-number-min="1", pt-number-max="14")
         .btn
           button.btn__item искать
         a.link-search-extended(ng-click="bigSearch = true") расширенный поиск
