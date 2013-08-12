@@ -14,9 +14,10 @@ ptSearch.controller "PtSearchCtrl", ($scope, ptCountriesManager, ptRegion) ->
     dateStart: new Date twoWeeks
     dateEnd: new Date twoWeeks
     currency: "rub"
-    adults: 2
-    childs: 0
-    infants: 0
+    passengers:
+      adults: 3
+      childs: 0
+      infants: 0
     nightsSmall: 7
     nights: [7, 7]
     town: 11
@@ -25,42 +26,6 @@ ptSearch.controller "PtSearchCtrl", ($scope, ptCountriesManager, ptRegion) ->
     meal: "ai"
     places: false
     stop: true
-
-  plural = (n, forms) ->
-    if n % 10 == 1 and n % 100 != 11
-      forms[0]
-    else if n % 10 >= 2 and n % 10 <= 4 and (n % 100 < 10 or n % 100 >= 20)
-      forms[1]
-    else
-      forms[2]
-
-  passengersText = ->
-    text = []
-    if $scope.search.adults > 0
-      text.push $scope.search.adults + " " + plural $scope.search.adults, [
-        "взрослый"
-        "взрослых"
-        "взрослых"
-      ]
-    if $scope.search.childs > 0
-      text.push $scope.search.childs + " " + plural $scope.search.childs, [
-        "ребенок"
-        "ребенка"
-        "детей"
-      ]
-    if $scope.search.infants > 0
-      text.push $scope.search.infants + " " + plural $scope.search.infants, [
-        "младенец"
-        "младенца"
-        "младенцев"
-      ]
-    $scope.passengersText = text.join ", "
-
-  $scope.showPassengers = false
-
-  $scope.$watch "search.adults", passengersText
-  $scope.$watch "search.childs", passengersText
-  $scope.$watch "search.infants", passengersText
 
   $scope.values =
     from: ptRegion.regions

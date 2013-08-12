@@ -22,7 +22,7 @@
       .list-placeholder
 
       .list-item(ng-repeat="reservation in filteredData | orderBy:'+createdAt'")
-        a.list-cell-width-6x.list-cell-item(href="#!/reservations/{{ reservation._id }}", class="{{ reservation.viewed && 'viewed' }}") {{ reservation.agency }}
+        a.list-cell-width-6x.list-cell-item(href="#!/reservations/{{ reservation._id }}", ng-class="{viewed:reservation.viewed,processed:reservation.processed}") {{ reservation.agency }}
         span.list-cell-width-4x.list-cell-item {{ reservation.price }}
         span.list-cell-width-2x.list-cell-item {{ reservation.createdAt | date:"dd.MM.yyyy HH:mm" }}
   

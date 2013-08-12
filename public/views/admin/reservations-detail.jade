@@ -112,3 +112,11 @@
     .content-detail-field
       label комментарий
       textarea(ng-model="reservation.comment", disabled="disabled") 
+
+  .content-detail
+    .content-detail-field
+      .content-detail-processed
+        label
+          input(type="checkbox", ng-model="reservation.processed", ng-click="changeProcessed()")
+          | Обработан
+      a.content-detail-delete(ng-click="remove()") Удалить

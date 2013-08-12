@@ -1,6 +1,27 @@
+polartourAdmin.filter "chargeType", ->
+  (type) ->
+    switch type
+      when "transfers"
+        "Трансфер"
+      when "flights"
+        "Перелет"
+      else
+        "-"
+
 polartourAdmin.controller "ChargesDetailCtrl", ($scope, $location, $routeParams, Charges) ->
   $scope.charge = if $routeParams.id is "new" then new Charges \
     else Charges.get id: $routeParams.id
+
+  $scope.types = [
+    {
+      code: "transfers"
+      name: "Трансфер"
+    }
+    {
+      code: "flights"
+      name: "Перелет"
+    }
+  ]
 
   $scope.save = ->
     return unless $scope.chargeForm.$valid

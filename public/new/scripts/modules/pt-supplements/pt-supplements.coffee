@@ -8,9 +8,18 @@ ptSupplements.factory "ptSupplement", ($resource) ->
 ptSupplements.controller "PtSupplementsCtrl", ($scope, $routeParams, $filter, ptSupplement, ptCountriesManager) ->
   $scope.country =  ptCountriesManager.getGenitiveByCode $routeParams.country
 
+  $scope.title = switch $routeParams.supplementType
+    when "transfers"
+      "Трансферы"
+    when "flights"
+      "Доплаты за рейсы"
+    else
+      "Доплаты"
+
   ptSupplement.query (supplements) ->
     $scope.supplements = $filter("filter") supplements,
       country: $routeParams.country
+      type: $routeParams.supplementType
 
     countries = []
     supplements.forEach (supplement) ->

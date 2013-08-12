@@ -5,32 +5,6 @@ ptBanners = angular.module "ptBanners", [
 ptBanners.factory "ptBanner", ($resource) ->
   $resource "/banners"
 
-ptBanners.controller "BannerGalleryCtrl", ($scope) ->
-  timeout = 3000
-
-  scrollTo = (banner, clear) =>
-    if banner
-      $scope.current = banner
-    else if $scope.banner.content.length == $scope.current + 1
-      $scope.current = 0
-    else
-      $scope.current++
-
-    $scope.listposition = left: ($scope.width * $scope.current * -1) + "px"
-
-    $scope.$apply() unless clear
-
-  $scope.current = 0
-  $scope.scrollTo = scrollTo
-
-  interval = setInterval scrollTo, timeout
-  
-  $scope.select = (banner) =>
-    clearInterval interval
-    scrollTo banner, true
-    interval = setInterval scrollTo, timeout
-
-
 ptBanners.directive "ptBanner", ($http, $compile, $templateCache) ->
   restrict: "EACM"
   compile: (element, attrs) ->
@@ -58,10 +32,34 @@ ptBanners.directive "ptBanners", (ptBanner, $http, $compile, $templateCache, $co
             templateScope.banner = banner
             templateElement = angular.element response.data
             banners[index] = $compile(templateElement)(templateScope)
-            if banner.type is "gallery"
-              templateCtrl = $controller "BannerGalleryCtrl",
-                $scope: templateScope 
-              $timeout ->
-                templateScope.width = templateElement.width()
             if banners.length is data.length
               element.append banners
+
+ptBanners.directive "ptBannerGallery", ($timeout) ->
+  restrict: "EACM"
+  replace: true
+  link: (scope, element) ->
+    timeout = 3000
+      
+    scrollTo = (banner, clear) =>
+      if banner and banner < scope.banner.content.length and banner >= 0
+        scope.current = banner
+      else if scope.banner.content.length == scope.current + 1
+        scope.current = 0
+      else
+        scope.current++
+
+      element.find(".hot__gallery-images").animate
+        left: (element.width() * scope.current * -1) + "px"
+
+      scope.$apply() unless clear
+
+    scope.current = 0
+    scope.scrollTo = scrollTo
+
+    interval = setInterval scrollTo, timeout
+
+    scope.select = (banner) =>
+      clearInterval interval
+      scrollTo banner, true
+      interval = setInterval scrollTo, timeout

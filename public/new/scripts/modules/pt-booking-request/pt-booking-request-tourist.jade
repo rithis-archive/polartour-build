@@ -1,28 +1,34 @@
 form.data__item(name="bookingRequestTouristForm")
-  button.btn-field.btn-field-open
-    i.btn-field-ico(ng-click="$parent.removeTourist($index)")
+  .btn-field.btn-field-open(ng-click="$parent.removeTourist($index)", ng-hide="$parent.bookingRequest.tourists.length == 1")
+    i.btn-field-ico
   .data__fields
     .data__sex
-      pt-radio-group(pt-radio-group-values="genderValues", name="gender", ng-model="$parent.tourist.gender")
+      div(pt-radio-group, pt-radio-group-values="genderValues", name="gender", ng-model="$parent.tourist.gender")
     label.label.data__fio(class="{{ bookingRequestTouristForm.fio.$invalid && $parent.showValidation && 'label_error'}}")
       .label__title ФИО
       input.label__text(type='text', name="fio", ng-model="tourist.fio", required)
     .label
       .label__title дата рождения
-      .label__in
+      .label__in(class="{{ bookingRequestTouristForm.birthday.$invalid && $parent.showValidation && 'label_error'}}")
         .label__select.label__select_date
-          pt-calendar.label__text(name="birthday", ng-model="tourist.birthday", required)
+          pt-calendar(name="birthday", ng-model="$parent.tourist.birthday", name="birthday", required)
   .data__fields.data__fields_down
     .label
       .label__title паспортные данные
       .data__group
-        input.label__text.data__series(type='text', placeholder='серия', name="series", ng-model="tourist.series", required)
-        input.label__text.data__number(type='text', placeholder='номер', name="number", ng-model="tourist.number", required)
-        .label__in.data__validity
-          .label__select.label__select_date
-            pt-calendar.label__text(placeholder='срок действия', name="validity", ng-model="tourist.validity", required)
-        .label__in.data__when
-          .label__select.label__select_date
-            pt-calendar.label__text(placeholder='когда выдан', name="validity", ng-model="tourist.validity", required)
-        input.label__text.data__who(type='text', placeholder='кем выдан', name="who", ng-model="tourist.who", required)
-        input.label__text.data__nationality(type='text', placeholder='гражданство', name="citizenship", ng-model="tourist.citizenship", required)
+        label.label
+          input.label__text.data__series(type='text', placeholder='серия', name="series", ng-model="tourist.series", required)
+        label.label
+          input.label__text.data__number(type='text', placeholder='номер', name="number", ng-model="tourist.number", required)
+        .label
+          .label__in.data__validity
+            .label__select.label__select_date
+              pt-calendar(placeholder='срок действия', name="validity", ng-model="$parent.tourist.validity", required)
+        .label
+          .label__in.data__when
+            .label__select.label__select_date
+              pt-calendar(placeholder='когда выдан', name="validity", ng-model="$parent.tourist.date", required)
+        label.label
+          input.label__text.data__who(type='text', placeholder='кем выдан', name="who", ng-model="tourist.who", required)
+        label.label
+          input.label__text.data__nationality(type='text', placeholder='гражданство', name="citizenship", ng-model="tourist.citizenship", required)

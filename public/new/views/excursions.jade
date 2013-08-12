@@ -52,8 +52,7 @@
             .tours__desc
               pt-gallery(pt-gallery-images="excursion.images")
               .tours__txt
-                .text
-                  p {{ excursion.description }}
+                .text(ng-bind-html-unsafe="excursion.description")
       // END .tours
     // END .container
   // END .layout

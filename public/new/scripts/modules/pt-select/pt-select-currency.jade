@@ -1,2 +1,2 @@
 .currency
-  .currency__item(ng-repeat="value in values", ng-class="{'currency__item_active': value == selected}", ng-click="setValue(value)") {{ value.value }}
+  .currency__item(ng-repeat="val in values", ng-class="{'currency__item_active': val == value}", ng-click="setValueWithoutBlur(val)") {{ val.value }}

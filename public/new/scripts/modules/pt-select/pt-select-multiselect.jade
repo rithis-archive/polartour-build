@@ -1,0 +1,11 @@
+.label__in(ng-class="{label_active: focused}")
+  .label__select(ng-hide="radio")
+    input.label__text(type='text', autocorrect="off", autocapitalize="off", ng-model="text", ng-show="focused")
+    .label__chosen(ng-show="!focused")
+      .label__chosen-item(ng-repeat="val in value", ng-click="removeValue(val)") {{ val.value }}
+    .label__btn(ng-click="toggleFocus()")
+  .label__drop(ng-show="focused")
+    .label__chosen
+      .label__chosen-item(ng-repeat="val in value", ng-click="removeValue(val)") {{ val.value }}
+    .label__list
+      .label__list-item(ng-repeat="val in filteredValues", ng-class="{'label__list-item_selected': val == selected}", ng-click="setValue(val)") {{ val.value }}

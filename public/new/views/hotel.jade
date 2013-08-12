@@ -38,7 +38,7 @@
           .right
             // BEGIN .content
             .hotel__text
-              div(ng-bind-html-unsafe="hotel.description")
+              div(ng-bind-html-unsafe="hotel.description | escape | nl2br")
               div(ng-show="hotel.services.length > 0")
                 .hotel__text-title услуги
                 ul.hotel__text-list
@@ -49,9 +49,9 @@
                  li.hotel__text-list-item(ng-repeat="infrastructure in hotel.infrastructure") {{ infrastructure }}
               div(ng-repeat="room in hotel.rooms")
                 .hotel__text-title {{ room.name }}
-                p.hotel__text-p {{ room.description }}
+                p.hotel__text-p(ng-bind-html-unsafe="room.description | escape | nl2br")
               .hotel__text-title(ng-show="hotel.locationDescription") расположение
-              p.hotel__text-p(ng-show="hotel.locationDescription") {{ hotel.locationDescription }}
+              p.hotel__text-p(ng-show="hotel.locationDescription", ng-bind-html-unsafe="hotel.locationDescription | escape | nl2br")
               pt-map(pt-map-lat="{{ hotel.location[0] }}", pt-map-lon="{{ hotel.location[1] }}", pt-map-zoom="8", ng-show="hotel.location")
               ul.hotel__text-contacts
                 li.hotel__text-contacts-item(ng-show="hotel.adress")

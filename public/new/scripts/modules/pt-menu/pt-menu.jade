@@ -6,6 +6,6 @@ nav.nav
         li.nav__sub-item(ng-repeat="submenuItem in menuItem.submenu | orderBy:'+position'")
           a.nav__sub-link(href="{{ submenuItem.href }}") {{ submenuItem.name }}
     li.nav__cab
-      a.nav__link(href="#")
+      a.nav__link(ng-click="openPersonalCabinet()")
         i.ico-cab
         span.nav__txt личный кабинет

@@ -1,10 +1,10 @@
 div(ng-show="opened")
   .overlay(ng-click="close()")
   .popup
-    button.popup__close(ng-click="close()")
-    button.popup__prev(ng-show="selectedImage != firstImage", ng-click="prev()")
+    .popup__close(ng-click="close()")
+    .popup__prev(ng-show="selectedImage != firstImage", ng-click="prev()")
       i.popup__prev-arr
-    button.popup__next(ng-show="selectedImage != lastImage", ng-click="next()")
+    .popup__next(ng-show="selectedImage != lastImage", ng-click="next()")
       i.popup__next-arr
     .popup__pic
       img(ng-src='{{ selectedImage }}', alt='')

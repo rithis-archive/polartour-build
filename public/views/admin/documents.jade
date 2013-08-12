@@ -24,7 +24,7 @@
       .list-placeholder
 
       .list-item(ng-repeat="document in filteredData | orderBy:'+createdAt'")
-        a.list-cell-width-6x.list-cell-item(href="#!/documents-requests/{{ document._id }}", class="{{ document.viewed && 'viewed' }}") {{ document.email }}
+        a.list-cell-width-6x.list-cell-item(href="#!/documents-requests/{{ document._id }}", ng-class="{viewed:document.viewed,processed:document.processed}") {{ document.email }}
         span.list-cell-width-4x.list-cell-item {{ document.organization }}
         span.list-cell-width-2x.list-cell-item {{ document.createdAt | date:"dd.MM.yyyy HH:mm" }}
   

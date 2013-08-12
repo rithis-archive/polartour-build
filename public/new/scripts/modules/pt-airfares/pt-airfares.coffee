@@ -35,7 +35,7 @@ ptAirfares.directive "ptAirfaresTourists", ->
       valid = true
       values.forEach (value) ->
         if valid
-          valid = false if not value?
+          valid = false if not value? or value.length == 0
       valid
 
     ngModel.$parsers.unshift (viewValue) ->
@@ -50,7 +50,10 @@ ptAirfares.directive "ptAirfaresTourists", ->
       scope.tourists.push value: ""
 
     scope.remove = (remove) ->
-      scope.tourists.splice remove, 1
+      if scope.tourists.length is 1
+        scope.tourists[0].value = ""
+      else
+        scope.tourists.splice remove, 1
 
     scope.$watch "tourists", ->
       values = []

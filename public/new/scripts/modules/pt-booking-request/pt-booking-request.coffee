@@ -25,11 +25,13 @@ ptBookingRequest.controller "PtBookingRequestCtrl", ($scope, $location, ptBookin
   $scope.childrenFormsValid = ->
     childrenScope = $scope.$$childHead
     valid = true
+    hasChildren = false
     while childrenScope
       form = childrenScope.bookingRequestTouristForm
+      hasChildren = true if form
       valid = form.$valid if form and valid
       childrenScope = childrenScope.$$nextSibling
-    valid
+    valid && hasChildren
 
   $scope.send = ->
     $scope.showValidation = true
@@ -37,10 +39,10 @@ ptBookingRequest.controller "PtBookingRequestCtrl", ($scope, $location, ptBookin
       $scope.bookingRequest.$save ->
         $scope.sent = true
 
-ptBookingRequest.directive "ptBookingRequestsTourist", ->
+ptBookingRequest.directive "ptBookingRequestsTourist", ($http, $compile, $templateCache) ->
   templateUrl: "scripts/modules/pt-booking-request/pt-booking-request-tourist.html"
-  restrict: "E"
-  link: (scope) ->
+  restrict: "EACM"
+  link: (scope, element) ->
     scope.genderValues =
       male: "муж."
       female: "жен."

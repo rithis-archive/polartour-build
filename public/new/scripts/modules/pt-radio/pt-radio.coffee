@@ -4,7 +4,7 @@ ptRadio = angular.module "ptRadio", []
 ptRadio.directive "ptRadioGroup", ($timeout) ->
   scope: ptRadioGroupValues: "="
   templateUrl: "scripts/modules/pt-radio/pt-radio.html"
-  restrict: "E"
+  restrict: "EACM"
   require: "?ngModel"
   link: (scope, element, attributes, ngModel) ->
     scope.values = []

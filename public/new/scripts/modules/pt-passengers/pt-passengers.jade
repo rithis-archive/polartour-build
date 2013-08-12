@@ -1,0 +1,14 @@
+.label__in(ng-class="{'label_active': focused}")
+  input.label__text.label__text_passengers(type='text', ng-model="text")
+  .label__btn(ng-click="toggleFocus()")
+  .label__drop.label__drop_numbers(ng-show="focused")
+    ng-form(name="form")
+      .label
+        .label__title взрослых
+        pt-number(ng-model="$parent.value.adults", pt-number-min="1", pt-number-max="9", name="adults")
+      .label
+        .label__title детей
+        pt-number(ng-model="$parent.value.childs", pt-number-min="0", pt-number-max="8", name="childs")
+      .label
+        .label__title младенцев
+        pt-number(ng-model="$parent.value.infants", pt-number-min="0", pt-number-max="8", name="infants")

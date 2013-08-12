@@ -43,9 +43,10 @@
             label.label(class="{{ airfaresForm.number.$invalid && showValidaiton && 'label_error'}}")
               .label__title номер заявки
               input.label__text(type='text', name="number", ng-model="airfares.number", required)
-          .label(class="{{ airfaresForm.tourists.$invalid && showValidaiton && 'label_error'}}")
-            .label__title ФИО туристов для которых нужна справка о стоимости А/Б
-            pt-airfares-tourists(ng-model="airfares.tourists", name="tourists")
+          .reference__add
+            .label(class="{{ airfaresForm.tourists.$invalid && showValidaiton && 'label_error'}}")
+              .label__title ФИО туристов для которых нужна справка о стоимости А/Б
+              pt-airfares-tourists(ng-model="airfares.tourists", name="tourists")
           .btn
             button.btn__item(ng-click="send()") отправить
       // END .reference

@@ -1,6 +1,6 @@
 .label__in(ng-class="{label_active: focused}")
   input.label__text(type='text', ng-model="text")
-  .label__btn
+  .label__btn(ng-click="toggleFocus()")
   .label__drop(ng-show="focused")
     div(ng-transclude)
     .toddler

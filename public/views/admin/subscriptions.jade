@@ -7,6 +7,7 @@
         label.search-label e-mail
         input(ng-model="filters.email")
 
+      a.show-detail-search(href="/subscriptions/export?token={{ token }}") Выгрузить в CSV
       a.show-detail-search(href="#!/form-descriptions/subscriptions") редактировать описание
       a.show-detail-search(ng-click="filters = {}", href="javascript:void(0)") очистить фильтр
 
@@ -19,7 +20,7 @@
       .list-placeholder
 
       .list-item(ng-repeat="subscription in filteredData | orderBy:'+createdAt'")
-        a.list-cell-width-8x.list-cell-item(href="#!/subscriptions/{{ subscription._id }}", class="{{ subscription.viewed && 'viewed' }}") {{ subscription.email }}
+        a.list-cell-width-8x.list-cell-item(href="#!/subscriptions/{{ subscription._id }}", ng-class="{viewed:subscription.viewed,processed:subscription.processed}") {{ subscription.email }}
         span.list-cell-width-2x.list-cell-item {{ subscription.createdAt | date:"dd.MM.yyyy HH:mm" }}
   
       .list-placeholder

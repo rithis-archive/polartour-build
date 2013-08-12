@@ -1,7 +1,6 @@
 .label__in(ng-class="{label_active: focused}")
-  .label__select
+  .label__select(ng-hide="radio")
     input.label__text(type='text', autocorrect="off", autocapitalize="off", ng-model="text")
-    .label__btn(ng-click="toggleFocus()")
-  .label__drop(ng-show="focused")
+  .label__drop(ng-show="focused && filteredValues.length > 0")
     .label__list
       .label__list-item(ng-repeat="val in filteredValues", ng-class="{'label__list-item_selected': val == selected}", ng-click="setValue(val)") {{ val.value }}

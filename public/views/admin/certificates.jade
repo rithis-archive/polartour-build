@@ -20,7 +20,7 @@
       .list-placeholder
 
       .list-item(ng-repeat="certificate in filteredData | orderBy:'+createdAt'")
-        a.list-cell-width-6x.list-cell-item(href="#!/ticket-price-requests/{{ certificate._id }}", class="{{ certificates.viewed && 'viewed' }}") {{ certificate.agency }}
+        a.list-cell-width-6x.list-cell-item(href="#!/ticket-price-requests/{{ certificate._id }}", ng-class="{viewed:certificate.viewed,processed:certificate.processed}") {{ certificate.agency }}
         span.list-cell-width-4x.list-cell-item {{ certificate.email }}
         span.list-cell-width-2x.list-cell-item {{ certificate.createdAt | date:"dd.MM.yyyy HH:mm" }}
   

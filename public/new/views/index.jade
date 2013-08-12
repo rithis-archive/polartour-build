@@ -45,21 +45,10 @@
             pt-range(pt-range-min="{{ priceMin }}", pt-range-max="{{ priceMax }}", ng-model="$parent.search.price")
               pt-select-currency(pt-select-values="values.currency", pt-select-radio, ng-model="$parent.search.currency")
         .search__column.search__column_tourists
-          .label(ng-class="{label_error: searchForm.adults.$invalid || searchFrom.childs.$invalid || searchForm.infants.$invalid}")
+          .label(ng-class="{label_error: searchForm.passengers.$invalid}")
             .label__title путешественники
-            .label__in(ng-class="{'label_active': showPassengers}")
-              input.label__text(type='text', ng-model="passengersText")
-              .label__btn(ng-click="showPassengers = !showPassengers")
-              .label__drop.label__drop_numbers(ng-show="showPassengers")
-                .label
-                  .label__title взрослых
-                  pt-number(ng-model="$parent.search.adults", pt-number-min="1", pt-number-max="9", name="adults")
-                .label
-                  .label__title детей
-                  pt-number(ng-model="$parent.search.childs", pt-number-min="0", pt-number-max="8", name="childs")
-                .label
-                  .label__title младенцев
-                  pt-number(ng-model="$parent.search.infants", pt-number-min="0", pt-number-max="8", name="infants")
+            pt-passengers(ng-model="$parent.passengers", name="passengers")
+
       .search__fields.search__fields_detail
         .search__column
           .label(ng-class="{label_error: searchForm.town.$invalid}")
@@ -68,16 +57,16 @@
         .search__column
           .label(ng-class="{label_error: searchForm.category.$invalid}")
             .label__title категория
-            pt-select(ng-model="$parent.search.category", pt-select-values="values.category", pt-select-radio)
+            pt-select-radio(ng-model="$parent.search.category", pt-select-values="values.category")
         .search__column
           .label(ng-class="{label_error: searchForm.hotels.$invalid}")
             .label__title гостиницы
-            pt-select(ng-model="$parent.search.hotels", pt-select-values="values.hotels", pt-select-multiselect)
+            pt-select-multiselect(ng-model="$parent.search.hotels", pt-select-values="values.hotels")
       .search__fields.search__fields_down
         .search__column
           .label(ng-class="{label_error: searchForm.meal.$invalid}")
             .label__title питание
-            pt-select(ng-model="$parent.search.meal", pt-select-values="values.meal", pt-select-radio)
+            pt-select-radio(ng-model="$parent.search.meal", pt-select-values="values.meal")
         //
           .search__column.search__column_side
             .label.label_active

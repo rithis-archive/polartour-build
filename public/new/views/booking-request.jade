@@ -72,25 +72,25 @@
           .reserve__column.reserve__column_small
             .label.reserve__date
               .label__title дата (от и до)
-              .label__in
-                pt-calendar(ng-model="bookingRequest.dateFrom", name="date")
+              .label__in(class="{{ bookingRequestForm.dateFrom.$invalid && showValidation && 'label_error'}}")
+                pt-calendar(ng-model="bookingRequest.dateFrom", name="dateFrom", required)
               .label__dash —
-              .label__in
-                pt-calendar(ng-model="bookingRequest.dateTo", name="date")
+              .label__in(class="{{ bookingRequestForm.dateTo.$invalid && showValidation && 'label_error'}}")
+                pt-calendar(ng-model="bookingRequest.dateTo", name="dateTo", required)
         .reserve__fields.reserve__fields_border
           .reserve__column.reserve__column_small
             .fieldset.reserve__detail
               .label(class="{{ bookingRequestForm.nights.$invalid && showValidation && 'label_error'}}")
                 .label__title ночей
                 .label__in
-                  pt-select(ng-model="bookingRequest.nights", pt-select-values="nights")
+                  pt-select(ng-model="bookingRequest.nights", pt-select-values="nights", name="nights", required)
               label.label(class="{{ bookingRequestForm.count.$invalid && showValidation && 'label_error'}}")
                 .label__title количество туристов
-                input.label__text(type='text', name="count", ng-model="bookingRequest.count", required)
+                input.label__text(type='number', name="count", ng-model="bookingRequest.count", required)
           .reserve__column.reserve__column_small
             label.label(class="{{ bookingRequestForm.price.$invalid && showValidation && 'label_error'}}")
               .label__title цена
-              input.label__text(type='text', name="price", ng-model="bookingRequest.price", required)
+              input.label__text(type='number', name="price", ng-model="bookingRequest.price", required)
           .reserve__column.reserve__column_small
             label.label(class="{{ bookingRequestForm.number.$invalid && showValidation && 'label_error'}}")
               .label__title № СПО
@@ -98,10 +98,10 @@
         .title данные туристов
         .reserve__fields.reserve__fields_border
           .data
-            button.btn-field.btn-field-add(ng-click="addTourist()")
+            .btn-field.btn-field-add(ng-click="addTourist()", ng-hide="bookingRequest.tourists.length >= 9")
               i.btn-field-ico
             div(ng-repeat="tourist in bookingRequest.tourists")
-              pt-booking-requests-tourist(ng-model="tourist")
+              div(pt-booking-requests-tourist, ng-model="tourist")
         .reserve__fields.reserve__fields_comm
           label.label(class="{{ bookingRequestForm.comment.$invalid && showValidation && 'label_error'}}")
             .label__title ваши комментарии

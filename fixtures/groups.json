@@ -1,0 +1,271 @@
+[
+  {
+    "name": "Посетители",
+    "users": [
+      "anonym"
+    ],
+    "permissions": [
+      {
+        "name": "Баннеры",
+        "identity": "banners",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Бух. документы",
+        "identity": "documents",
+        "read": false,
+        "write": false,
+        "create": true,
+        "delete": false
+      },{
+        "name": "Справки",
+        "identity": "certificates",
+        "read": false,
+        "write": false,
+        "create": true,
+        "delete": false
+      },{
+        "name": "Доплаты",
+        "identity": "charges",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Контакты",
+        "identity": "contacts",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Настройки",
+        "identity": "configs",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Экскурсии",
+        "identity": "excursions",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Файлы",
+        "identity": "files",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Описание форм",
+        "identity": "form-descriptions",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Отели",
+        "identity": "hotels",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Меню",
+        "identity": "menu",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Новости",
+        "identity": "news",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Страницы",
+        "identity": "pages",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Телефоны",
+        "identity": "phones",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      },{
+        "name": "Отзывы",
+        "identity": "reports",
+        "read": false,
+        "write": false,
+        "create": true,
+        "delete": false
+      },{
+        "name": "Заявки на броирование",
+        "identity": "reservations",
+        "read": false,
+        "write": false,
+        "create": true,
+        "delete": false
+      },{
+        "name": "Подписки",
+        "identity": "subscriptions",
+        "read": false,
+        "write": false,
+        "create": true,
+        "delete": false
+      },{
+        "name": "Города",
+        "identity": "towns",
+        "read": true,
+        "write": false,
+        "create": false,
+        "delete": false
+      }
+    ]
+  },{
+    "name": "Администраторы",
+    "users": [
+      "admin", "manager"
+    ],
+    "permissions": [
+      {
+        "name": "Баннеры",
+        "identity": "banners",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Бух. документы",
+        "identity": "documents",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Справки",
+        "identity": "certificates",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Доплаты",
+        "identity": "charges",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Контакты",
+        "identity": "contacts",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Настройки",
+        "identity": "configs",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Экскурсии",
+        "identity": "excursions",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Файлы",
+        "identity": "files",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Описание форм",
+        "identity": "form-descriptions",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Отели",
+        "identity": "hotels",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Меню",
+        "identity": "menu",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Новости",
+        "identity": "news",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Страницы",
+        "identity": "pages",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Телефоны",
+        "identity": "phones",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Отзывы",
+        "identity": "reports",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Заявки на броирование",
+        "identity": "reservations",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Подписки",
+        "identity": "subscriptions",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      },{
+        "name": "Города",
+        "identity": "towns",
+        "read": true,
+        "write": true,
+        "create": true,
+        "delete": true
+      }
+    ]
+  }
+]

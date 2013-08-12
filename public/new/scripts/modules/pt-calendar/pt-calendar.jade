@@ -5,7 +5,7 @@
     .label__drop.label__drop_dp(ng-show="focused")
       .dp
         .dp__nav
-          .dp_prev(ng-click="prevMonth()", ng-show="showPrev()")
+          .dp_prev(ng-click="prevMonth()", ng-show="showPrev")
           .dp__period.dp__period_month(ng-class="{dp__period_active: showMonths}")
             .dp__value(ng-click="showMonths = !showMonths") {{ months[month.getUTCMonth()] }}
             .dp__btn(ng-click="showMonths = !showMonths")
@@ -16,7 +16,7 @@
             .dp__btn(ng-click="showYears = !showYears")
             .dp__list(ng-show="showYears")
               .dp__list-item(ng-repeat="year in years", ng-click="setYear(year)") {{ year }}
-          .dp_next(ng-click="nextMonth()", ng-show="showNext()")
+          .dp_next(ng-click="nextMonth()", ng-show="showNext")
         .dp__calendar
           table.dp__table
             thead.dp__thead

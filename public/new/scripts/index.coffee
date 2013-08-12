@@ -6,6 +6,7 @@ pt = angular.module "pt", [
   "ptPhones"
   "ptNews"
   "ptRange"
+  "ptPassengers"
   "ptExchangeRates"
   "ptSearch"
   "ptPagination"
@@ -31,11 +32,24 @@ pt = angular.module "pt", [
 
 pt.filter "escape", ->
   (value) ->
-    value.replace /</g, "&lt;"
+    if value
+      value.replace /</g, "&lt;"
+    else
+      ""
 
 pt.filter "nl2br", ->
   (value) ->
-    value.replace /\n/mg, "<br>"
+    if value
+      value.replace /\n/mg, "<br>"
+    else
+      ""
+
+pt.factory "ptSamo", ->
+  baseUrl = "http://polartour.ru/samo"
+  baseUrl: baseUrl
+  personalCabinet: baseUrl + "/cl_refer"
+  openPersonalCabinet: ->
+    window.location.href = @personalCabinet
 
 pt.config ($locationProvider) ->
   $locationProvider.hashPrefix "!"
@@ -68,7 +82,7 @@ pt.config ($routeProvider) ->
     templateUrl: "views/excursions.html"
     controller: "PtExcursionsCtrl"
 
-  $routeProvider.when "/:country/supplements",
+  $routeProvider.when "/:country/supplements/:supplementType",
     templateUrl: "views/supplements.html"
     controller: "PtSupplementsCtrl"
 

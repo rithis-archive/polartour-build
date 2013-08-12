@@ -24,7 +24,7 @@
       .list-placeholder
 
       .list-item(ng-repeat="report in filteredData | orderBy:'+createdAt'")
-        a.list-cell-width-6x.list-cell-item(href="#!/feedbacks/{{ report._id }}", class="{{ report.viewed && 'viewed' }}") {{ report.name }}
+        a.list-cell-width-6x.list-cell-item(href="#!/feedbacks/{{ report._id }}", ng-class="{viewed:report.viewed,processed:report.processed}") {{ report.name }}
         span.list-cell-width-4x.list-cell-item {{ report.email }}
         span.list-cell-width-2x.list-cell-item {{ report.createdAt | date:"dd.MM.yyyy HH:mm" }}
   

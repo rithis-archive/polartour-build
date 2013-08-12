@@ -1,0 +1,3 @@
+.label__in
+  .label__radio
+    .label__radio-item(ng-repeat="val in values", ng-class="{'label__radio-item_active': val == value}", ng-click="setValueWithoutBlur(val)") {{ val.value }}

@@ -5,7 +5,7 @@ ptHotels = angular.module "ptHotels", [
 ptHotels.factory "ptHotel", ($resource) ->
   $resource "/hotels/:_id"
 
-ptHotels.controller "PtHotelsCtrl", ($scope, $routeParams, $filter, ptHotel, ptCountriesManager) ->
+ptHotels.controller "PtHotelsCtrl", ($scope, $routeParams, $filter, ptHotel, ptCountriesManager, $location) ->
   $scope.country =  ptCountriesManager.getGenitiveByCode $routeParams.country
 
   fetchUnique = (hotels, field) ->
@@ -15,9 +15,20 @@ ptHotels.controller "PtHotelsCtrl", ($scope, $routeParams, $filter, ptHotel, ptC
       value and value.length > 0 and self.indexOf(value) is index
     .sort()
 
+  $scope.$watch "hotelsFilter", (filters) ->
+    $scope.filteredHotels = $filter("filter")($scope.hotels, filters)
+  , true
+
+  $scope.selected = ->
+    if $scope.filteredHotels.length is 1
+      hotel = $scope.filteredHotels[0]
+      $location.url "/#{$routeParams.country}/hotels/#{hotel._id}"
+
   ptHotel.query country: $routeParams.country, (hotels, headers) ->
+    $scope.hotelsFilter = {}
     $scope.hotels = hotels
 
+    $scope.hotelNames = fetchUnique hotels, "name"
     $scope.hotelRegions = fetchUnique hotels, "region"
     $scope.hotelRegions.unshift ""
     $scope.hotelCategories = fetchUnique hotels, "category"

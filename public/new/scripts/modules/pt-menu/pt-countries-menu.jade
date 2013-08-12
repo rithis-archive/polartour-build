@@ -1,6 +1,6 @@
 .country(ng-class="{country__white: white}")
   .country__item(ng-repeat="menuItem in countriesMenu")
-    .country__item-in
+    .country__item-in(pt-countries-menu-item)
       a.country__name(href="{{ menuItem.href }}")
         | {{ menuItem.name }}
         i.flag(class="flag-{{ menuItem.code }}")

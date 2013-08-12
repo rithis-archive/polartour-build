@@ -35,21 +35,14 @@
             .label
               //.label_active
               .label__title название
-              .label__in
-                input.label__text(type='text', ng-model="hotelsFilter.name")
-                //
-                  .label__drop
-                    .label__list
-                      .label__list-item Турция
-                      .label__list-item Тунис
-                      .label__list-item Туркменистан
+              pt-select-datalist(ng-model="$parent.hotelsFilter.name", pt-select-values="hotelNames", pt-select-selected="selected()")
             .label
               .label__title категория
               pt-select(ng-model="$parent.hotelsFilter.category", pt-select-values="hotelCategories")
             .label
               .label__title регион
               pt-select(ng-model="$parent.hotelsFilter.region", pt-select-values="hotelRegions")
-        .search-hotel__list(pt-pagination="hotels | filter:hotelsFilter", pt-pagination-id="hotels-{{ country }}", pt-pagination-limit="50")
+        .search-hotel__list(pt-pagination="filteredHotels", pt-pagination-id="hotels-{{ country }}", pt-pagination-limit="50")
           table.table
             thead.table__head
               tr.table__row

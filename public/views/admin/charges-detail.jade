@@ -8,8 +8,14 @@
       select(ui-select2, pt-countries, ng-model="charge.country", required)
         option(ng-repeat="country in countries", value="{{ country.code }}") {{ country.name }}
 
+    .content-detail-field
+      label тип
+      select(ui-select2, ng-model="charge.type", required)
+        option(ng-repeat="type in types", value="{{ type.code }}") {{ type.name }}
+
+    .content-detail-field
       label принимающая сторона
-      input(type="text", ng-model="charge.operator", required) 
+      input(type="text", ng-model="charge.operator", required)
 
     .content-detail-field
       label описание

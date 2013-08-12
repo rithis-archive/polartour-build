@@ -19,7 +19,7 @@
     // BEGIN .container
     .container
       h1.container__title
-        | Доплаты
+        | {{ title }}
         .choice
           .choice__in
             .choice__done {{ country }}
@@ -50,7 +50,7 @@
             tbody.table__body
               tr.table__row(ng-repeat="supplement in supplements | filter:supplementsFilter")
                 td.table__cell {{ supplement.operator }}
-                td.table__cell {{ supplement.description }}
+                td.table__cell(ng-bind-html-unsafe="supplement.description | escape | nl2br")
                 td.table__cell {{ supplement.price }}
       // END .search-hotel
     // END .container

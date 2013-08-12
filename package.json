@@ -43,6 +43,7 @@
   , "jquery-file-upload-middleware": "~0"
   , "fileupload": "~0.2"
   , "forever": "~0.10"
+  , "lodash": "~1.2"
   }
 , "devDependencies": {
     "symfio-suite": "~1.0"

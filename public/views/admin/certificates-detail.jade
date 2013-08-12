@@ -26,3 +26,11 @@
     .content-detail-field
       label дата
       input(type="text", value="{{ certification.createdAt | date:'dd.MM.yyyy HH:mm' }}", disabled="disabled") 
+
+  .content-detail
+    .content-detail-field
+      .content-detail-processed
+        label
+          input(type="checkbox", ng-model="certification.processed", ng-click="changeProcessed()")
+          | Обработан
+      a.content-detail-delete(ng-click="remove()") Удалить

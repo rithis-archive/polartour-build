@@ -13,6 +13,12 @@
       // BEGIN .search
       form.search(name="form")
         .search__form
+          .search__fields(ng-init="passengers1.value = {adults: 2, childs: 0, infants: 0}")
+            .label(style="color: white") value: {{ passengers1.value }} valid: {{ form.passengers1.$valid }}
+            .label.label_mod(ng-class="{label_error: form.passengers1.$invalid}")
+              .label__title passengers1
+              pt-passengers(ng-model="$parent.passengers1.value", name="passengers1")
+
           .search__fields(ng-init="number1.value = 8")
             .label(style="color: white") value: {{ number1.value }} valid: {{ form.number1.$valid }}
             .label.label_mod(ng-class="{label_error: form.number1.$invalid}")
@@ -22,7 +28,7 @@
           .search__fields(ng-init="multiselect1.value = ['a', 'b']; multiselect1.values = ['a', 'b', 'c']")
             .label(ng-class="{label_error: form.multiselect1.$invalid}")
               .label__title multiselect1
-              pt-select(pt-select-values="multiselect1.values", pt-select-multiselect, name="multiselect1", ng-model="$parent.multiselect1.value")
+              pt-select-multiselect(pt-select-values="multiselect1.values", name="multiselect1", ng-model="$parent.multiselect1.value")
 
           .search__fields(ng-init="checkbox1.value = true")
             .label(style="color: white") value: {{ checkbox1.value }} valid: {{ form.checkbox1.$valid }}
@@ -42,11 +48,17 @@
               .label__title calendar1
             pt-calendar(ng-model="$parent.calendar1.value", name="calendar1", pt-calendar-min="today", pt-calendar-max="22.09.2013")
 
+          .search__fields
+            .label(style="color: white") value: {{ calendar2.value | date:"dd.MM.yyyy" }} valid: {{ form.calendar2.$valid }}
+            .label(ng-class="{label_error: form.calendar2.$invalid}")
+              .label__title calendar2
+            pt-calendar(ng-model="$parent.calendar2.value", name="calendar2", pt-calendar-min="today", pt-calendar-max="22.09.2013")
+
           .search__fields(ng-init="datalist1.values = {mow: 'Moscow', nyc: 'New-York'}")
             .label(style="color: white") value: {{ datalist1.value }} valid: {{ form.datalist1.$valid }}
             .label(ng-class="{label_error: form.datalist1.$invalid}")
               .label__title datalist1
-              pt-select(ng-model="$parent.datalist1.value", name="datalist1", pt-select-values="datalist1.values", pt-select-datalist)
+              pt-select-datalist(ng-model="$parent.datalist1.value", name="datalist1", pt-select-values="datalist1.values")
 
           .search__fields(ng-init="range1.value = [1, 3]")
             .label(style="color: white") value: {{ range1.value }} valid: {{ form.range1.$valid }}
@@ -69,18 +81,18 @@
             .label(style="color: white") value: {{ radio1.value }} valid: {{ form.radio1.$valid }}
             .label(ng-class="{label_error: form.radio1.$invalid}")
               .label__title radio1
-              pt-select(ng-model="$parent.radio1.value", name="radio1", pt-select-values="radio1.values", pt-select-radio)
+              pt-select-radio(ng-model="$parent.radio1.value", name="radio1", pt-select-values="radio1.values")
 
           .search__fields(ng-init="radio2.value = 'mow'; radio2.values = {mow: 'Moscow', nyc: 'New-York'}")
             .label(style="color: white") value: {{ radio2.value }} valid: {{ form.radio2.$valid }}
             .label(ng-class="{label_error: form.radio2.$invalid}")
               .label__title radio2
-              pt-select(ng-model="$parent.radio2.value", name="radio2", pt-select-values="radio2.values", pt-select-radio)
+              pt-select-radio(ng-model="$parent.radio2.value", name="radio2", pt-select-values="radio2.values")
 
           .search__fields(ng-init="radio3.values = ['a', 'b', 'c']")
             .label
               .label__title radio3
-              pt-select(pt-select-values="radio3.values", pt-select-radio)
+              pt-select-radio(pt-select-values="radio3.values")
 
           .search__fields(ng-init="select1.value = 7; select1.values = [1, 2, 3, 4, 5, 6, 7, 8, 9]")
             .label(style="color: white") value: {{ select1.value }} valid: {{ form.select1.$valid }}

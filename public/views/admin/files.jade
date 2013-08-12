@@ -19,8 +19,8 @@
 
   section.content-body
     .list
-      .files-item(ng-repeat="file in filteredData | orderBy:'+createdAt'")
-        a.file-cell-width-8x.list-cell-item(href="javascript:void(0)") {{ file.basename }}
+      .list-item(ng-repeat="file in filteredData | orderBy:'+createdAt'")
+        a.list-cell-width-8x.list-cell-item(href="javascript:void(0)", id="{{ file._id }}", data-clipboard-text="{{ host }}/{{ file.path }}", pt-file-clipboard) {{ file.basename }}
   
       .list-placeholder
   
